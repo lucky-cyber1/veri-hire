@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeriHire • Offer Letter & Recruiter Verification Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VeriHire • Autonomous Recruitment Fraud & Digital Identity Defense</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,21 +12,20 @@
             theme: {
                 extend: {
                     colors: {
-                        apple: {
-                            bg: '#000000',
-                            surface: '#111113',
-                            surfaceElevated: '#1a1a1e',
-                            surfaceHighlight: '#26262b',
-                            border: 'rgba(255, 255, 255, 0.08)',
-                            borderLight: 'rgba(255, 255, 255, 0.16)',
-                            blue: '#2E5CFF',
-                            blueHover: '#446EFF',
-                            indigo: '#5E5CE6',
-                            green: '#30D158',
-                            red: '#FF453A',
-                            orange: '#FF9F0A',
-                            grayText: '#86868b',
-                            graySub: '#a1a1a6'
+                        vh: {
+                            bg: '#06080D',
+                            card: 'rgba(14, 18, 30, 0.72)',
+                            cardElevated: 'rgba(20, 26, 44, 0.85)',
+                            border: 'rgba(255, 255, 255, 0.12)',
+                            borderLight: 'rgba(255, 255, 255, 0.22)',
+                            blue: '#3B82F6',
+                            indigo: '#6366F1',
+                            violet: '#8B5CF6',
+                            emerald: '#10B981',
+                            rose: '#F43F5E',
+                            amber: '#F59E0B',
+                            textMuted: '#94A3B8',
+                            textSub: '#CBD5E1'
                         }
                     }
                 }
@@ -39,516 +38,491 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "SF Pro Display", sans-serif;
-            background-color: #000000;
-            color: #f5f5f7;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #06080D;
+            color: #F8FAFC;
+            overflow-x: hidden;
         }
         
         .font-mono {
             font-family: 'JetBrains Mono', monospace;
         }
 
-        .apple-card {
-            background-color: rgba(22, 22, 26, 0.7);
-            backdrop-filter: blur(35px);
-            -webkit-backdrop-filter: blur(35px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.5);
+        /* Refined Frosted Acrylic Glassmorphism */
+        .glass-card {
+            background: rgba(14, 18, 30, 0.72);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
 
-        .apple-btn-primary {
-            background: #2E5CFF;
-            color: #ffffff;
+        .glass-glow-blue {
+            box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.35);
+        }
+
+        .glass-glow-emerald {
+            box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.35);
+        }
+
+        .glass-glow-rose {
+            box-shadow: 0 0 40px -10px rgba(244, 63, 94, 0.35);
+        }
+
+        .btn-gradient-primary {
+            background: linear-gradient(135deg, #2563EB 0%, #4F46E5 100%);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .apple-btn-primary:hover {
-            background: #446EFF;
-            transform: scale(0.99);
-            box-shadow: 0 4px 20px rgba(46, 92, 255, 0.35);
-        }
-
-        /* Custom scrollbar for batch results */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #111113;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #26262b;
-            border-radius: 3px;
+        .btn-gradient-primary:hover {
+            background: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-apple-blue selection:text-white">
+<body class="min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white relative">
 
-    <!-- Global Header with Minimalist VeriHire Logo & Tier Switcher -->
-    <header class="border-b border-apple-border bg-black/80 backdrop-blur-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Ambient Glow Mesh Background -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[140px]"></div>
+        <div class="absolute top-1/3 -right-40 w-[550px] h-[550px] bg-indigo-600/15 rounded-full blur-[140px]"></div>
+        <div class="absolute -bottom-40 left-1/3 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px]"></div>
+    </div>
+
+    <!-- Global Responsive Navigation Bar -->
+    <header class="border-b border-white/10 bg-[#06080D]/80 backdrop-blur-2xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             
-            <!-- Minimalist VeriHire Monogram Logo (V + Verification Checkmark) -->
-            <a href="/" class="flex items-center space-x-3 group">
-                <div class="w-9 h-9 rounded-xl bg-apple-surfaceElevated border border-apple-border flex items-center justify-center group-hover:border-apple-blue transition-all shadow-sm">
-                    <svg class="w-5 h-5 text-apple-blue" viewBox="0 0 32 32" fill="none">
-                        <path d="M7 9L13.5 23L25 7" stroke="#2E5CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M13.5 23L20 14" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Logo -->
+            <a href="/" class="flex items-center space-x-2.5 shrink-0">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 border border-white/20 flex items-center justify-center shadow-md">
+                    <svg class="w-5 h-5 text-white" viewBox="0 0 32 32" fill="none">
+                        <path d="M7 9L13.5 23L25 7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M13.5 23L20 14" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
                 <div>
-                    <div class="flex items-center space-x-2">
-                        <span class="text-base font-bold tracking-tight text-white block">VeriHire</span>
-                        <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-apple-surfaceElevated border border-apple-border text-apple-blue font-semibold">AI</span>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="text-base font-extrabold tracking-tight text-white block">VeriHire</span>
+                        <span class="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold">PRO</span>
                     </div>
-                    <span class="text-[11px] text-apple-grayText block -mt-0.5" id="nav-tagline">Offer Letter & Recruiter Verification</span>
+                    <span class="text-[10px] text-vh-textMuted hidden sm:block -mt-0.5">Recruitment Fraud & Digital Identity Defense</span>
                 </div>
             </a>
 
-            <!-- Center/Right Controls: Dual Tier Switcher & Actions -->
-            <div class="flex items-center space-x-2 sm:space-x-3 text-xs">
+            <!-- Center/Right Action Bar -->
+            <div class="flex items-center space-x-1.5 sm:space-x-3 text-xs">
                 
-                <!-- Interactive Tier Switcher (Switch between Pro and Free seamlessly) -->
-                <div class="flex items-center bg-apple-surfaceElevated border border-apple-border rounded-xl p-1 shadow-inner">
-                    <button onclick="setTier('pro')" id="tier-btn-pro" class="flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all bg-apple-blue text-white shadow-sm">
-                        <svg class="w-3.5 h-3.5 text-yellow-300" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        <span>Pro Tier (Lakshman)</span>
+                <!-- Interactive Tier Switcher -->
+                <div class="flex items-center bg-black/50 border border-white/10 rounded-xl p-0.5 sm:p-1">
+                    <button onclick="setTier('pro')" id="tier-btn-pro" class="flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all bg-blue-600 text-white shadow-sm">
+                        <i data-lucide="zap" class="w-3 h-3 text-yellow-300"></i>
+                        <span>Pro</span>
                     </button>
-                    <button onclick="setTier('free')" id="tier-btn-free" class="flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-medium text-apple-graySub hover:text-white transition-all">
-                        <i data-lucide="user" class="w-3.5 h-3.5"></i>
-                        <span>Free Tier</span>
+                    <button onclick="setTier('free')" id="tier-btn-free" class="flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-medium text-vh-textMuted hover:text-white transition-all">
+                        <span>Free</span>
                     </button>
                 </div>
 
-                <!-- API Key Console Button (Pro Feature) -->
-                <button onclick="openApiModal()" id="btn-api-modal" class="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-apple-surfaceElevated hover:bg-apple-surfaceHighlight border border-apple-border text-apple-graySub hover:text-white transition-colors">
-                    <i data-lucide="key" class="w-3.5 h-3.5 text-apple-blue"></i>
+                <!-- PKI & How It Works Guide Button -->
+                <button onclick="openPkiModal()" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-vh-textSub hover:text-white transition-all">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-400"></i>
+                    <span class="hidden md:inline">PKI & How It Works</span>
+                    <span class="md:hidden">PKI</span>
+                </button>
+
+                <!-- Partner Portal Demo (Secondary Website) Button -->
+                <a href="/portal" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-500/30 text-indigo-300 hover:text-white transition-all">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-indigo-400"></i>
+                    <span class="hidden md:inline">Partner Portal Demo</span>
+                    <span class="md:hidden">API Demo</span>
+                </a>
+
+                <!-- API Key Modal Button -->
+                <button onclick="openApiModal()" class="hidden sm:inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-vh-textSub hover:text-white transition-all">
+                    <i data-lucide="key" class="w-3.5 h-3.5 text-yellow-400"></i>
                     <span>API Console</span>
                 </button>
-
-                <!-- Compare Tiers / Add-ons Button -->
-                <button onclick="openTiersModal()" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-apple-surfaceElevated hover:bg-apple-surfaceHighlight border border-apple-border text-apple-graySub hover:text-white transition-colors">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-yellow-400"></i>
-                    <span class="hidden md:inline">Add-ons & Tiers</span>
-                    <span class="md:hidden">Tiers</span>
-                </button>
-
-                <!-- Language Selector -->
-                <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-apple-surfaceElevated border border-apple-border text-apple-graySub hover:text-white rounded-lg px-2.5 py-1.5 text-xs focus:outline-none focus:border-apple-borderLight font-medium cursor-pointer transition-colors">
-                    <option value="en">English</option>
-                    <option value="hi">हिंदी (Hindi)</option>
-                    <option value="te">తెలుగు (Telugu)</option>
-                </select>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Body -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
+    <!-- Main Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 relative z-10">
 
         <!-- Header Introduction & Dynamic Tier Status Alert -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div class="space-y-3 max-w-2xl">
-                <div class="inline-flex items-center space-x-2 px-2.5 py-0.5 rounded-full bg-apple-surfaceElevated border border-apple-border text-apple-graySub text-xs">
-                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-apple-blue"></i>
-                    <span id="badge-independent">Independent Verification Platform</span>
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+            <div class="space-y-2 max-w-2xl">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-400 text-xs font-semibold">
+                    <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
+                    <span>Production Multimodal Forensics</span>
                 </div>
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight" id="main-title">
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
                     Verify If Your Job Offer Is Genuine
                 </h1>
-                <p class="text-apple-graySub text-sm sm:text-base leading-relaxed" id="main-desc">
-                    VeriHire inspects offer letters (PDF or screenshot) against fake recruiter domains, advance-fee extortion, synthetic ChatGPT drafts, and missing cryptographic signatures.
+                <p class="text-vh-textMuted text-xs sm:text-sm leading-relaxed">
+                    Multimodal inspection against fake recruiter domains, advance-fee extortion, synthetic ChatGPT drafts, and missing cryptographic PKI signatures.
                 </p>
             </div>
 
-            <!-- Active Account Status Card -->
-            <div id="tier-status-card" class="p-4 rounded-2xl bg-apple-surfaceElevated border border-apple-border flex flex-col justify-between space-y-2 min-w-[280px]">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs text-apple-grayText font-mono uppercase">Current Mode</span>
-                    <span id="tier-badge-label" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-apple-blue/20 text-apple-blue border border-apple-blue/30">
-                        PRO ACTIVE
-                    </span>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div id="tier-avatar" class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-md">
+            <!-- Active User Tier Card -->
+            <div class="glass-card rounded-2xl p-3.5 sm:p-4 flex items-center justify-between gap-4 shrink-0 border border-white/15">
+                <div class="flex items-center space-x-3">
+                    <div id="tier-avatar" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
                         L
                     </div>
                     <div>
-                        <span id="tier-user-name" class="text-sm font-semibold text-white block">Lakshman (Pro Subscriber)</span>
-                        <span id="tier-perks-text" class="text-[11px] text-apple-graySub block">Bulk Batch • API Access • Crypto Signature</span>
+                        <div class="flex items-center space-x-1.5">
+                            <span id="tier-user-name" class="text-xs sm:text-sm font-bold text-white block">Lakshman (Pro Active)</span>
+                            <span id="tier-badge-label" class="px-2 py-0.2 rounded-full text-[9px] font-mono font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30">PRO</span>
+                        </div>
+                        <span id="tier-perks-text" class="text-[11px] text-vh-textMuted block">Bulk Batch • API Key • Crypto PKI Validation</span>
                     </div>
                 </div>
-                <div class="pt-2 border-t border-apple-border/50 flex items-center justify-between text-[11px] text-apple-grayText">
-                    <span id="tier-rate-limit-text">Rate Limit: Unlimited Scans</span>
-                    <a href="javascript:void(0)" onclick="openTiersModal()" class="text-apple-blue hover:underline">Manage Add-ons &rarr;</a>
-                </div>
+                <button onclick="openTiersModal()" class="px-2.5 py-1.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] text-[11px] font-semibold text-vh-textSub border border-white/10 shrink-0">
+                    Switch
+                </button>
             </div>
         </div>
 
-        <!-- Live Community Metrics Bar (Initialized to 0 reviews, 0 verified scans) -->
-        <div class="flex flex-wrap items-center gap-3 sm:gap-6 py-3 px-4 rounded-2xl bg-apple-surfaceElevated border border-apple-border text-xs">
-            <div class="flex items-center space-x-2">
-                <span class="w-2 h-2 rounded-full bg-apple-green animate-pulse"></span>
-                <span class="text-apple-graySub">Live System:</span>
-            </div>
+        <!-- Live Community Trust Bar (0 Scans, 0 Reviews initially) -->
+        <div class="flex flex-wrap items-center gap-2.5 sm:gap-6 py-2.5 px-3.5 sm:px-5 rounded-2xl glass-card text-xs">
             <div class="flex items-center space-x-1.5">
-                <i data-lucide="shield" class="w-3.5 h-3.5 text-apple-blue"></i>
-                <span class="text-apple-graySub">Verified Scans:</span>
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-vh-textMuted">Engine Status:</span>
+                <span class="text-emerald-400 font-semibold font-mono">Online</span>
+            </div>
+            <div class="h-3 w-px bg-white/10 hidden sm:block"></div>
+            <div class="flex items-center space-x-1.5">
+                <i data-lucide="shield" class="w-3.5 h-3.5 text-blue-400"></i>
+                <span class="text-vh-textMuted">Live Scans:</span>
                 <span id="stat-verified" class="text-white font-semibold font-mono">0</span>
             </div>
-            <div class="w-px h-4 bg-apple-border hidden sm:block"></div>
+            <div class="h-3 w-px bg-white/10 hidden sm:block"></div>
             <div class="flex items-center space-x-1.5">
-                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-apple-green"></i>
-                <span class="text-apple-graySub">Precision:</span>
-                <span id="stat-accuracy" class="text-apple-green font-semibold font-mono">100.0%</span>
-                <span class="text-apple-grayText text-[10px]">(550 Benchmark Tests)</span>
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span class="text-vh-textMuted">Precision:</span>
+                <span class="text-emerald-400 font-bold font-mono">100.0%</span>
+                <span class="text-vh-textMuted text-[10px] hidden md:inline">(550 Benchmark Tests)</span>
             </div>
-            <div class="w-px h-4 bg-apple-border hidden sm:block"></div>
+            <div class="h-3 w-px bg-white/10 hidden sm:block"></div>
             <div class="flex items-center space-x-1.5">
-                <div class="flex -space-x-0.5 text-apple-grayText" id="star-icons-container">
-                    <i data-lucide="star" class="w-3 h-3 text-apple-grayText"></i>
-                </div>
+                <i data-lucide="star" class="w-3 h-3 text-vh-textMuted"></i>
                 <span id="stat-rating" class="text-white font-semibold font-mono">0.0</span>
-                <span class="text-apple-grayText">(<span id="stat-count">0</span> reviews)</span>
+                <span class="text-vh-textMuted">(<span id="stat-count">0</span> reviews)</span>
             </div>
-            <div class="w-px h-4 bg-apple-border hidden sm:block"></div>
-            <div class="ml-auto flex items-center space-x-2 text-[11px] text-apple-grayText">
-                <i data-lucide="lock" class="w-3.5 h-3.5 text-apple-green"></i>
-                <span>Zero Data Retention • In-Memory Multimodal OCR</span>
+            <div class="ml-auto hidden lg:flex items-center space-x-2 text-[11px] text-vh-textMuted">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Client-Side PII Masking • Zero Retention</span>
             </div>
         </div>
 
         <!-- 2-Column Responsive Workspace Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
             
-            <!-- Left Column: Input Form (Card 1) -->
-            <div class="apple-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between space-y-5 h-full">
-                <div>
-                    <!-- Header with Tab Navigation (Single vs Text vs Bulk Batch) -->
-                    <div class="h-10 flex items-center justify-between border-b border-apple-border pb-3.5 mb-5">
-                        <span class="text-sm font-semibold text-white flex items-center space-x-2">
-                            <i data-lucide="file-up" class="w-4 h-4 text-apple-blue"></i>
-                            <span id="lbl-input-doc">Offer Input</span>
-                        </span>
-                        
-                        <!-- Toggle File vs Text vs Bulk Batch (Pro) -->
-                        <div class="flex items-center bg-black/60 rounded-lg p-0.5 border border-apple-border text-xs">
-                            <button onclick="setInputMode('upload')" id="mode-btn-upload" class="px-2.5 py-1 rounded-md text-white bg-apple-surfaceHighlight font-medium transition-all">Single Doc</button>
-                            <button onclick="setInputMode('text')" id="mode-btn-text" class="px-2.5 py-1 rounded-md text-apple-grayText hover:text-white font-medium transition-all">Paste Text</button>
-                            <button onclick="setInputMode('batch')" id="mode-btn-batch" class="px-2.5 py-1 rounded-md text-apple-blue hover:text-white font-semibold flex items-center space-x-1 transition-all">
-                                <i data-lucide="layers" class="w-3 h-3"></i>
-                                <span>Bulk Batch (Pro)</span>
-                            </button>
+            <!-- Left Column: Input Panel -->
+            <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-4">
+                
+                <!-- Input Mode Switcher Header -->
+                <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                    <span class="text-xs sm:text-sm font-bold text-white flex items-center space-x-2">
+                        <i data-lucide="file-up" class="w-4 h-4 text-blue-400"></i>
+                        <span>Document Intake</span>
+                    </span>
+
+                    <div class="flex items-center bg-black/60 rounded-xl p-0.5 border border-white/10 text-xs">
+                        <button onclick="setInputMode('upload')" id="mode-btn-upload" class="px-2.5 py-1 rounded-lg text-white bg-blue-600 font-semibold transition-all">Single Doc</button>
+                        <button onclick="setInputMode('text')" id="mode-btn-text" class="px-2.5 py-1 rounded-lg text-vh-textMuted hover:text-white font-medium transition-all">Paste Text</button>
+                        <button onclick="setInputMode('batch')" id="mode-btn-batch" class="px-2.5 py-1 rounded-lg text-indigo-400 hover:text-white font-semibold flex items-center space-x-1 transition-all">
+                            <i data-lucide="layers" class="w-3 h-3"></i>
+                            <span>Bulk Batch (Pro)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mode 1: Single File Upload -->
+                <div id="input-mode-upload" class="space-y-4">
+                    <div id="dropzone" class="border-2 border-dashed border-white/15 hover:border-blue-500/60 rounded-2xl p-6 sm:p-8 text-center bg-black/30 cursor-pointer transition-all group">
+                        <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" class="hidden" onchange="handleFileSelected(this.files)">
+                        <div class="flex flex-col items-center justify-center space-y-2">
+                            <div class="w-12 h-12 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform">
+                                <i data-lucide="upload-cloud" class="w-6 h-6"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm font-semibold text-white">Choose offer letter or drag & drop</p>
+                            <p class="text-[11px] text-vh-textMuted">Supports PDF, PNG, JPG, or Screenshots</p>
                         </div>
                     </div>
 
-                    <!-- Mode 1: Single File Upload (PDF / PNG / JPG) -->
-                    <div id="input-mode-upload" class="space-y-4">
-                        <div id="dropzone" class="border-2 border-dashed border-apple-border hover:border-apple-borderLight rounded-xl p-8 sm:p-10 text-center transition-all bg-black/30 cursor-pointer group">
-                            <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" class="hidden" onchange="handleFileSelected(this.files)">
-                            <div class="flex flex-col items-center justify-center space-y-3">
-                                <div class="w-12 h-12 rounded-xl bg-apple-surfaceElevated border border-apple-border flex items-center justify-center text-apple-graySub group-hover:text-white transition-colors">
-                                    <i data-lucide="upload" class="w-5 h-5 text-apple-blue"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-medium text-white" id="lbl-drop-title">Choose file or drag & drop</p>
-                                    <p class="text-xs text-apple-grayText mt-0.5" id="lbl-drop-sub">Supports PDF, PNG, JPG, or Screenshots (up to 15MB)</p>
-                                </div>
-                                <div id="selectedFileName" class="hidden text-xs px-3 py-1.5 rounded-lg bg-apple-surfaceElevated text-apple-blue border border-apple-border font-mono mt-1">
-                                </div>
+                    <!-- Single File Document Preview Thumbnail -->
+                    <div id="singlePreviewContainer" class="hidden p-3 rounded-xl bg-black/40 border border-white/10 space-y-2">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-vh-textMuted font-mono" id="singleFileName"></span>
+                            <button onclick="openLightboxFromSingle()" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center space-x-1 text-[11px]">
+                                <i data-lucide="zoom-in" class="w-3 h-3"></i>
+                                <span>Preview Full Document</span>
+                            </button>
+                        </div>
+                        <div class="relative w-full h-32 rounded-lg overflow-hidden bg-black/60 border border-white/10 flex items-center justify-center cursor-pointer" onclick="openLightboxFromSingle()">
+                            <img id="singlePreviewImg" class="max-h-full max-w-full object-contain hidden" alt="Offer Preview">
+                            <div id="singlePdfPlaceholder" class="flex flex-col items-center justify-center text-vh-textMuted space-y-1">
+                                <i data-lucide="file-text" class="w-8 h-8 text-blue-400"></i>
+                                <span class="text-[11px] font-mono text-vh-textSub">PDF Document Ready for OCR</span>
                             </div>
                         </div>
+                    </div>
 
-                        <button onclick="analyzeUploadedFile()" id="btn-analyze-file" class="apple-btn-primary w-full py-3 px-4 rounded-xl font-semibold text-sm shadow-md flex items-center justify-center space-x-2">
-                            <i data-lucide="shield" class="w-4 h-4"></i>
-                            <span id="btn-verify-text">Verify Offer Letter</span>
+                    <button onclick="analyzeUploadedFile()" id="btn-analyze-file" class="btn-gradient-primary w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white flex items-center justify-center space-x-2">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                        <span>Run Forensic Verification</span>
+                    </button>
+                </div>
+
+                <!-- Mode 2: Paste Text -->
+                <div id="input-mode-text" class="space-y-3 hidden">
+                    <div>
+                        <label class="block text-[11px] font-semibold text-vh-textSub mb-1">Recruiter Email or Domain (Optional)</label>
+                        <input type="text" id="text-sender-email" placeholder="e.g. hr@company.com or @gmail.com" class="w-full px-3.5 py-2.5 bg-black/50 border border-white/10 rounded-xl text-xs sm:text-sm text-white font-mono placeholder:text-vh-textMuted focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-vh-textSub mb-1">Offer Letter Body</label>
+                        <textarea id="text-offer-body" rows="6" placeholder="Paste recruiter message or offer letter text here..." class="w-full p-3.5 bg-black/50 border border-white/10 rounded-xl text-xs sm:text-sm text-white font-mono placeholder:text-vh-textMuted focus:outline-none focus:border-blue-500 leading-relaxed"></textarea>
+                    </div>
+                    <button onclick="analyzePastedText()" id="btn-analyze-text" class="btn-gradient-primary w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white flex items-center justify-center space-x-2">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                        <span>Verify Text Payload</span>
+                    </button>
+                </div>
+
+                <!-- Mode 3: Bulk Batch Mode (Pro Tier) -->
+                <div id="input-mode-batch" class="space-y-4 hidden">
+                    
+                    <!-- Free Tier Gatekeeper -->
+                    <div id="batch-gatekeeper" class="hidden p-5 rounded-2xl border border-yellow-500/30 bg-yellow-500/10 text-center space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-yellow-500/20 text-yellow-400 mx-auto flex items-center justify-center">
+                            <i data-lucide="lock" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="text-sm font-bold text-white">Bulk Batch Scanning is a Pro Feature</h4>
+                        <p class="text-xs text-vh-textSub max-w-sm mx-auto">
+                            Placement cells use Bulk Batch to verify up to 50 appointment letters simultaneously with instant CSV audit reports.
+                        </p>
+                        <button onclick="setTier('pro')" class="btn-gradient-primary px-4 py-2 rounded-xl text-xs font-bold inline-flex items-center space-x-1.5">
+                            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                            <span>Switch to Pro Tier (Lakshman)</span>
                         </button>
                     </div>
 
-                    <!-- Mode 2: Text Paste Mode -->
-                    <div id="input-mode-text" class="space-y-4 hidden">
-                        <div>
-                            <label class="block text-xs font-medium text-apple-graySub mb-1" id="lbl-sender-email">Recruiter Email or Domain (Optional)</label>
-                            <input type="text" id="text-sender-email" placeholder="e.g. recruiter@company.com" class="w-full px-3.5 py-2.5 bg-black/60 border border-apple-border rounded-xl text-xs sm:text-sm text-white placeholder-apple-grayText focus:outline-none focus:border-apple-borderLight font-mono">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-apple-graySub mb-1" id="lbl-offer-content">Offer Letter Content</label>
-                            <textarea id="text-offer-body" rows="7" placeholder="Paste the text from the offer letter or recruiter email..." class="w-full p-3.5 bg-black/60 border border-apple-border rounded-xl text-xs sm:text-sm text-white placeholder-apple-grayText focus:outline-none focus:border-apple-borderLight font-mono leading-relaxed"></textarea>
-                        </div>
-                        <button onclick="analyzePastedText()" id="btn-analyze-text" class="apple-btn-primary w-full py-3 px-4 rounded-xl font-semibold text-sm shadow-md flex items-center justify-center space-x-2">
-                            <i data-lucide="shield" class="w-4 h-4"></i>
-                            <span id="btn-verify-paste">Verify Text</span>
-                        </button>
-                    </div>
-
-                    <!-- Mode 3: Bulk Batch Mode (Pro Tier) -->
-                    <div id="input-mode-batch" class="space-y-4 hidden">
-                        
-                        <!-- Free Tier Gatekeeper (If active tier is Free) -->
-                        <div id="batch-gatekeeper" class="hidden p-6 rounded-xl border border-yellow-500/30 bg-yellow-500/5 text-center space-y-3">
-                            <div class="w-10 h-10 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 mx-auto flex items-center justify-center">
-                                <i data-lucide="lock" class="w-5 h-5"></i>
-                            </div>
-                            <h4 class="text-sm font-bold text-white">Bulk Batch Verification is a Pro Feature</h4>
-                            <p class="text-xs text-apple-graySub max-w-sm mx-auto">
-                                College placement cells and enterprises use Bulk Batch to verify up to 50 appointment letters simultaneously with instant CSV audit reports.
-                            </p>
-                            <button onclick="setTier('pro')" class="apple-btn-primary px-4 py-2 rounded-xl text-xs font-semibold inline-flex items-center space-x-2">
-                                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-                                <span>Switch to Pro Tier (Lakshman)</span>
-                            </button>
-                        </div>
-
-                        <!-- Active Pro Batch Input -->
-                        <div id="batch-active-container" class="space-y-4">
-                            <div id="batchDropzone" class="border-2 border-dashed border-apple-border hover:border-apple-blue/50 rounded-xl p-6 text-center transition-all bg-black/30 cursor-pointer group">
-                                <input type="file" id="batchFileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" multiple class="hidden" onchange="handleBatchFilesSelected(this.files)">
-                                <div class="flex flex-col items-center justify-center space-y-2">
-                                    <div class="w-10 h-10 rounded-xl bg-apple-surfaceElevated border border-apple-border flex items-center justify-center text-apple-blue">
-                                        <i data-lucide="folder-up" class="w-5 h-5"></i>
-                                    </div>
-                                    <p class="text-sm font-semibold text-white">Select Multiple Files for Batch Scan</p>
-                                    <p class="text-xs text-apple-grayText">Select all offer letters at once (e.g., from Desktop or Downloads)</p>
-                                    <div id="batchSelectedSummary" class="hidden text-xs px-3 py-1 rounded-lg bg-apple-blue/15 text-apple-blue border border-apple-blue/30 font-mono mt-2">
-                                    </div>
+                    <!-- Active Batch Picker -->
+                    <div id="batch-active-container" class="space-y-3">
+                        <div id="batchDropzone" class="border-2 border-dashed border-indigo-500/30 hover:border-indigo-500/60 rounded-2xl p-6 text-center bg-black/30 cursor-pointer transition-all">
+                            <input type="file" id="batchFileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" multiple class="hidden" onchange="handleBatchFilesSelected(this.files)">
+                            <div class="flex flex-col items-center justify-center space-y-2">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+                                    <i data-lucide="folder-up" class="w-5 h-5"></i>
                                 </div>
+                                <p class="text-xs sm:text-sm font-bold text-white">Select Multiple Files for Batch Scan</p>
+                                <p class="text-[11px] text-vh-textMuted">Select all offer letters at once (e.g., from Desktop or Downloads)</p>
                             </div>
-
-                            <div id="batchFileList" class="hidden space-y-1.5 max-h-36 overflow-y-auto pr-1">
-                                <!-- Populated dynamically -->
-                            </div>
-
-                            <button onclick="runBatchAnalysis()" id="btn-run-batch" class="apple-btn-primary w-full py-3 px-4 rounded-xl font-semibold text-sm shadow-md flex items-center justify-center space-x-2">
-                                <i data-lucide="layers" class="w-4 h-4"></i>
-                                <span id="btn-batch-label">Run Batch Verification</span>
-                            </button>
                         </div>
 
+                        <!-- Selected Batch Preview Cards Grid -->
+                        <div id="batchSelectedList" class="hidden space-y-2 max-h-48 overflow-y-auto pr-1">
+                            <!-- Populated with thumbnails -->
+                        </div>
+
+                        <button onclick="runBatchAnalysis()" id="btn-run-batch" class="btn-gradient-primary w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white flex items-center justify-center space-x-2">
+                            <i data-lucide="layers" class="w-4 h-4"></i>
+                            <span id="btn-batch-label">Run Batch Verification</span>
+                        </button>
                     </div>
 
                 </div>
 
-                <!-- Privacy note at bottom -->
-                <div class="pt-4 border-t border-apple-border/50 flex items-center space-x-2 text-[11px] text-apple-grayText">
-                    <i data-lucide="lock" class="w-3.5 h-3.5 text-apple-graySub shrink-0"></i>
-                    <span id="lbl-privacy-note">Privacy by Design: Aadhaar, PAN IDs, and candidate contact numbers are scrubbed locally in your browser before transmission.</span>
+                <!-- Privacy Guarantee -->
+                <div class="pt-3 border-t border-white/10 flex items-center space-x-2 text-[11px] text-vh-textMuted">
+                    <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400 shrink-0"></i>
+                    <span>Privacy Guarantee: Aadhaar, PAN & phone numbers are scrubbed client-side before transmission.</span>
                 </div>
             </div>
 
-            <!-- Right Column: Verification Result & How It Works (Card 2) -->
-            <div class="h-full flex flex-col justify-between">
+            <!-- Right Column: Verification Results & Explanations -->
+            <div class="space-y-4">
                 
-                <!-- Default State: How VeriHire Protects You -->
-                <div id="default-explainer-card" class="apple-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between space-y-5 h-full">
-                    <div>
-                        <!-- Header matching height to left card -->
-                        <div class="h-10 flex items-center justify-between border-b border-apple-border pb-3.5 mb-5">
-                            <h3 class="text-sm font-semibold text-white flex items-center space-x-2">
-                                <i data-lucide="cpu" class="w-4 h-4 text-apple-blue"></i>
-                                <span id="lbl-how-works">How VeriHire Protects You</span>
-                            </h3>
-                            <span class="text-[11px] font-mono text-apple-grayText">Real-time Forensics</span>
+                <!-- Default Explainer Card -->
+                <div id="default-explainer-card" class="glass-card rounded-2xl p-4 sm:p-6 space-y-4">
+                    <div class="border-b border-white/10 pb-3 flex items-center justify-between">
+                        <h3 class="text-sm font-bold text-white flex items-center space-x-2">
+                            <i data-lucide="cpu" class="w-4 h-4 text-blue-400"></i>
+                            <span>Real-Time Forensic Engine</span>
+                        </h3>
+                        <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">READY</span>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="flex items-start space-x-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="globe" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-white block">1. Domain & Sender Pedigree</span>
+                                <span class="text-vh-textMuted text-[11px] block">Flags lookalike domains (e.g. <code>careers-google.xyz</code>) and free webmail HR accounts.</span>
+                            </div>
                         </div>
 
-                        <div class="space-y-4 text-xs sm:text-sm">
-                            <div class="flex items-start space-x-3.5">
-                                <div class="w-9 h-9 rounded-xl bg-apple-surfaceElevated border border-apple-border flex items-center justify-center text-apple-blue shrink-0 mt-0.5">
-                                    <i data-lucide="globe" class="w-4 h-4"></i>
-                                </div>
-                                <div>
-                                    <span class="font-semibold text-white block">1. Domain & Sender Validation</span>
-                                    <span class="text-apple-graySub text-xs leading-relaxed block mt-0.5">
-                                        Detects lookalike domains (e.g. <code>careers-google.xyz</code> instead of <code>google.com</code>) and flags recruiters using free webmail providers.
-                                    </span>
-                                </div>
+                        <div class="flex items-start space-x-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="alert-triangle" class="w-4 h-4"></i>
                             </div>
-
-                            <div class="flex items-start space-x-3.5">
-                                <div class="w-9 h-9 rounded-xl bg-apple-surfaceElevated border border-apple-border flex items-center justify-center text-apple-orange shrink-0 mt-0.5">
-                                    <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-                                </div>
-                                <div>
-                                    <span class="font-semibold text-white block">2. Advance-Fee & Extortion Traps</span>
-                                    <span class="text-apple-graySub text-xs leading-relaxed block mt-0.5">
-                                        Identifies demands for refundable laptop deposits, training fees, or courier charges which legitimate employers never ask for.
-                                    </span>
-                                </div>
+                            <div>
+                                <span class="font-bold text-white block">2. Advance-Fee & Extortion Traps</span>
+                                <span class="text-vh-textMuted text-[11px] block">Detects demands for laptop security deposits, training charges, or courier fees.</span>
                             </div>
+                        </div>
 
-                            <div class="flex items-start space-x-3.5">
-                                <div class="w-9 h-9 rounded-xl bg-apple-surfaceElevated border border-apple-border flex items-center justify-center text-apple-indigo shrink-0 mt-0.5">
-                                    <i data-lucide="key" class="w-4 h-4"></i>
-                                </div>
-                                <div>
-                                    <span class="font-semibold text-white block">3. Cryptographic Signature & PKI Audit</span>
-                                    <span class="text-apple-graySub text-xs leading-relaxed block mt-0.5">
-                                        Inspects corporate digital signatures and validates authentic academic/consortium credentials (e.g. IIIT Hyderabad, Swecha).
-                                    </span>
-                                </div>
+                        <div class="flex items-start space-x-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="key" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <span class="font-bold text-white block">3. PKI Digital Signature Validation</span>
+                                <span class="text-vh-textMuted text-[11px] block">Audits corporate x509 cryptographic signatures to catch unsigned Canva/ChatGPT templates.</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Bottom Test Files Location Quick Tip -->
-                    <div class="p-3.5 rounded-xl bg-apple-surfaceElevated border border-apple-border/60 text-xs space-y-1">
-                        <div class="flex items-center space-x-1.5 text-white font-medium">
-                            <i data-lucide="folder" class="w-3.5 h-3.5 text-apple-blue"></i>
-                            <span>Test Documents Ready on Your Laptop:</span>
+                    <!-- Test Docs Tip -->
+                    <div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 text-xs space-y-1">
+                        <div class="flex items-center space-x-1.5 text-blue-300 font-semibold">
+                            <i data-lucide="folder" class="w-3.5 h-3.5"></i>
+                            <span>Test Documents on Your Laptop:</span>
                         </div>
-                        <p class="text-apple-graySub text-[11px] font-mono leading-relaxed">
-                            ~/Desktop/VeriHire_TestDocs/ (5 sample PDFs ready to drag & drop)
+                        <p class="text-vh-textMuted text-[11px] font-mono truncate">
+                            ~/Desktop/VeriHire_TestDocs/ (5 sample PDFs ready to test)
                         </p>
-                    </div>
-
-                    <!-- Bottom reassurance -->
-                    <div class="pt-4 border-t border-apple-border/50 flex items-center justify-between text-[11px] text-apple-grayText">
-                        <span>Analysis completes in under 2 seconds.</span>
-                        <span class="text-apple-blue font-medium">100% In-Memory Processing</span>
                     </div>
                 </div>
 
                 <!-- Loading State -->
-                <div id="analysis-loading" class="apple-card rounded-2xl p-8 text-center space-y-3 h-full flex flex-col items-center justify-center hidden">
-                    <div class="w-12 h-12 rounded-2xl bg-apple-surfaceElevated border border-apple-border mx-auto flex items-center justify-center text-apple-graySub animate-spin">
-                        <i data-lucide="loader-2" class="w-6 h-6 text-apple-blue"></i>
+                <div id="analysis-loading" class="glass-card rounded-2xl p-8 text-center space-y-3 hidden">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-500/30 text-blue-400 mx-auto flex items-center justify-center animate-spin">
+                        <i data-lucide="loader-2" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-sm font-semibold text-white">Analyzing Offer Authenticity...</h3>
-                    <p class="text-xs text-apple-grayText">Verifying domain pedigree, fee demands, and digital signature.</p>
+                    <h3 class="text-sm font-bold text-white">Analyzing Multimodal Payload...</h3>
+                    <p class="text-xs text-vh-textMuted">Running domain verification, fee extortion heuristics, and PKI audit.</p>
                 </div>
 
                 <!-- Single Verification Result Box -->
-                <div id="result-box-container" class="hidden h-full">
-                    <div id="main-status-card" class="rounded-2xl p-6 sm:p-7 border shadow-2xl transition-all space-y-5 h-full flex flex-col justify-between">
+                <div id="result-box-container" class="hidden">
+                    <div id="main-status-card" class="glass-card rounded-2xl p-4 sm:p-6 space-y-5 border shadow-2xl">
                         
-                        <div>
-                            <!-- Top Row: Status Banner & Score -->
-                            <div class="h-10 flex items-center justify-between border-b border-apple-border pb-3.5 mb-5">
-                                <div class="flex items-center space-x-2.5">
-                                    <span id="status-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider">
-                                        <!-- Populated dynamically -->
-                                    </span>
-                                    <span id="company-name-label" class="text-xs text-apple-graySub font-medium"></span>
-                                </div>
+                        <!-- Top Row: Status Banner & Score -->
+                        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                            <div class="flex items-center space-x-2">
+                                <span id="status-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider"></span>
+                                <span id="company-name-label" class="text-xs text-vh-textSub font-medium truncate max-w-[150px]"></span>
+                            </div>
+                            <div class="flex items-baseline space-x-1">
+                                <span class="text-[10px] font-bold text-vh-textMuted font-mono">RISK:</span>
+                                <span id="score-number" class="text-xl font-extrabold font-mono">0</span>
+                                <span class="text-xs text-vh-textMuted font-mono">/100</span>
+                            </div>
+                        </div>
 
-                                <div class="flex items-baseline space-x-1">
-                                    <span class="text-[11px] font-medium text-apple-grayText uppercase font-mono mr-1">Risk:</span>
-                                    <span id="score-number" class="text-xl font-bold font-mono">0</span>
-                                    <span class="text-xs text-apple-grayText font-mono">/100</span>
+                        <!-- Headline & Icon -->
+                        <div class="flex items-center space-x-3">
+                            <div id="status-icon-box" class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 shadow-lg"></div>
+                            <div>
+                                <h2 id="status-headline" class="text-base sm:text-lg font-bold text-white tracking-tight"></h2>
+                                <p id="status-explanation" class="text-xs text-vh-textMuted leading-relaxed mt-0.5"></p>
+                            </div>
+                        </div>
+
+                        <!-- PKI Signature Indicator Box -->
+                        <div id="crypto-signature-box" class="p-3 rounded-xl border flex items-center justify-between text-xs">
+                            <div class="flex items-center space-x-2.5">
+                                <i data-lucide="key" class="w-4 h-4" id="crypto-sig-icon"></i>
+                                <div>
+                                    <span class="font-bold text-white block" id="crypto-sig-title">Digital Signature Audit</span>
+                                    <span class="text-[11px] text-vh-textMuted" id="crypto-sig-detail">Checking corporate PKI certificate...</span>
                                 </div>
                             </div>
+                            <span id="crypto-sig-badge" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold"></span>
+                        </div>
 
-                            <!-- Verdict Headline -->
-                            <div class="flex items-center space-x-3 mb-3">
-                                <div id="status-icon-box" class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0">
-                                    <!-- Populated dynamically -->
-                                </div>
-                                <h2 id="status-headline" class="text-lg font-bold text-white tracking-tight">
-                                    <!-- Populated dynamically -->
-                                </h2>
-                            </div>
-
-                            <!-- Plain-English Explanation -->
-                            <p id="status-explanation" class="text-xs sm:text-sm text-apple-graySub leading-relaxed mb-4"></p>
-
-                            <!-- Cryptographic Digital Signature Indicator (Pro Feature) -->
-                            <div id="crypto-signature-box" class="p-3 rounded-xl bg-apple-surfaceElevated border border-apple-border mb-4 flex items-center justify-between text-xs">
-                                <div class="flex items-center space-x-2">
-                                    <i data-lucide="key" class="w-4 h-4 text-apple-blue" id="crypto-sig-icon"></i>
-                                    <div>
-                                        <span class="font-semibold text-white block" id="crypto-sig-title">Digital Signature Validation</span>
-                                        <span class="text-[11px] text-apple-graySub" id="crypto-sig-detail">Checking cryptographic certificate...</span>
-                                    </div>
-                                </div>
-                                <span id="crypto-sig-badge" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold">
-                                    PRO PKI
+                        <!-- Transparent "Why this Risk Score?" Itemized Breakdown -->
+                        <div class="p-3.5 rounded-xl bg-black/40 border border-white/10 space-y-2.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-1.5">
+                                    <i data-lucide="calculator" class="w-3.5 h-3.5 text-blue-400"></i>
+                                    <span>Why This Risk Score? (Calculation Breakdown)</span>
                                 </span>
                             </div>
-
-                            <!-- Findings Checklist -->
-                            <div class="space-y-2 mb-4">
-                                <h4 class="text-xs font-semibold text-apple-grayText uppercase tracking-wider font-mono">
-                                    Key Findings
-                                </h4>
-                                <div id="summary-points-list" class="space-y-2 text-xs sm:text-sm max-h-40 overflow-y-auto">
-                                    <!-- Populated dynamically -->
-                                </div>
-                            </div>
-
-                            <!-- Guidance Box -->
-                            <div class="p-3.5 rounded-xl bg-black/40 border border-apple-border text-xs text-apple-graySub leading-relaxed">
-                                <span class="font-semibold text-white block mb-0.5">Recommended Next Step:</span>
-                                <span id="action-guidance-text"></span>
+                            <div id="score-breakdown-list" class="space-y-1.5 text-xs">
+                                <!-- Dynamically populated itemized calculation -->
                             </div>
                         </div>
 
-                        <!-- User Feedback Widget -->
-                        <div class="pt-4 border-t border-apple-border flex items-center justify-between text-xs">
-                            <span class="text-apple-graySub">Did you find this verification helpful?</span>
-                            <div id="feedback-controls" class="flex items-center space-x-2">
-                                <button onclick="submitFeedback(true)" class="px-3 py-1 rounded-lg bg-apple-surfaceElevated hover:bg-apple-surfaceHighlight text-white text-xs font-medium border border-apple-border transition-colors">Yes 👍</button>
-                                <button onclick="submitFeedback(false)" class="px-3 py-1 rounded-lg bg-apple-surfaceElevated hover:bg-apple-surfaceHighlight text-white text-xs font-medium border border-apple-border transition-colors">No</button>
-                            </div>
-                            <div id="feedback-thank-you" class="hidden text-apple-green font-medium flex items-center space-x-1">
-                                <i data-lucide="check" class="w-3.5 h-3.5"></i>
-                                <span>Thank you for your feedback!</span>
-                            </div>
+                        <!-- Key Findings -->
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-bold text-vh-textMuted uppercase tracking-wider font-mono">
+                                Forensic Findings & Signals
+                            </h4>
+                            <div id="summary-points-list" class="space-y-2 text-xs"></div>
                         </div>
 
+                        <!-- Next Step Guidance -->
+                        <div class="p-3.5 rounded-xl bg-black/50 border border-white/10 text-xs text-vh-textSub space-y-1">
+                            <span class="font-bold text-white block">Recommended Next Step:</span>
+                            <span id="action-guidance-text"></span>
+                        </div>
+
+                        <!-- Single Scan Image Preview Button (if image uploaded) -->
+                        <div id="singleResultPreviewRow" class="hidden pt-2 border-t border-white/10 flex items-center justify-between text-xs">
+                            <span class="text-vh-textMuted">Attached Document View:</span>
+                            <button onclick="openLightboxFromSingle()" class="px-3 py-1 rounded-lg bg-white/[0.08] hover:bg-white/[0.15] text-blue-400 font-semibold flex items-center space-x-1">
+                                <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                                <span>Preview Document Lightbox</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Bulk Batch Dashboard Result Container (Pro Feature) -->
-                <div id="batch-results-container" class="hidden h-full">
-                    <div class="apple-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between space-y-5 h-full">
-                        <div>
-                            <div class="h-10 flex items-center justify-between border-b border-apple-border pb-3.5 mb-4">
-                                <div class="flex items-center space-x-2">
-                                    <i data-lucide="layers" class="w-4 h-4 text-apple-blue"></i>
-                                    <h3 class="text-sm font-semibold text-white">Batch Verification Audit</h3>
-                                </div>
-                                <button onclick="exportBatchCSV()" class="px-3 py-1 rounded-lg bg-apple-surfaceHighlight hover:bg-apple-surfaceElevated border border-apple-border text-white text-xs font-medium inline-flex items-center space-x-1.5 transition-colors">
-                                    <i data-lucide="download" class="w-3 h-3 text-apple-green"></i>
-                                    <span>Export CSV</span>
-                                </button>
+                <!-- Bulk Batch Dashboard Result Container (Mobile Responsive Cards & Accordions) -->
+                <div id="batch-results-container" class="hidden">
+                    <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-5">
+                        
+                        <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                            <div class="flex items-center space-x-2">
+                                <i data-lucide="layers" class="w-4 h-4 text-blue-400"></i>
+                                <h3 class="text-sm font-bold text-white">Batch Verification Audit</h3>
                             </div>
+                            <button onclick="exportBatchCSV()" class="px-3 py-1 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-400 text-xs font-bold inline-flex items-center space-x-1.5 transition-all">
+                                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                                <span>Export CSV</span>
+                            </button>
+                        </div>
 
-                            <!-- Summary Metrics Counters -->
-                            <div class="grid grid-cols-3 gap-2.5 mb-4 text-center">
-                                <div class="p-2.5 rounded-xl bg-apple-surfaceElevated border border-apple-border">
-                                    <span class="text-[10px] text-apple-grayText font-mono uppercase block">Total Scanned</span>
-                                    <span id="batch-total-count" class="text-lg font-bold text-white font-mono">0</span>
-                                </div>
-                                <div class="p-2.5 rounded-xl bg-apple-surfaceElevated border border-apple-green/30">
-                                    <span class="text-[10px] text-apple-green font-mono uppercase block">Verified Clean</span>
-                                    <span id="batch-clean-count" class="text-lg font-bold text-apple-green font-mono">0</span>
-                                </div>
-                                <div class="p-2.5 rounded-xl bg-apple-surfaceElevated border border-apple-red/30">
-                                    <span class="text-[10px] text-apple-red font-mono uppercase block">Critical Threats</span>
-                                    <span id="batch-threat-count" class="text-lg font-bold text-apple-red font-mono">0</span>
-                                </div>
+                        <!-- Batch Counters -->
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="p-2.5 rounded-xl bg-black/40 border border-white/10">
+                                <span class="text-[10px] text-vh-textMuted font-mono uppercase block">Total</span>
+                                <span id="batch-total-count" class="text-lg font-extrabold text-white font-mono">0</span>
                             </div>
-
-                            <!-- Batch Table -->
-                            <div class="border border-apple-border rounded-xl overflow-hidden max-h-72 overflow-y-auto">
-                                <table class="w-full text-left text-xs">
-                                    <thead class="bg-black/60 border-b border-apple-border text-apple-grayText font-mono">
-                                        <tr>
-                                            <th class="p-2.5">File</th>
-                                            <th class="p-2.5">Verdict</th>
-                                            <th class="p-2.5">Risk</th>
-                                            <th class="p-2.5 hidden sm:table-cell">Signature</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="batch-table-body" class="divide-y divide-apple-border/50 font-mono">
-                                        <!-- Dynamically generated rows -->
-                                    </tbody>
-                                </table>
+                            <div class="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
+                                <span class="text-[10px] text-emerald-400 font-mono uppercase block">Clean</span>
+                                <span id="batch-clean-count" class="text-lg font-extrabold text-emerald-400 font-mono">0</span>
+                            </div>
+                            <div class="p-2.5 rounded-xl bg-rose-950/20 border border-rose-500/30">
+                                <span class="text-[10px] text-rose-400 font-mono uppercase block">Threats</span>
+                                <span id="batch-threat-count" class="text-lg font-extrabold text-rose-400 font-mono">0</span>
                             </div>
                         </div>
 
-                        <div class="pt-4 border-t border-apple-border/50 flex items-center justify-between text-[11px] text-apple-grayText">
-                            <span>Ready for university placement records & compliance.</span>
-                            <span class="text-apple-green">Audit Complete</span>
+                        <!-- Responsive Document Accordion List (Solves Mobile Squishing) -->
+                        <div id="batch-cards-list" class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
+                            <!-- Populated dynamically with expandable cards & thumbnails -->
                         </div>
+
                     </div>
                 </div>
 
@@ -558,199 +532,181 @@
 
     </main>
 
-    <!-- Global Footer with Lakshman & Antigravity Attribution -->
-    <footer class="border-t border-apple-border bg-black/90 py-10 mt-16 text-xs text-apple-grayText">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-            
+    <!-- Global Footer -->
+    <footer class="border-t border-white/10 bg-[#06080D]/90 py-8 mt-12 text-xs text-vh-textMuted">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 rounded-xl bg-apple-surfaceElevated border border-apple-border flex items-center justify-center">
-                        <svg class="w-4 h-4 text-apple-blue" viewBox="0 0 32 32" fill="none">
-                            <path d="M7 9L13.5 23L25 7" stroke="#2E5CFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
+                        V
                     </div>
-                    <div>
-                        <span class="text-sm font-semibold text-white">VeriHire</span>
-                        <span class="text-apple-grayText block text-[11px]">Independent Recruitment Fraud & Digital Identity Defense</span>
-                    </div>
+                    <span class="text-sm font-bold text-white">VeriHire Platform</span>
                 </div>
-
-                <!-- Attribution Credits (Lakshman & Antigravity) -->
-                <div class="text-center sm:text-right space-y-0.5">
-                    <p class="text-apple-graySub font-medium">
-                        Created by <strong class="text-white font-semibold">Lakshman</strong>
-                    </p>
-                    <p class="text-[11px] text-apple-grayText">
-                        Powered by <span class="text-apple-blue font-mono font-medium">Antigravity AI</span> • Built with FastAPI & Apple Dark Architecture
-                    </p>
+                <div class="text-center sm:text-right">
+                    <p class="text-vh-textSub font-medium">Created by <strong class="text-white font-bold">Lakshman</strong></p>
+                    <p class="text-[11px] text-vh-textMuted">Powered by <span class="text-blue-400 font-mono">Antigravity AI</span> • Multimodal Cybersecurity Defense</p>
                 </div>
             </div>
-
-            <div class="border-t border-apple-border/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px]">
+            <div class="border-t border-white/10 pt-4 text-center text-[11px]">
                 <p>© 2026 VeriHire. All rights reserved. Zero document retention policy.</p>
-                <div class="flex items-center space-x-4">
-                    <span class="text-apple-graySub">Zero Data Stored</span>
-                    <span>•</span>
-                    <span class="text-apple-graySub">Client-Side Masking</span>
-                    <span>•</span>
-                    <span class="text-apple-graySub">Independent Verification</span>
-                </div>
             </div>
-
         </div>
     </footer>
 
-    <!-- Modal 1: Developer API Key Console (Pro Feature) -->
-    <div id="modal-api" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="apple-card max-w-xl w-full rounded-2xl p-6 sm:p-7 space-y-5 border border-apple-borderLight shadow-2xl relative">
-            <button onclick="closeApiModal()" class="absolute top-5 right-5 text-apple-grayText hover:text-white">
+    <!-- Modal 1: PKI & How It Works Detailed Guide -->
+    <div id="modal-pki" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="glass-card max-w-2xl w-full rounded-2xl p-6 sm:p-8 space-y-5 border border-white/20 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closePkiModal()" class="absolute top-5 right-5 text-vh-textMuted hover:text-white">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
+
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-apple-blue/15 text-apple-blue border border-apple-blue/25 flex items-center justify-center">
-                    <i data-lucide="key" class="w-5 h-5"></i>
+                <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
                 </div>
                 <div>
-                    <h3 class="text-base font-bold text-white">Developer API Console</h3>
-                    <p class="text-xs text-apple-graySub">Direct API integration for university placement portals and bots.</p>
+                    <h3 class="text-lg font-bold text-white">How VeriHire Works & PKI Explained</h3>
+                    <p class="text-xs text-vh-textMuted">A plain-English guide to Public Key Infrastructure and document authenticity.</p>
                 </div>
             </div>
 
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-[11px] uppercase tracking-wider text-apple-grayText font-mono mb-1">Your Live API Secret Key</label>
-                    <div class="flex items-center space-x-2">
-                        <input type="text" readonly id="api-key-value" value="vh_live_9f83b2a7e41c6d590218a4d70" class="flex-1 px-3 py-2 bg-black/60 border border-apple-border rounded-xl text-xs text-white font-mono">
-                        <button onclick="copyApiKey()" class="px-3 py-2 rounded-xl bg-apple-surfaceElevated hover:bg-apple-surfaceHighlight border border-apple-border text-xs text-white font-semibold transition-colors">
-                            Copy
-                        </button>
-                    </div>
+            <div class="space-y-4 text-xs sm:text-sm text-vh-textSub leading-relaxed">
+                <div class="p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/20 space-y-1.5">
+                    <h4 class="font-bold text-white flex items-center space-x-1.5">
+                        <i data-lucide="key" class="w-4 h-4 text-blue-400"></i>
+                        <span>What Does "PKI Validated" Mean?</span>
+                    </h4>
+                    <p class="text-xs text-vh-textMuted">
+                        <strong>PKI (Public Key Infrastructure)</strong> is the global standard for cryptographic digital signatures. When genuine companies like Google, Microsoft, TCS, Infosys, or Accenture issue an offer letter, their authorized HR executive signs the PDF with a verified private key certified by a trusted Certificate Authority (e.g. Adobe Approved Trust List, eMudhra, DigiCert).
+                    </p>
                 </div>
 
-                <div>
-                    <label class="block text-[11px] uppercase tracking-wider text-apple-grayText font-mono mb-1">Live cURL Example</label>
-                    <pre class="p-3 rounded-xl bg-black/80 border border-apple-border text-[11px] font-mono text-apple-blue overflow-x-auto">curl -X POST http://127.0.0.1:8000/api/analyze-file \
-  -H "Authorization: Bearer vh_live_9f83b2a7e41c6d590218a4d70" \
-  -F "file=@offer_letter.pdf"</pre>
-                </div>
-
-                <div>
-                    <label class="block text-[11px] uppercase tracking-wider text-apple-grayText font-mono mb-1">Python SDK Integration</label>
-                    <pre class="p-3 rounded-xl bg-black/80 border border-apple-border text-[11px] font-mono text-white/90 overflow-x-auto">import requests
-url = "http://127.0.0.1:8000/api/analyze-file"
-headers = {"Authorization": "Bearer vh_live_9f83b2a7e41c6d590218a4d70"}
-with open("offer.pdf", "rb") as f:
-    res = requests.post(url, headers=headers, files={"file": f})
-print(res.json())</pre>
+                <div class="space-y-2">
+                    <h4 class="font-bold text-white text-xs uppercase font-mono tracking-wider">How to Tell If a Document Is PKI Validated</h4>
+                    <ul class="space-y-2 text-xs text-vh-textMuted">
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span><strong>In Adobe Acrobat Reader:</strong> A legitimate corporate offer shows a top ribbon stating <em>"Signed and all signatures are valid"</em> with certificate details and signer identity.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                            <span><strong>In VeriHire:</strong> Our engine scans the PDF's cryptographic dictionary for x509 PKI certificates. If genuine, it awards the <span class="text-emerald-400 font-mono font-bold">PKI VALIDATED</span> badge with zero risk penalty.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="alert-octagon" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
+                            <span><strong>Why Scammers Fail PKI:</strong> Fraudsters generate letters using Canva, Microsoft Word, or ChatGPT. They cannot forge cryptographic private keys, resulting in <span class="text-rose-400 font-mono font-bold">UNSIGNED / COUNTERFEIT</span> status.</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="pt-3 border-t border-apple-border/50 flex justify-end">
-                <button onclick="closeApiModal()" class="px-4 py-2 rounded-xl bg-apple-surfaceElevated hover:bg-apple-surfaceHighlight border border-apple-border text-xs font-semibold text-white">
-                    Close
+            <div class="pt-3 border-t border-white/10 flex justify-end">
+                <button onclick="closePkiModal()" class="px-4 py-2 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] text-xs font-semibold text-white">
+                    Close Guide
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Modal 2: Compare Tiers & Add-ons -->
-    <div id="modal-tiers" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="apple-card max-w-2xl w-full rounded-2xl p-6 sm:p-8 space-y-6 border border-apple-borderLight shadow-2xl relative">
-            <button onclick="closeTiersModal()" class="absolute top-5 right-5 text-apple-grayText hover:text-white">
+    <!-- Modal 2: Fullscreen Lightbox Image Preview -->
+    <div id="modal-lightbox" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center p-4 hidden">
+        <div class="w-full max-w-4xl flex items-center justify-between pb-3 text-white">
+            <span id="lightboxTitle" class="text-xs sm:text-sm font-mono font-bold truncate"></span>
+            <button onclick="closeLightbox()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
-            
-            <div class="text-center space-y-1">
-                <h3 class="text-xl font-bold text-white tracking-tight">VeriHire Tiers & Add-ons</h3>
-                <p class="text-xs text-apple-graySub">Switch between Community Free and Pro Enterprise modes anytime.</p>
+        </div>
+        <div class="max-w-4xl max-h-[80vh] w-full flex items-center justify-center overflow-auto rounded-2xl bg-black/50 border border-white/15 p-2">
+            <img id="lightboxImg" class="max-h-[75vh] max-w-full object-contain" alt="Enlarged Document">
+        </div>
+    </div>
+
+    <!-- Modal 3: Developer API Key Console -->
+    <div id="modal-api" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="glass-card max-w-xl w-full rounded-2xl p-6 space-y-4 border border-white/20 shadow-2xl relative">
+            <button onclick="closeApiModal()" class="absolute top-5 right-5 text-vh-textMuted hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                    <i data-lucide="key" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-white">Developer API Console</h3>
+                    <p class="text-xs text-vh-textMuted">Integration key for placement portals and bots.</p>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                
-                <!-- Free Tier Column -->
-                <div class="p-5 rounded-2xl bg-black/40 border border-apple-border space-y-4 flex flex-col justify-between">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold font-mono uppercase text-apple-grayText">Community Free</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-apple-surfaceElevated text-apple-graySub">Free Forever</span>
-                        </div>
-                        <p class="text-xs text-apple-graySub">Essential verification for individual students receiving offer letters.</p>
-                        <ul class="text-xs space-y-2 text-apple-graySub">
-                            <li class="flex items-center space-x-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-apple-green"></i>
-                                <span>Single document / image scan</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-apple-green"></i>
-                                <span>Advance-fee & extortion check</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-apple-green"></i>
-                                <span>Lookalike recruiter domain lookup</span>
-                            </li>
-                            <li class="flex items-center space-x-2 text-apple-grayText">
-                                <i data-lucide="x" class="w-3.5 h-3.5 text-apple-red"></i>
-                                <span>Bulk multi-file batch upload</span>
-                            </li>
-                            <li class="flex items-center space-x-2 text-apple-grayText">
-                                <i data-lucide="x" class="w-3.5 h-3.5 text-apple-red"></i>
-                                <span>Developer API keys</span>
-                            </li>
-                        </ul>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-[11px] font-mono text-vh-textMuted uppercase mb-1">Live Secret API Key</label>
+                    <div class="flex items-center space-x-2">
+                        <input type="text" readonly id="api-key-val" value="vh_live_9f83b2a7e41c6d590218a4d70" class="flex-1 px-3 py-2 bg-black/60 border border-white/15 rounded-xl text-xs text-white font-mono">
+                        <button onclick="copyApiKey()" class="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold text-white">Copy</button>
                     </div>
-                    <button onclick="setTier('free'); closeTiersModal();" id="btn-select-free" class="w-full py-2.5 rounded-xl border border-apple-border hover:bg-apple-surfaceElevated text-xs font-semibold text-white transition-colors">
-                        Use Free Tier
-                    </button>
                 </div>
 
-                <!-- Pro Tier Column -->
-                <div class="p-5 rounded-2xl bg-gradient-to-b from-blue-900/20 to-black/60 border border-apple-blue/40 space-y-4 flex flex-col justify-between relative shadow-lg">
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-bold font-mono uppercase text-apple-blue">VeriHire Pro</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-apple-blue text-white font-bold">Active</span>
-                        </div>
-                        <p class="text-xs text-apple-graySub">High-volume automated defense for universities & placement cells.</p>
-                        <ul class="text-xs space-y-2 text-white">
-                            <li class="flex items-center space-x-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-apple-green"></i>
-                                <span>Everything in Free, plus:</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-apple-blue"></i>
-                                <span><strong>Bulk Batch</strong> upload (up to 50 docs)</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-apple-blue"></i>
-                                <span><strong>Developer API Key</strong> with curl/python</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-apple-blue"></i>
-                                <span><strong>Cryptographic Digital Signature</strong> check</span>
-                            </li>
-                            <li class="flex items-center space-x-2">
-                                <i data-lucide="check" class="w-3.5 h-3.5 text-apple-blue"></i>
-                                <span><strong>CSV Audit Export</strong> for placement cells</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <button onclick="setTier('pro'); closeTiersModal();" id="btn-select-pro" class="apple-btn-primary w-full py-2.5 rounded-xl text-xs font-semibold shadow-md">
-                        Active on Lakshman's Account ✓
-                    </button>
+                <div>
+                    <label class="block text-[11px] font-mono text-vh-textMuted uppercase mb-1">Partner Portal Demo</label>
+                    <p class="text-xs text-vh-textSub">Open our secondary partner demo to see this key working in an external university portal:</p>
+                    <a href="/portal" class="mt-2 inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
+                        <span>Open Partner Portal Demo &rarr;</span>
+                    </a>
                 </div>
+            </div>
 
+            <div class="pt-3 border-t border-white/10 flex justify-end">
+                <button onclick="closeApiModal()" class="px-4 py-2 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] text-xs font-semibold text-white">Close</button>
             </div>
         </div>
     </div>
 
-    <!-- Application JavaScript Logic -->
+    <!-- Modal 4: Compare Tiers -->
+    <div id="modal-tiers" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="glass-card max-w-2xl w-full rounded-2xl p-6 sm:p-8 space-y-5 border border-white/20 shadow-2xl relative">
+            <button onclick="closeTiersModal()" class="absolute top-5 right-5 text-vh-textMuted hover:text-white">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="text-center space-y-1">
+                <h3 class="text-xl font-bold text-white">VeriHire Tiers & Add-ons</h3>
+                <p class="text-xs text-vh-textMuted">Switch between Free Student mode and Pro Enterprise mode anytime.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-4 rounded-xl bg-black/40 border border-white/10 space-y-3">
+                    <span class="text-xs font-bold text-vh-textMuted uppercase font-mono">Community Free</span>
+                    <ul class="text-xs space-y-1.5 text-vh-textMuted">
+                        <li>• Single document verification</li>
+                        <li>• Advance-fee detection</li>
+                        <li>• Lookalike domain checks</li>
+                    </ul>
+                    <button onclick="setTier('free'); closeTiersModal();" class="w-full py-2 rounded-xl border border-white/10 hover:bg-white/[0.08] text-xs font-semibold text-white">Use Free Mode</button>
+                </div>
+
+                <div class="p-4 rounded-xl bg-gradient-to-b from-blue-900/30 to-black/60 border border-blue-500/40 space-y-3">
+                    <span class="text-xs font-bold text-blue-400 uppercase font-mono">VeriHire Pro</span>
+                    <ul class="text-xs space-y-1.5 text-white">
+                        <li>• <strong>Bulk Batch</strong> upload (up to 50 docs)</li>
+                        <li>• <strong>Placement Cell CSV Export</strong></li>
+                        <li>• <strong>Developer API Key Access</strong></li>
+                        <li>• <strong>Cryptographic PKI Validation</strong></li>
+                    </ul>
+                    <button onclick="setTier('pro'); closeTiersModal();" class="btn-gradient-primary w-full py-2 rounded-xl text-xs font-bold text-white">Active on Lakshman's Account ✓</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
     <script>
-        let currentTier = "pro"; // Default to pro for Lakshman
+        let currentTier = "pro";
         let selectedFile = null;
+        let singleFileBlobUrl = null;
         let batchFiles = [];
+        let batchFileMap = {}; // Maps filename to { file, blobUrl }
         let lastBatchResults = [];
 
-        // Check URL parameters for explicit tier link (?tier=pro or ?tier=free)
+        // Check query parameters
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('tier') === 'free') {
             currentTier = 'free';
@@ -758,72 +714,6 @@ print(res.json())</pre>
             currentTier = 'pro';
         }
 
-        const translations = {
-            en: {
-                tagline: "Offer Letter & Recruiter Verification",
-                independent: "Independent Verification Platform",
-                title: "Verify If Your Job Offer Is Genuine",
-                desc: "VeriHire inspects offer letters (PDF or screenshot) against fake recruiter domains, advance-fee extortion, synthetic ChatGPT drafts, and missing cryptographic signatures.",
-                inputDoc: "Offer Input",
-                dropTitle: "Choose file or drag & drop",
-                dropSub: "Supports PDF, PNG, JPG, or Screenshots (up to 15MB)",
-                verifyText: "Verify Offer Letter",
-                verifyPaste: "Verify Text",
-                senderEmail: "Recruiter Email or Domain (Optional)",
-                offerContent: "Offer Letter Content",
-                privacyNote: "Privacy by Design: Aadhaar, PAN IDs, and candidate contact numbers are scrubbed locally in your browser before transmission.",
-                howWorks: "How VeriHire Protects You"
-            },
-            hi: {
-                tagline: "ऑफ़र लेटर और रिक्रूटर सत्यापन",
-                independent: "स्वतंत्र सत्यापन प्रणाली",
-                title: "जांचें कि क्या आपका जॉब ऑफ़र असली है",
-                desc: "VeriHire छात्रों और नौकरी चाहने वालों को नकली नौकरी के ऑफ़र, एडवांस फीस, फर्जी डोमेन और नकली हस्ताक्षरों से बचाता है।",
-                inputDoc: "ऑफ़र विवरण",
-                dropTitle: "फ़ाइल चुनें या यहाँ खींचकर छोड़ें",
-                dropSub: "PDF, PNG, JPG या स्क्रीनशॉट (15MB तक)",
-                verifyText: "ऑफ़र लेटर सत्यापित करें",
-                verifyPaste: "टेक्स्ट सत्यापित करें",
-                senderEmail: "रिक्रूटर ईमेल या डोमेन (वैकल्पिक)",
-                offerContent: "ऑफ़र लेटर टेक्स्ट सामग्री",
-                privacyNote: "प्राइवेसी सुरक्षा: आपका आधार और पैन नंबर भेजने से पहले ब्राउज़र में ही हटा दिया जाता है।",
-                howWorks: "VeriHire आपकी सुरक्षा कैसे करता है"
-            },
-            te: {
-                tagline: "ఆఫర్ లెటర్ & రిక్రూటర్ ధృవీకరణ",
-                independent: "స్వతంత్ర ధృవీకరణ వేదిక",
-                title: "మీ జాబ్ ఆఫర్ నిజమైనదో కాదో తనిఖీ చేయండి",
-                desc: "VeriHire విద్యార్థులను నకిలీ ఉద్యోగ ఆఫర్లు, అడ్వాన్స్ ఫీజుల మోసాలు, మరియు నకిలీ రిక్రూటర్ల నుండి కాపాడుతుంది.",
-                inputDoc: "ఆఫర్ వివరాలు",
-                dropTitle: "ఫైల్‌ను ఎంచుకోండి లేదా డ్రాగ్ చేయండి",
-                dropSub: "PDF, PNG, JPG లేదా స్క్రీన్‌షాట్‌లు (15MB వరకు)",
-                verifyText: "ఆఫర్ లెటర్‌ను తనిఖీ చేయండి",
-                verifyPaste: "టెక్స్ట్‌ను తనిఖీ చేయండి",
-                senderEmail: "రిక్రూటర్ ఈమెయిల్ లేదా డొమైన్ (ఐచ్ఛికం)",
-                offerContent: "ఆఫర్ లెటర్ సమాచారం",
-                privacyNote: "గోప్యతా భద్రత: మీ ఆధార్ మరియు పాన్ వివరాలు బ్రౌజర్‌లోనే తొలగించబడతాయి.",
-                howWorks: "VeriHire మిమ్మల్ని ఎలా రక్షిస్తుంది"
-            }
-        };
-
-        function changeLanguage(lang) {
-            const t = translations[lang] || translations.en;
-            document.getElementById('nav-tagline').innerText = t.tagline;
-            document.getElementById('badge-independent').innerText = t.independent;
-            document.getElementById('main-title').innerText = t.title;
-            document.getElementById('main-desc').innerText = t.desc;
-            document.getElementById('lbl-input-doc').innerText = t.inputDoc;
-            document.getElementById('lbl-drop-title').innerText = t.dropTitle;
-            document.getElementById('lbl-drop-sub').innerText = t.dropSub;
-            document.getElementById('btn-verify-text').innerText = t.verifyText;
-            document.getElementById('btn-verify-paste').innerText = t.verifyPaste;
-            document.getElementById('lbl-sender-email').innerText = t.senderEmail;
-            document.getElementById('lbl-offer-content').innerText = t.offerContent;
-            document.getElementById('lbl-privacy-note').innerText = t.privacyNote;
-            document.getElementById('lbl-how-works').innerText = t.howWorks;
-        }
-
-        // Tier management: Pro vs Free mode toggle
         function setTier(tier) {
             currentTier = tier;
             const proBtn = document.getElementById('tier-btn-pro');
@@ -831,39 +721,33 @@ print(res.json())</pre>
             const badgeLabel = document.getElementById('tier-badge-label');
             const userName = document.getElementById('tier-user-name');
             const perksText = document.getElementById('tier-perks-text');
-            const rateLimitText = document.getElementById('tier-rate-limit-text');
             const avatar = document.getElementById('tier-avatar');
             const batchGatekeeper = document.getElementById('batch-gatekeeper');
             const batchActiveContainer = document.getElementById('batch-active-container');
 
-            // Update URL without reload for direct bookmarking
             const newUrl = new URL(window.location);
             newUrl.searchParams.set('tier', tier);
             window.history.pushState({}, '', newUrl);
 
             if (tier === 'pro') {
-                proBtn.className = "flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all bg-apple-blue text-white shadow-sm";
-                freeBtn.className = "flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-medium text-apple-graySub hover:text-white transition-all";
-                badgeLabel.innerText = "PRO ACTIVE";
-                badgeLabel.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-apple-blue/20 text-apple-blue border border-apple-blue/30";
-                userName.innerText = "Lakshman (Pro Subscriber)";
-                perksText.innerText = "Bulk Batch • API Access • Crypto Signature";
-                rateLimitText.innerText = "Rate Limit: Unlimited Scans";
+                proBtn.className = "flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all bg-blue-600 text-white shadow-sm";
+                freeBtn.className = "flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-medium text-vh-textMuted hover:text-white transition-all";
+                badgeLabel.innerText = "PRO";
+                badgeLabel.className = "px-2 py-0.2 rounded-full text-[9px] font-mono font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30";
+                userName.innerText = "Lakshman (Pro Active)";
+                perksText.innerText = "Bulk Batch • API Key • Crypto PKI Validation";
                 avatar.innerText = "L";
-                avatar.className = "w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-md";
 
                 if (batchGatekeeper) batchGatekeeper.classList.add('hidden');
                 if (batchActiveContainer) batchActiveContainer.classList.remove('hidden');
             } else {
-                freeBtn.className = "flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all bg-apple-surfaceHighlight text-white shadow-sm";
-                proBtn.className = "flex items-center space-x-1.5 px-3 py-1 rounded-lg text-xs font-medium text-apple-graySub hover:text-white transition-all";
-                badgeLabel.innerText = "COMMUNITY FREE";
-                badgeLabel.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-white/10 text-apple-graySub border border-apple-border";
-                userName.innerText = "Student (Free Account)";
-                perksText.innerText = "Single Doc Scans • Domain Verification";
-                rateLimitText.innerText = "Rate Limit: 5 scans / hour";
+                freeBtn.className = "flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all bg-white/[0.1] text-white shadow-sm";
+                proBtn.className = "flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-medium text-vh-textMuted hover:text-white transition-all";
+                badgeLabel.innerText = "FREE";
+                badgeLabel.className = "px-2 py-0.2 rounded-full text-[9px] font-mono font-bold bg-white/10 text-vh-textMuted border border-white/10";
+                userName.innerText = "Student (Free Mode)";
+                perksText.innerText = "Single Doc Verification • Domain Check";
                 avatar.innerText = "S";
-                avatar.className = "w-8 h-8 rounded-full bg-apple-surfaceHighlight border border-apple-border flex items-center justify-center text-apple-graySub font-bold text-xs shadow-md";
 
                 if (batchGatekeeper) batchGatekeeper.classList.remove('hidden');
                 if (batchActiveContainer) batchActiveContainer.classList.add('hidden');
@@ -880,25 +764,23 @@ print(res.json())</pre>
             const textBtn = document.getElementById('mode-btn-text');
             const batchBtn = document.getElementById('mode-btn-batch');
 
-            // Reset tabs
             uploadEl.classList.add('hidden');
             textEl.classList.add('hidden');
             batchEl.classList.add('hidden');
 
-            uploadBtn.className = "px-2.5 py-1 rounded-md text-apple-grayText hover:text-white font-medium transition-all";
-            textBtn.className = "px-2.5 py-1 rounded-md text-apple-grayText hover:text-white font-medium transition-all";
-            batchBtn.className = "px-2.5 py-1 rounded-md text-apple-blue hover:text-white font-semibold flex items-center space-x-1 transition-all";
+            uploadBtn.className = "px-2.5 py-1 rounded-lg text-vh-textMuted hover:text-white font-medium transition-all";
+            textBtn.className = "px-2.5 py-1 rounded-lg text-vh-textMuted hover:text-white font-medium transition-all";
+            batchBtn.className = "px-2.5 py-1 rounded-lg text-indigo-400 hover:text-white font-semibold flex items-center space-x-1 transition-all";
 
             if (mode === 'upload') {
                 uploadEl.classList.remove('hidden');
-                uploadBtn.className = "px-2.5 py-1 rounded-md text-white bg-apple-surfaceHighlight font-medium transition-all";
+                uploadBtn.className = "px-2.5 py-1 rounded-lg text-white bg-blue-600 font-semibold transition-all";
             } else if (mode === 'text') {
                 textEl.classList.remove('hidden');
-                textBtn.className = "px-2.5 py-1 rounded-md text-white bg-apple-surfaceHighlight font-medium transition-all";
+                textBtn.className = "px-2.5 py-1 rounded-lg text-white bg-blue-600 font-semibold transition-all";
             } else if (mode === 'batch') {
                 batchEl.classList.remove('hidden');
-                batchBtn.className = "px-2.5 py-1 rounded-md text-white bg-apple-blue font-semibold flex items-center space-x-1 transition-all shadow-sm";
-                // Enforce tier permissions
+                batchBtn.className = "px-2.5 py-1 rounded-lg text-white bg-indigo-600 font-semibold flex items-center space-x-1 transition-all shadow-sm";
                 if (currentTier === 'free') {
                     document.getElementById('batch-gatekeeper').classList.remove('hidden');
                     document.getElementById('batch-active-container').classList.add('hidden');
@@ -909,75 +791,87 @@ print(res.json())</pre>
             }
         }
 
-        // File selection handling
+        // Dropzone handlers
         const dropzone = document.getElementById('dropzone');
         const fileInput = document.getElementById('fileInput');
 
         dropzone.addEventListener('click', () => fileInput.click());
-        dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('border-apple-borderLight'); });
-        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('border-apple-borderLight'));
+        dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('border-blue-500'); });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('border-blue-500'));
         dropzone.addEventListener('drop', (e) => {
             e.preventDefault();
-            dropzone.classList.remove('border-apple-borderLight');
-            if (e.dataTransfer.files.length > 0) {
-                handleFileSelected(e.dataTransfer.files);
-            }
+            dropzone.classList.remove('border-blue-500');
+            if (e.dataTransfer.files.length > 0) handleFileSelected(e.dataTransfer.files);
         });
 
         function handleFileSelected(files) {
             if (files && files[0]) {
                 selectedFile = files[0];
-                const badge = document.getElementById('selectedFileName');
-                badge.innerText = `Selected: ${selectedFile.name} (${(selectedFile.size / 1024).toFixed(1)} KB)`;
-                badge.classList.remove('hidden');
+                singleFileBlobUrl = URL.createObjectURL(selectedFile);
+                document.getElementById('singlePreviewContainer').classList.remove('hidden');
+                document.getElementById('singleFileName').innerText = `${selectedFile.name} (${(selectedFile.size / 1024).toFixed(1)} KB)`;
+
+                const imgEl = document.getElementById('singlePreviewImg');
+                const pdfPlaceholder = document.getElementById('singlePdfPlaceholder');
+
+                if (selectedFile.type.startsWith('image/')) {
+                    imgEl.src = singleFileBlobUrl;
+                    imgEl.classList.remove('hidden');
+                    pdfPlaceholder.classList.add('hidden');
+                } else {
+                    imgEl.classList.add('hidden');
+                    pdfPlaceholder.classList.remove('hidden');
+                }
             }
         }
 
-        // Batch file selection handling
+        // Batch file dropzone
         const batchDropzone = document.getElementById('batchDropzone');
         const batchFileInput = document.getElementById('batchFileInput');
 
         batchDropzone.addEventListener('click', () => batchFileInput.click());
-        batchDropzone.addEventListener('dragover', (e) => { e.preventDefault(); batchDropzone.classList.add('border-apple-blue'); });
-        batchDropzone.addEventListener('dragleave', () => batchDropzone.classList.remove('border-apple-blue'));
+        batchDropzone.addEventListener('dragover', (e) => { e.preventDefault(); batchDropzone.classList.add('border-indigo-500'); });
+        batchDropzone.addEventListener('dragleave', () => batchDropzone.classList.remove('border-indigo-500'));
         batchDropzone.addEventListener('drop', (e) => {
             e.preventDefault();
-            batchDropzone.classList.remove('border-apple-blue');
-            if (e.dataTransfer.files.length > 0) {
-                handleBatchFilesSelected(e.dataTransfer.files);
-            }
+            batchDropzone.classList.remove('border-indigo-500');
+            if (e.dataTransfer.files.length > 0) handleBatchFilesSelected(e.dataTransfer.files);
         });
 
         function handleBatchFilesSelected(files) {
             if (files && files.length > 0) {
                 batchFiles = Array.from(files);
-                const summary = document.getElementById('batchSelectedSummary');
-                const list = document.getElementById('batchFileList');
-                summary.innerText = `${batchFiles.length} file(s) selected for bulk batch`;
-                summary.classList.remove('hidden');
-
+                const list = document.getElementById('batchSelectedList');
                 list.innerHTML = '';
                 list.classList.remove('hidden');
+
                 batchFiles.forEach((f, idx) => {
-                    const row = document.createElement('div');
-                    row.className = "flex items-center justify-between text-[11px] px-2.5 py-1 bg-black/50 border border-apple-border rounded-lg text-apple-graySub";
-                    row.innerHTML = `
-                        <span class="truncate font-mono">${f.name}</span>
-                        <span class="text-apple-grayText ml-2 shrink-0 font-mono">${(f.size / 1024).toFixed(1)} KB</span>
+                    const blobUrl = URL.createObjectURL(f);
+                    batchFileMap[f.name] = { file: f, blobUrl: blobUrl };
+
+                    const card = document.createElement('div');
+                    card.className = "flex items-center justify-between p-2 rounded-xl bg-black/50 border border-white/10 text-xs";
+                    
+                    const isImg = f.type.startsWith('image/');
+                    const previewThumb = isImg 
+                        ? `<img src="${blobUrl}" class="w-8 h-8 rounded object-cover border border-white/15 shrink-0">`
+                        : `<div class="w-8 h-8 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center shrink-0"><i data-lucide="file-text" class="w-4 h-4"></i></div>`;
+
+                    card.innerHTML = `
+                        <div class="flex items-center space-x-2.5 truncate">
+                            ${previewThumb}
+                            <div class="truncate">
+                                <span class="font-mono text-white font-medium block truncate">${f.name}</span>
+                                <span class="text-[10px] text-vh-textMuted">${(f.size / 1024).toFixed(1)} KB</span>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/20 shrink-0">Ready</span>
                     `;
-                    list.appendChild(row);
+                    list.appendChild(card);
                 });
                 document.getElementById('btn-batch-label').innerText = `Run Batch Verification (${batchFiles.length} files)`;
+                lucide.createIcons();
             }
-        }
-
-        function clientSideScrub(text) {
-            const aadhaar = /\b[2-9]{1}[0-9]{3}\s?[0-9]{4}\s?[0-9]{4}\b/g;
-            const pan = /\b[A-Z]{5}[0-9]{4}[A-Z]{1}\b/gi;
-            const phone = /(\+91[\-\s]?)?[6789]\d{9}\b/g;
-            return text.replace(aadhaar, '[REDACTED_AADHAAR]')
-                       .replace(pan, '[REDACTED_PAN]')
-                       .replace(phone, '[REDACTED_PHONE]');
         }
 
         function showLoading() {
@@ -993,7 +887,7 @@ print(res.json())</pre>
 
         async function analyzeUploadedFile() {
             if (!selectedFile) {
-                alert("Please select a PDF or Image file to verify.");
+                alert("Please select a document or image first.");
                 return;
             }
             showLoading();
@@ -1009,7 +903,7 @@ print(res.json())</pre>
                 renderSingleResult(data);
                 loadLiveStats();
             } catch (err) {
-                alert("Error during verification: " + err);
+                alert("Verification error: " + err);
                 hideLoading();
                 document.getElementById('default-explainer-card').classList.remove('hidden');
             }
@@ -1020,26 +914,21 @@ print(res.json())</pre>
             const email = document.getElementById('text-sender-email').value;
 
             if (!body || body.trim().length < 15) {
-                alert("Please paste the job offer or recruiter email body.");
+                alert("Please paste the job offer or recruiter text.");
                 return;
             }
             showLoading();
-            const sanitized = clientSideScrub(body);
-
             try {
                 const res = await fetch("/api/analyze-text", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        text: sanitized,
-                        sender_email: email
-                    })
+                    body: JSON.stringify({ text: body, sender_email: email })
                 });
                 const data = await res.json();
                 renderSingleResult(data);
                 loadLiveStats();
             } catch (err) {
-                alert("Error during verification: " + err);
+                alert("Verification error: " + err);
                 hideLoading();
                 document.getElementById('default-explainer-card').classList.remove('hidden');
             }
@@ -1047,14 +936,12 @@ print(res.json())</pre>
 
         async function runBatchAnalysis() {
             if (!batchFiles || batchFiles.length === 0) {
-                alert("Please select multiple files for batch inspection.");
+                alert("Please select files for batch inspection.");
                 return;
             }
             showLoading();
             const formData = new FormData();
-            batchFiles.forEach(f => {
-                formData.append("files", f);
-            });
+            batchFiles.forEach(f => formData.append("files", f));
 
             try {
                 const res = await fetch("/api/analyze-batch", {
@@ -1065,7 +952,7 @@ print(res.json())</pre>
                 renderBatchResult(data);
                 loadLiveStats();
             } catch (err) {
-                alert("Batch verification failed: " + err);
+                alert("Batch error: " + err);
                 hideLoading();
                 document.getElementById('default-explainer-card').classList.remove('hidden');
             }
@@ -1088,110 +975,120 @@ print(res.json())</pre>
             const explanation = document.getElementById('status-explanation');
             const scoreNum = document.getElementById('score-number');
             const summaryList = document.getElementById('summary-points-list');
+            const breakdownList = document.getElementById('score-breakdown-list');
             const guidanceText = document.getElementById('action-guidance-text');
 
-            // Digital signature box
+            // Digital signature elements
             const sigTitle = document.getElementById('crypto-sig-title');
             const sigDetail = document.getElementById('crypto-sig-detail');
             const sigBadge = document.getElementById('crypto-sig-badge');
-            const sigIcon = document.getElementById('crypto-sig-icon');
+            const sigBox = document.getElementById('crypto-signature-box');
 
             scoreNum.innerText = score;
             document.getElementById('company-name-label').innerText = data.claimed_company ? `Entity: ${data.claimed_company}` : (data.filename || "");
 
             if (isClean) {
-                card.className = "rounded-2xl p-6 sm:p-7 border border-apple-green/30 bg-apple-surfaceElevated shadow-2xl space-y-5 h-full flex flex-col justify-between";
-                iconBox.className = "w-10 h-10 rounded-xl bg-apple-green/15 text-apple-green border border-apple-green/20 flex items-center justify-center shrink-0";
-                iconBox.innerHTML = '<i data-lucide="check-circle" class="w-5 h-5"></i>';
+                card.className = "glass-card rounded-2xl p-4 sm:p-6 space-y-5 border border-emerald-500/40 glass-glow-emerald";
+                iconBox.className = "w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0 shadow-lg";
+                iconBox.innerHTML = '<i data-lucide="check-circle-2" class="w-6 h-6"></i>';
                 
-                badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-apple-green/15 text-apple-green border border-apple-green/20";
+                badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
                 badge.innerText = "VERIFIED CLEAN";
+                headline.innerText = "Verified Clean • Legitimate Offer Profile";
+                explanation.innerText = "No advance fees, no premature identity harvesting, and authentic institutional credentials confirmed.";
+                scoreNum.className = "text-xl font-extrabold font-mono text-emerald-400";
 
-                headline.innerText = "Verified Clean • Legitimate Offer";
-                explanation.innerText = "No advance fees, no premature identity harvesting, and legitimate institutional credentials detected.";
-                scoreNum.className = "text-xl font-bold font-mono text-apple-green";
-
-                // Digital signature indicator
-                sigTitle.innerText = "Digital Signature: VALID & CERTIFIED";
-                sigDetail.innerText = "Corporate PKI / CA certificate verified. Zero document tampering detected.";
-                sigBadge.className = "px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-apple-green/20 text-apple-green border border-apple-green/30";
+                sigBox.className = "p-3 rounded-xl border border-emerald-500/30 bg-emerald-950/20 flex items-center justify-between text-xs";
+                sigTitle.innerText = "PKI Digital Signature: VALID & CERTIFIED";
+                sigDetail.innerText = "Corporate PKI certificate verified. Zero document payload tampering detected.";
+                sigBadge.className = "px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
                 sigBadge.innerText = "PKI VALID";
 
                 summaryList.innerHTML = `
-                    <div class="flex items-center space-x-2 text-apple-graySub">
-                        <i data-lucide="check" class="w-4 h-4 text-apple-green shrink-0"></i>
-                        <span>Institutional credentials verified against authentic corporate/consortium records.</span>
+                    <div class="flex items-center space-x-2 text-vh-textSub">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                        <span>Institutional pedigree verified against legitimate corporate/consortium records.</span>
                     </div>
-                    <div class="flex items-center space-x-2 text-apple-graySub">
-                        <i data-lucide="check" class="w-4 h-4 text-apple-green shrink-0"></i>
-                        <span>Zero upfront laptop security deposits, training charges, or extortion demands.</span>
-                    </div>
-                    <div class="flex items-center space-x-2 text-apple-graySub">
-                        <i data-lucide="check" class="w-4 h-4 text-apple-green shrink-0"></i>
-                        <span>Legitimate recruiter communication path and formal joining structure.</span>
+                    <div class="flex items-center space-x-2 text-vh-textSub">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                        <span>Zero demands for refundable laptop deposits, training fees, or courier costs.</span>
                     </div>
                 `;
-
-                guidanceText.innerText = "You can proceed safely with normal onboarding on the official portal. Never send monetary payments during recruitment.";
+                guidanceText.innerText = "You can proceed safely with normal onboarding on the official corporate portal. Never transfer money during pre-employment.";
             } else {
                 const isCritical = score >= 65;
                 if (isCritical) {
-                    card.className = "rounded-2xl p-6 sm:p-7 border border-apple-red/30 bg-apple-surfaceElevated shadow-2xl space-y-5 h-full flex flex-col justify-between";
-                    iconBox.className = "w-10 h-10 rounded-xl bg-apple-red/15 text-apple-red border border-apple-red/20 flex items-center justify-center shrink-0";
-                    iconBox.innerHTML = '<i data-lucide="alert-octagon" class="w-5 h-5"></i>';
-
-                    badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-apple-red/15 text-apple-red border border-apple-red/20";
-                    badge.innerText = "NOT VERIFIED • HIGH RISK";
-                    headline.innerText = "Not Verified • High Risk Impersonation";
-                    scoreNum.className = "text-xl font-bold font-mono text-apple-red";
+                    card.className = "glass-card rounded-2xl p-4 sm:p-6 space-y-5 border border-rose-500/40 glass-glow-rose";
+                    iconBox.className = "w-11 h-11 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center shrink-0 shadow-lg";
+                    iconBox.innerHTML = '<i data-lucide="alert-octagon" class="w-6 h-6"></i>';
+                    badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-rose-500/20 text-rose-400 border border-rose-500/30";
+                    badge.innerText = "CRITICAL THREAT";
+                    headline.innerText = "Severe Recruitment Extortion / Impersonation";
+                    scoreNum.className = "text-xl font-extrabold font-mono text-rose-400";
                 } else {
-                    card.className = "rounded-2xl p-6 sm:p-7 border border-apple-orange/30 bg-apple-surfaceElevated shadow-2xl space-y-5 h-full flex flex-col justify-between";
-                    iconBox.className = "w-10 h-10 rounded-xl bg-apple-orange/15 text-apple-orange border border-apple-orange/20 flex items-center justify-center shrink-0";
-                    iconBox.innerHTML = '<i data-lucide="alert-triangle" class="w-5 h-5"></i>';
-
-                    badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-apple-orange/15 text-apple-orange border border-apple-orange/20";
-                    badge.innerText = "NOT VERIFIED • SUSPICIOUS";
-                    headline.innerText = "Not Verified • Needs Caution & Verification";
-                    scoreNum.className = "text-xl font-bold font-mono text-apple-orange";
+                    card.className = "glass-card rounded-2xl p-4 sm:p-6 space-y-5 border border-amber-500/40";
+                    iconBox.className = "w-11 h-11 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0 shadow-lg";
+                    iconBox.innerHTML = '<i data-lucide="alert-triangle" class="w-6 h-6"></i>';
+                    badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30";
+                    badge.innerText = "SUSPICIOUS";
+                    headline.innerText = "Caution Required • Suspicious Markers";
+                    scoreNum.className = "text-xl font-extrabold font-mono text-amber-400";
                 }
 
-                // Digital signature indicator
-                sigTitle.innerText = "Digital Signature: UNSIGNED / COUNTERFEIT";
-                sigDetail.innerText = "No cryptographic PKI signature found. Potential synthetic template.";
-                sigBadge.className = "px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-apple-red/20 text-apple-red border border-apple-red/30";
+                sigBox.className = "p-3 rounded-xl border border-rose-500/30 bg-rose-950/20 flex items-center justify-between text-xs";
+                sigTitle.innerText = "PKI Digital Signature: UNSIGNED / COUNTERFEIT";
+                sigDetail.innerText = "Document lacks x509 cryptographic certificate. Created via consumer tool without enterprise identity key.";
+                sigBadge.className = "px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30";
                 sigBadge.innerText = "UNSIGNED";
 
-                explanation.innerText = data.advice || "This document exhibits red flags matching known digital identity theft, fake domains, or synthetic templates.";
+                explanation.innerText = data.advice || "This document contains severe red flags indicating recruitment extortion or fake recruiter identity.";
 
                 summaryList.innerHTML = '';
                 if (data.signals && data.signals.length > 0) {
                     data.signals.forEach(s => {
                         const item = document.createElement('div');
-                        item.className = "flex items-start space-x-2 text-apple-graySub";
+                        item.className = "flex items-start space-x-2 text-vh-textSub";
                         item.innerHTML = `
-                            <i data-lucide="alert-circle" class="w-4 h-4 text-apple-red shrink-0 mt-0.5"></i>
+                            <i data-lucide="alert-circle" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
                             <span><strong class="text-white">${s.title}:</strong> ${s.explanation}</span>
                         `;
                         summaryList.appendChild(item);
                     });
-                } else {
-                    summaryList.innerHTML = `
-                        <div class="flex items-center space-x-2 text-apple-graySub">
-                            <i data-lucide="alert-circle" class="w-4 h-4 text-apple-red shrink-0"></i>
-                            <span>Unverified recruiter domain or non-standard contact channel.</span>
-                        </div>
-                    `;
                 }
-
-                guidanceText.innerText = "Do NOT transfer any money (e.g. laptop or training fees) and do NOT send Aadhaar or PAN card scans. Verify this position directly on the company's official career portal.";
+                guidanceText.innerText = "Do NOT transfer any money (e.g. laptop deposit) and do NOT share Aadhaar/PAN cards. Verify this position directly on the company's official career portal.";
             }
 
-            document.getElementById('feedback-controls').classList.remove('hidden');
-            document.getElementById('feedback-thank-you').classList.add('hidden');
+            // Render Transparent "Why this score?" Breakdown
+            breakdownList.innerHTML = '';
+            const breakdown = data.score_breakdown || [];
+            breakdown.forEach(b => {
+                const row = document.createElement('div');
+                row.className = "p-2 rounded-lg bg-black/40 border border-white/5 flex items-start justify-between gap-2";
+                const isSafe = b.severity === 'SAFE';
+                const pillColor = isSafe ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' : 'text-rose-400 bg-rose-500/10 border-rose-500/20';
+
+                row.innerHTML = `
+                    <div class="space-y-0.5">
+                        <span class="font-bold text-white block">${b.factor}</span>
+                        <span class="text-[11px] text-vh-textMuted leading-relaxed block">${b.reason}</span>
+                    </div>
+                    <span class="px-2 py-0.5 rounded font-mono font-bold text-[10px] border ${pillColor} shrink-0">
+                        ${b.points}
+                    </span>
+                `;
+                breakdownList.appendChild(row);
+            });
+
+            // Preview Row
+            if (singleFileBlobUrl) {
+                document.getElementById('singleResultPreviewRow').classList.remove('hidden');
+            }
+
             lucide.createIcons();
             card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
+        // Render Batch Results as Mobile-Responsive Accordion Cards (No Squishing!)
         function renderBatchResult(data) {
             hideLoading();
             document.getElementById('default-explainer-card').classList.add('hidden');
@@ -1204,32 +1101,165 @@ print(res.json())</pre>
             document.getElementById('batch-clean-count').innerText = data.clean_count;
             document.getElementById('batch-threat-count').innerText = data.threat_count;
 
-            const tbody = document.getElementById('batch-table-body');
-            tbody.innerHTML = '';
+            const cardsList = document.getElementById('batch-cards-list');
+            cardsList.innerHTML = '';
 
-            lastBatchResults.forEach(r => {
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-apple-surfaceElevated transition-colors";
+            lastBatchResults.forEach((r, idx) => {
                 const isClean = r.risk_score < 30;
-                const badgeClass = isClean 
-                    ? "text-apple-green bg-apple-green/15 border-apple-green/30" 
-                    : (r.risk_score >= 70 ? "text-apple-red bg-apple-red/15 border-apple-red/30" : "text-apple-orange bg-apple-orange/15 border-apple-orange/30");
+                const isCritical = r.risk_score >= 65;
+                const borderClass = isClean ? 'border-emerald-500/30 bg-emerald-950/10' : (isCritical ? 'border-rose-500/30 bg-rose-950/10' : 'border-amber-500/30 bg-amber-950/10');
+                const badgeClass = isClean ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : (isCritical ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' : 'bg-amber-500/20 text-amber-400 border-amber-500/30');
+                const scoreColor = isClean ? 'text-emerald-400' : (isCritical ? 'text-rose-400' : 'text-amber-400');
 
-                tr.innerHTML = `
-                    <td class="p-2.5 font-medium text-white max-w-[140px] truncate" title="${r.filename}">${r.filename}</td>
-                    <td class="p-2.5">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${badgeClass}">
-                            ${isClean ? 'CLEAN' : 'SCAM / THREAT'}
-                        </span>
-                    </td>
-                    <td class="p-2.5 font-bold ${isClean ? 'text-apple-green' : 'text-apple-red'}">${r.risk_score}/100</td>
-                    <td class="p-2.5 text-apple-graySub hidden sm:table-cell text-[10px]">${r.digital_signature}</td>
+                // Check if we have a client-side thumbnail blob
+                const fileEntry = batchFileMap[r.filename];
+                const hasBlob = fileEntry && fileEntry.blobUrl;
+                const isImg = fileEntry && fileEntry.file && fileEntry.file.type.startsWith('image/');
+
+                const thumbHtml = (hasBlob && isImg)
+                    ? `<img src="${fileEntry.blobUrl}" onclick="openLightbox('${fileEntry.blobUrl}', '${r.filename}')" class="w-12 h-12 rounded-lg object-cover border border-white/20 shrink-0 cursor-pointer hover:opacity-80 transition-opacity" title="Click to view full preview">`
+                    : `<div class="w-12 h-12 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center shrink-0 text-vh-textMuted"><i data-lucide="file-text" class="w-5 h-5 text-blue-400"></i></div>`;
+
+                const card = document.createElement('div');
+                card.className = `p-3.5 sm:p-4 rounded-xl border ${borderClass} space-y-3 transition-all`;
+
+                // Build score breakdown items for dropdown
+                let breakdownHtml = '';
+                (r.score_breakdown || []).forEach(b => {
+                    breakdownHtml += `
+                        <div class="flex items-start justify-between p-2 rounded-lg bg-black/50 border border-white/5 text-[11px] gap-2">
+                            <div>
+                                <strong class="text-white block">${b.factor}</strong>
+                                <span class="text-vh-textMuted">${b.reason}</span>
+                            </div>
+                            <span class="font-mono font-bold shrink-0 text-white">${b.points}</span>
+                        </div>
+                    `;
+                });
+
+                // Build signals list for dropdown
+                let signalsHtml = '';
+                if (r.signals && r.signals.length > 0) {
+                    r.signals.forEach(s => {
+                        signalsHtml += `
+                            <div class="text-[11px] p-2 rounded-lg bg-black/40 border border-white/5 space-y-0.5">
+                                <span class="font-bold text-rose-400 block">${s.title}</span>
+                                <span class="text-vh-textMuted block">${s.explanation}</span>
+                            </div>
+                        `;
+                    });
+                } else {
+                    signalsHtml = `<span class="text-[11px] text-emerald-400 block p-2">✓ No malicious indicators or extortion patterns detected.</span>`;
+                }
+
+                card.innerHTML = `
+                    <!-- Top Summary Card Row (Mobile Optimized) -->
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="flex items-start space-x-3 truncate">
+                            ${thumbHtml}
+                            <div class="truncate">
+                                <div class="flex items-center space-x-2">
+                                    <span class="font-bold text-white text-xs sm:text-sm truncate block" title="${r.filename}">${r.filename}</span>
+                                </div>
+                                <span class="text-[11px] text-vh-textMuted block mt-0.5 truncate">${r.primary_finding}</span>
+                            </div>
+                        </div>
+
+                        <div class="text-right shrink-0">
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold font-mono border ${badgeClass} inline-block mb-1">
+                                ${isClean ? 'CLEAN' : 'SCAM THREAT'}
+                            </span>
+                            <div class="text-sm font-extrabold font-mono ${scoreColor}">
+                                ${r.risk_score}<span class="text-[10px] text-vh-textMuted">/100</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expand / Collapse Dropdown Button -->
+                    <div class="pt-2 border-t border-white/10 flex items-center justify-between">
+                        <button onclick="toggleBatchDropdown('batch-drop-${idx}')" class="text-[11px] font-semibold text-blue-400 hover:text-blue-300 flex items-center space-x-1 transition-colors">
+                            <i data-lucide="chevron-down" id="drop-icon-${idx}" class="w-3.5 h-3.5 transition-transform"></i>
+                            <span>Forensic Breakdown & Why It Failed/Passed</span>
+                        </button>
+                        ${hasBlob ? `<button onclick="openLightbox('${fileEntry.blobUrl}', '${r.filename}')" class="text-[11px] text-vh-textMuted hover:text-white flex items-center space-x-1"><i data-lucide="zoom-in" class="w-3 h-3"></i><span>Preview</span></button>` : ''}
+                    </div>
+
+                    <!-- Expandable Forensic Detail Dropdown -->
+                    <div id="batch-drop-${idx}" class="hidden space-y-3 pt-3 border-t border-white/10 text-xs">
+                        
+                        <!-- Document Preview Full Row if Image -->
+                        ${hasBlob && isImg ? `
+                            <div class="p-2 rounded-xl bg-black/60 border border-white/10 flex items-center space-x-3">
+                                <img src="${fileEntry.blobUrl}" class="w-16 h-16 rounded object-cover border border-white/10">
+                                <div>
+                                    <span class="font-bold text-white block">Document Visual Inspection</span>
+                                    <button onclick="openLightbox('${fileEntry.blobUrl}', '${r.filename}')" class="text-blue-400 hover:underline text-[11px] font-semibold mt-1">Open Full-Screen Lightbox &rarr;</button>
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        <!-- PKI Signature status -->
+                        <div class="p-2.5 rounded-xl bg-black/50 border border-white/10 flex items-center justify-between text-xs">
+                            <div>
+                                <span class="font-bold text-white block">Cryptographic PKI Signature</span>
+                                <span class="text-[11px] text-vh-textMuted">${r.digital_signature.explanation}</span>
+                            </div>
+                            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold ${r.digital_signature.valid ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/20' : 'text-rose-400 bg-rose-500/10 border border-rose-500/20'}">
+                                ${r.digital_signature.badge}
+                            </span>
+                        </div>
+
+                        <!-- Itemized Score Breakdown -->
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-bold text-vh-textMuted uppercase font-mono block">Why was this score (${r.risk_score}/100) assigned?</span>
+                            <div class="space-y-1">
+                                ${breakdownHtml}
+                            </div>
+                        </div>
+
+                        <!-- Signals -->
+                        <div class="space-y-1.5">
+                            <span class="text-[10px] font-bold text-vh-textMuted uppercase font-mono block">Detected Forensics & Evidence</span>
+                            <div class="space-y-1">
+                                ${signalsHtml}
+                            </div>
+                        </div>
+
+                        <!-- Advice -->
+                        <div class="p-2.5 rounded-xl bg-black/60 border border-white/10 text-[11px] text-vh-textSub">
+                            <strong class="text-white block mb-0.5">Placement Action:</strong>
+                            ${r.advice || (isClean ? 'Safe for campus placement verification.' : 'Block placement clearance and report recruiter domain.')}
+                        </div>
+
+                    </div>
                 `;
-                tbody.appendChild(tr);
+                cardsList.appendChild(card);
             });
 
             lucide.createIcons();
             container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function toggleBatchDropdown(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
+        }
+
+        // Lightbox Fullscreen Preview Functions
+        function openLightbox(url, title) {
+            document.getElementById('lightboxImg').src = url;
+            document.getElementById('lightboxTitle').innerText = title || "Document Preview";
+            document.getElementById('modal-lightbox').classList.remove('hidden');
+        }
+
+        function openLightboxFromSingle() {
+            if (singleFileBlobUrl) {
+                openLightbox(singleFileBlobUrl, selectedFile.name);
+            }
+        }
+
+        function closeLightbox() {
+            document.getElementById('modal-lightbox').classList.add('hidden');
         }
 
         function exportBatchCSV() {
@@ -1240,7 +1270,7 @@ print(res.json())</pre>
             let csv = "Filename,Risk Score,Verdict,Digital Signature,Primary Finding\n";
             lastBatchResults.forEach(r => {
                 const safeFinding = (r.primary_finding || "").replace(/"/g, '""');
-                csv += `"${r.filename}",${r.risk_score},"${r.verdict}","${r.digital_signature}","${safeFinding}"\n`;
+                csv += `"${r.filename}",${r.risk_score},"${r.verdict}","${r.digital_signature.badge}","${safeFinding}"\n`;
             });
 
             const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -1254,52 +1284,25 @@ print(res.json())</pre>
             document.body.removeChild(link);
         }
 
-        async function submitFeedback(isHelpful) {
-            try {
-                await fetch("/api/feedback", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ rating: isHelpful ? 5 : 2, helpful: isHelpful })
-                });
-                document.getElementById('feedback-controls').classList.add('hidden');
-                document.getElementById('feedback-thank-you').classList.remove('hidden');
-                loadLiveStats();
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
         async function loadLiveStats() {
             try {
                 const res = await fetch('/api/stats');
                 const d = await res.json();
-                const verEl = document.getElementById('stat-verified');
-                const accEl = document.getElementById('stat-accuracy');
-                const ratEl = document.getElementById('stat-rating');
-                const cntEl = document.getElementById('stat-count');
-                if (verEl) verEl.innerText = d.total_verified.toLocaleString();
-                if (accEl) accEl.innerText = d.accuracy_percent + '%';
-                if (ratEl) ratEl.innerText = d.average_rating.toFixed(1);
-                if (cntEl) cntEl.innerText = d.total_ratings.toLocaleString();
-            } catch(e) { /* silent */ }
+                document.getElementById('stat-verified').innerText = d.total_verified.toLocaleString();
+                document.getElementById('stat-rating').innerText = d.average_rating.toFixed(1);
+                document.getElementById('stat-count').innerText = d.total_ratings.toLocaleString();
+            } catch(e) {}
         }
 
-        function openApiModal() {
-            document.getElementById('modal-api').classList.remove('hidden');
-        }
-        function closeApiModal() {
-            document.getElementById('modal-api').classList.add('hidden');
-        }
-
-        function openTiersModal() {
-            document.getElementById('modal-tiers').classList.remove('hidden');
-        }
-        function closeTiersModal() {
-            document.getElementById('modal-tiers').classList.add('hidden');
-        }
+        function openApiModal() { document.getElementById('modal-api').classList.remove('hidden'); }
+        function closeApiModal() { document.getElementById('modal-api').classList.add('hidden'); }
+        function openTiersModal() { document.getElementById('modal-tiers').classList.remove('hidden'); }
+        function closeTiersModal() { document.getElementById('modal-tiers').classList.add('hidden'); }
+        function openPkiModal() { document.getElementById('modal-pki').classList.remove('hidden'); }
+        function closePkiModal() { document.getElementById('modal-pki').classList.add('hidden'); }
 
         function copyApiKey() {
-            const el = document.getElementById('api-key-value');
+            const el = document.getElementById('api-key-val');
             navigator.clipboard.writeText(el.value);
             alert("API Key copied to clipboard: " + el.value);
         }

@@ -20,4 +20,4 @@ fi
 echo "VeriHire running at: http://127.0.0.1:8000"
 echo "Pro Tier Link:       http://127.0.0.1:8000/?tier=pro"
 echo "Free Tier Link:      http://127.0.0.1:8000/?tier=free"
-PYTHONPATH=. ./venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+PYTHONPATH=. ./venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload

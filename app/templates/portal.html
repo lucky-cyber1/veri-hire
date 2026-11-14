@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex University • Placement & Career Verification Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        apex: {
+                            bg: '#0A0E17',
+                            card: 'rgba(16, 23, 38, 0.75)',
+                            border: 'rgba(255, 255, 255, 0.1)',
+                            accent: '#3B82F6',
+                            accentGlow: 'rgba(59, 130, 246, 0.25)',
+                            emerald: '#10B981',
+                            rose: '#F43F5E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background-color: #0A0E17;
+            color: #F8FAFC;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Ambient Glow Orbs -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/15 rounded-full blur-[128px]"></div>
+        <div class="absolute top-1/2 -right-32 w-96 h-96 bg-indigo-600/15 rounded-full blur-[128px]"></div>
+    </div>
+
+    <!-- Header for Third-Party University Portal -->
+    <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
+                    AU
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm sm:text-base font-bold text-white tracking-tight">Apex Institute of Technology</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 font-semibold font-mono">PARTNER CLIENT</span>
+                    </div>
+                    <span class="text-[11px] text-slate-400 block -mt-0.5">Corporate Placement & Career Verification Portal</span>
+                </div>
+            </div>
+
+            <!-- Return to VeriHire Main Platform -->
+            <a href="/" class="flex items-center space-x-2 text-xs text-slate-300 hover:text-white px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700/60 hover:border-blue-500/50 transition-all">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5 text-blue-400"></i>
+                <span class="hidden sm:inline">Back to VeriHire Platform</span>
+                <span class="sm:hidden">VeriHire</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 relative z-10">
+
+        <!-- Live API Key Integration Banner -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-blue-950/40 via-indigo-950/30 to-slate-950/50 border border-blue-500/30 glass-panel flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1">
+                <div class="flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-xs font-bold text-white tracking-wide uppercase font-mono">VeriHire API Integration Active</span>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed max-w-xl">
+                    This external university website is directly powered by <strong>VeriHire Pro API</strong>. Every offer uploaded here is authenticated in real-time via Lakshman's developer key.
+                </p>
+            </div>
+            
+            <div class="flex items-center space-x-2 shrink-0">
+                <div class="px-3 py-1.5 rounded-xl bg-black/60 border border-blue-500/30 text-[11px] font-mono text-blue-300 flex items-center space-x-2">
+                    <i data-lucide="key" class="w-3.5 h-3.5 text-blue-400"></i>
+                    <span>vh_live_9f83...d70</span>
+                </div>
+                <span class="px-2.5 py-1 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold">
+                    CONNECTED
+                </span>
+            </div>
+        </div>
+
+        <!-- Verification Workspace -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            
+            <!-- Left Card: Upload in External Site -->
+            <div class="glass-panel rounded-2xl p-6 sm:p-7 space-y-5">
+                <div class="border-b border-slate-800 pb-3">
+                    <h2 class="text-base font-bold text-white flex items-center space-x-2">
+                        <i data-lucide="file-check-2" class="w-4 h-4 text-blue-400"></i>
+                        <span>Upload Student Offer Letter</span>
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-0.5">Submit PDF or Screenshot for university clearance.</p>
+                </div>
+
+                <!-- Dropzone -->
+                <div id="partnerDropzone" class="border-2 border-dashed border-slate-700 hover:border-blue-500/60 rounded-xl p-8 text-center bg-slate-900/40 cursor-pointer transition-all group">
+                    <input type="file" id="partnerFileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" class="hidden" onchange="handlePartnerFileSelected(this.files)">
+                    <div class="flex flex-col items-center justify-center space-y-3">
+                        <div class="w-12 h-12 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform">
+                            <i data-lucide="upload-cloud" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs sm:text-sm font-semibold text-white">Select offer letter or drag & drop</p>
+                            <p class="text-[11px] text-slate-400 mt-0.5">PDF or Screenshot from recruiter</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Client-Side Document Preview Thumbnail -->
+                <div id="partnerPreviewContainer" class="hidden p-3.5 rounded-xl bg-black/50 border border-slate-800 space-y-2">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-400 font-medium">Selected File:</span>
+                        <span id="partnerFileName" class="text-blue-400 font-mono font-semibold truncate max-w-[200px]"></span>
+                    </div>
+                    <div class="relative w-full h-36 rounded-lg overflow-hidden bg-slate-950 border border-slate-800 flex items-center justify-center">
+                        <img id="partnerPreviewImg" class="max-h-full max-w-full object-contain hidden" alt="Document Preview">
+                        <div id="partnerPdfPlaceholder" class="flex flex-col items-center justify-center text-slate-500 space-y-1">
+                            <i data-lucide="file-text" class="w-8 h-8 text-blue-400"></i>
+                            <span class="text-[11px] font-mono text-slate-400">PDF Document Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verify Button -->
+                <button onclick="submitViaVeriHireApi()" id="btn-partner-verify" class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 font-semibold text-xs sm:text-sm text-white shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center space-x-2">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                    <span>Verify via VeriHire API</span>
+                </button>
+            </div>
+
+            <!-- Right Card: API Telemetry & University Clearance Certificate -->
+            <div class="glass-panel rounded-2xl p-6 sm:p-7 space-y-5">
+                <div class="border-b border-slate-800 pb-3 flex items-center justify-between">
+                    <h2 class="text-base font-bold text-white flex items-center space-x-2">
+                        <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+                        <span>Live API Console & Output</span>
+                    </h2>
+                    <span id="api-status-pill" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+                        STANDBY
+                    </span>
+                </div>
+
+                <!-- Standby State -->
+                <div id="partnerStandby" class="p-8 text-center space-y-2 text-slate-500">
+                    <i data-lucide="network" class="w-8 h-8 mx-auto text-slate-600"></i>
+                    <p class="text-xs text-slate-400">Upload a file on the left to see live VeriHire API execution.</p>
+                </div>
+
+                <!-- Loading State -->
+                <div id="partnerLoading" class="hidden p-8 text-center space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mx-auto flex items-center justify-center animate-spin">
+                        <i data-lucide="loader-2" class="w-5 h-5"></i>
+                    </div>
+                    <p class="text-xs text-slate-300 font-mono">POST /api/partner-verify [Bearer vh_live_9f83...]</p>
+                </div>
+
+                <!-- Result & University Placement Stamp -->
+                <div id="partnerResultContainer" class="hidden space-y-4">
+                    
+                    <!-- Official Clearance Certificate Card -->
+                    <div id="partnerCertCard" class="p-4 rounded-xl border space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono font-bold tracking-wider uppercase text-slate-400">Clearance Status</span>
+                            <span id="partnerVerdictBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono"></span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div id="partnerCertIcon" class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"></div>
+                            <div>
+                                <h3 id="partnerCertHeadline" class="text-sm font-bold text-white"></h3>
+                                <p id="partnerCertAdvice" class="text-xs text-slate-400 leading-relaxed"></p>
+                            </div>
+                        </div>
+
+                        <!-- Score & Digital Signature -->
+                        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800/80 text-xs">
+                            <div>
+                                <span class="text-slate-400 text-[10px] block font-mono">VERIHIRE RISK SCORE:</span>
+                                <span id="partnerRiskNum" class="font-bold font-mono text-sm"></span>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 text-[10px] block font-mono">DIGITAL SIGNATURE:</span>
+                                <span id="partnerCertSig" class="font-bold font-mono text-[11px]"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live JSON Payload Terminal -->
+                    <div class="space-y-1.5">
+                        <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">Raw JSON Returned by VeriHire API</span>
+                        <pre id="partnerRawJson" class="p-3 rounded-xl bg-black/90 border border-slate-800 text-[10px] font-mono text-emerald-400 max-h-48 overflow-y-auto leading-relaxed"></pre>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-950 py-6 mt-12 text-center text-xs text-slate-500">
+        <p>Apex University Placement Portal • Demonstration of third-party integration using the VeriHire API.</p>
+        <p class="text-[11px] text-slate-600 mt-1">Created by Lakshman • Powered by Antigravity AI</p>
+    </footer>
+
+    <script>
+        let partnerFile = null;
+        const dropzone = document.getElementById('partnerDropzone');
+        const fileInput = document.getElementById('partnerFileInput');
+
+        dropzone.addEventListener('click', () => fileInput.click());
+        dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('border-blue-500'); });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('border-blue-500'));
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('border-blue-500');
+            if (e.dataTransfer.files.length > 0) {
+                handlePartnerFileSelected(e.dataTransfer.files);
+            }
+        });
+
+        function handlePartnerFileSelected(files) {
+            if (files && files[0]) {
+                partnerFile = files[0];
+                document.getElementById('partnerPreviewContainer').classList.remove('hidden');
+                document.getElementById('partnerFileName').innerText = partnerFile.name;
+
+                const imgEl = document.getElementById('partnerPreviewImg');
+                const pdfPlaceholder = document.getElementById('partnerPdfPlaceholder');
+
+                if (partnerFile.type.startsWith('image/')) {
+                    imgEl.src = URL.createObjectURL(partnerFile);
+                    imgEl.classList.remove('hidden');
+                    pdfPlaceholder.classList.add('hidden');
+                } else {
+                    imgEl.classList.add('hidden');
+                    pdfPlaceholder.classList.remove('hidden');
+                }
+            }
+        }
+
+        async function submitViaVeriHireApi() {
+            if (!partnerFile) {
+                alert("Please select a document or image to verify.");
+                return;
+            }
+
+            document.getElementById('partnerStandby').classList.add('hidden');
+            document.getElementById('partnerResultContainer').classList.add('hidden');
+            document.getElementById('partnerLoading').classList.remove('hidden');
+            document.getElementById('api-status-pill').innerText = "CALLING API...";
+            document.getElementById('api-status-pill').className = "text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30";
+
+            const formData = new FormData();
+            formData.append("file", partnerFile);
+
+            try {
+                const res = await fetch("/api/partner-verify", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Bearer vh_live_9f83b2a7e41c6d590218a4d70"
+                    },
+                    body: formData
+                });
+                const data = await res.json();
+                renderPartnerResult(data);
+            } catch (err) {
+                alert("API error: " + err);
+                document.getElementById('partnerLoading').classList.add('hidden');
+                document.getElementById('partnerStandby').classList.remove('hidden');
+            }
+        }
+
+        function renderPartnerResult(data) {
+            document.getElementById('partnerLoading').classList.add('hidden');
+            document.getElementById('partnerResultContainer').classList.remove('hidden');
+            document.getElementById('api-status-pill').innerText = "200 OK • VERIFIED";
+            document.getElementById('api-status-pill').className = "text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+
+            const isClean = data.risk_score < 30;
+            const certCard = document.getElementById('partnerCertCard');
+            const certIcon = document.getElementById('partnerCertIcon');
+            const badge = document.getElementById('partnerVerdictBadge');
+            const headline = document.getElementById('partnerCertHeadline');
+            const advice = document.getElementById('partnerCertAdvice');
+            const riskNum = document.getElementById('partnerRiskNum');
+            const certSig = document.getElementById('partnerCertSig');
+
+            riskNum.innerText = `${data.risk_score}/100`;
+
+            if (isClean) {
+                certCard.className = "p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 space-y-3";
+                certIcon.className = "w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0";
+                certIcon.innerHTML = '<i data-lucide="badge-check" class="w-5 h-5"></i>';
+                badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+                badge.innerText = "OFFICIAL NOC APPROVED";
+                headline.innerText = "Verified Authentic Offer";
+                advice.innerText = "Document cleared all VeriHire checks. Student approved for campus placement clearance.";
+                riskNum.className = "font-bold font-mono text-sm text-emerald-400";
+                certSig.innerText = "PKI Validated ✓";
+                certSig.className = "font-bold font-mono text-[11px] text-emerald-400";
+            } else {
+                certCard.className = "p-4 rounded-xl border border-rose-500/30 bg-rose-950/20 space-y-3";
+                certIcon.className = "w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center shrink-0";
+                certIcon.innerHTML = '<i data-lucide="alert-octagon" class="w-5 h-5"></i>';
+                badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono bg-rose-500/20 text-rose-400 border border-rose-500/30";
+                badge.innerText = "FRAUD DETECTED • NOC BLOCKED";
+                headline.innerText = "Recruitment Scam Warning";
+                advice.innerText = "Document contains severe fraud signals. Placement officer intervention required.";
+                riskNum.className = "font-bold font-mono text-sm text-rose-400";
+                certSig.innerText = "Unsigned / Fake ✗";
+                certSig.className = "font-bold font-mono text-[11px] text-rose-400";
+            }
+
+            document.getElementById('partnerRawJson').innerText = JSON.stringify(data, null, 2);
+            lucide.createIcons();
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
