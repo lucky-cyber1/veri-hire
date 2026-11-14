@@ -57,16 +57,12 @@
             box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
 
-        .glass-glow-blue {
-            box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.35);
-        }
-
         .glass-glow-emerald {
-            box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.35);
+            box-shadow: 0 0 35px -8px rgba(16, 185, 129, 0.35);
         }
 
         .glass-glow-rose {
-            box-shadow: 0 0 40px -10px rgba(244, 63, 94, 0.35);
+            box-shadow: 0 0 35px -8px rgba(244, 63, 94, 0.35);
         }
 
         .btn-gradient-primary {
@@ -91,8 +87,8 @@
     </div>
 
     <!-- Global Responsive Navigation Bar -->
-    <header class="border-b border-white/10 bg-[#06080D]/80 backdrop-blur-2xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header class="border-b border-white/10 bg-[#06080D]/85 backdrop-blur-2xl sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             
             <!-- Logo -->
             <a href="/" class="flex items-center space-x-2.5 shrink-0">
@@ -111,36 +107,29 @@
                 </div>
             </a>
 
-            <!-- Center/Right Action Bar -->
-            <div class="flex items-center space-x-1.5 sm:space-x-3 text-xs">
+            <!-- Right Action Controls -->
+            <div class="flex items-center space-x-2 sm:space-x-3 text-xs">
                 
                 <!-- Interactive Tier Switcher -->
                 <div class="flex items-center bg-black/50 border border-white/10 rounded-xl p-0.5 sm:p-1">
-                    <button onclick="setTier('pro')" id="tier-btn-pro" class="flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all bg-blue-600 text-white shadow-sm">
+                    <button onclick="setTier('pro')" id="tier-btn-pro" class="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all bg-blue-600 text-white shadow-sm">
                         <i data-lucide="zap" class="w-3 h-3 text-yellow-300"></i>
-                        <span>Pro</span>
+                        <span>Pro Active</span>
                     </button>
-                    <button onclick="setTier('free')" id="tier-btn-free" class="flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-medium text-vh-textMuted hover:text-white transition-all">
-                        <span>Free</span>
+                    <button onclick="setTier('free')" id="tier-btn-free" class="flex items-center space-x-1 px-2.5 py-1 rounded-lg text-[11px] font-medium text-vh-textMuted hover:text-white transition-all">
+                        <span>Free Mode</span>
                     </button>
                 </div>
 
                 <!-- PKI & How It Works Guide Button -->
-                <button onclick="openPkiModal()" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-vh-textSub hover:text-white transition-all">
+                <button onclick="openPkiModal()" class="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-vh-textSub hover:text-white transition-all">
                     <i data-lucide="shield-check" class="w-3.5 h-3.5 text-blue-400"></i>
                     <span class="hidden md:inline">PKI & How It Works</span>
-                    <span class="md:hidden">PKI</span>
+                    <span class="md:hidden">PKI Guide</span>
                 </button>
 
-                <!-- Partner Portal Demo (Secondary Website) Button -->
-                <a href="/portal" class="inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-500/30 text-indigo-300 hover:text-white transition-all">
-                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-indigo-400"></i>
-                    <span class="hidden md:inline">Partner Portal Demo</span>
-                    <span class="md:hidden">API Demo</span>
-                </a>
-
-                <!-- API Key Modal Button -->
-                <button onclick="openApiModal()" class="hidden sm:inline-flex items-center space-x-1 px-2.5 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-vh-textSub hover:text-white transition-all">
+                <!-- API Console Button -->
+                <button onclick="openApiModal()" class="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-vh-textSub hover:text-white transition-all">
                     <i data-lucide="key" class="w-3.5 h-3.5 text-yellow-400"></i>
                     <span>API Console</span>
                 </button>
@@ -149,20 +138,20 @@
     </header>
 
     <!-- Main Container -->
-    <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 relative z-10">
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 relative z-10">
 
-        <!-- Header Introduction & Dynamic Tier Status Alert -->
+        <!-- Header Introduction & Account Bar -->
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
             <div class="space-y-2 max-w-2xl">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-400 text-xs font-semibold">
                     <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
-                    <span>Production Multimodal Forensics</span>
+                    <span>Multimodal Verification Engine</span>
                 </div>
                 <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                    Verify If Your Job Offer Is Genuine
+                    Check If Your Job Offer Is Genuine
                 </h1>
                 <p class="text-vh-textMuted text-xs sm:text-sm leading-relaxed">
-                    Multimodal inspection against fake recruiter domains, advance-fee extortion, synthetic ChatGPT drafts, and missing cryptographic PKI signatures.
+                    Instantly scan offer letters to catch fake recruiter emails, upfront laptop fee demands, synthetic drafts, and missing corporate digital signatures.
                 </p>
             </div>
 
@@ -170,14 +159,14 @@
             <div class="glass-card rounded-2xl p-3.5 sm:p-4 flex items-center justify-between gap-4 shrink-0 border border-white/15">
                 <div class="flex items-center space-x-3">
                     <div id="tier-avatar" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm shadow-md">
-                        L
+                        FF
                     </div>
                     <div>
                         <div class="flex items-center space-x-1.5">
-                            <span id="tier-user-name" class="text-xs sm:text-sm font-bold text-white block">Lakshman (Pro Active)</span>
-                            <span id="tier-badge-label" class="px-2 py-0.2 rounded-full text-[9px] font-mono font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30">PRO</span>
+                            <span id="tier-user-name" class="text-xs sm:text-sm font-bold text-white block">Fantastic Fives</span>
+                            <span id="tier-badge-label" class="px-2 py-0.2 rounded-full text-[9px] font-mono font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30">PRO ACTIVE</span>
                         </div>
-                        <span id="tier-perks-text" class="text-[11px] text-vh-textMuted block">Bulk Batch • API Key • Crypto PKI Validation</span>
+                        <span id="tier-perks-text" class="text-[11px] text-vh-textMuted block">Bulk Batch • API Access • PKI Certificate Check</span>
                     </div>
                 </div>
                 <button onclick="openTiersModal()" class="px-2.5 py-1.5 rounded-xl bg-white/[0.08] hover:bg-white/[0.15] text-[11px] font-semibold text-vh-textSub border border-white/10 shrink-0">
@@ -186,12 +175,12 @@
             </div>
         </div>
 
-        <!-- Live Community Trust Bar (0 Scans, 0 Reviews initially) -->
+        <!-- Live Community Trust Bar (Starts at 0 Scans, 0 Reviews) -->
         <div class="flex flex-wrap items-center gap-2.5 sm:gap-6 py-2.5 px-3.5 sm:px-5 rounded-2xl glass-card text-xs">
             <div class="flex items-center space-x-1.5">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="text-vh-textMuted">Engine Status:</span>
-                <span class="text-emerald-400 font-semibold font-mono">Online</span>
+                <span class="text-vh-textMuted">System Status:</span>
+                <span class="text-emerald-400 font-semibold font-mono">Live</span>
             </div>
             <div class="h-3 w-px bg-white/10 hidden sm:block"></div>
             <div class="flex items-center space-x-1.5">
@@ -202,9 +191,9 @@
             <div class="h-3 w-px bg-white/10 hidden sm:block"></div>
             <div class="flex items-center space-x-1.5">
                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-                <span class="text-vh-textMuted">Precision:</span>
-                <span class="text-emerald-400 font-bold font-mono">100.0%</span>
-                <span class="text-vh-textMuted text-[10px] hidden md:inline">(550 Benchmark Tests)</span>
+                <span class="text-vh-textMuted">Benchmark Precision:</span>
+                <span id="stat-accuracy" class="text-emerald-400 font-bold font-mono">100.0%</span>
+                <span class="text-vh-textMuted text-[10px] hidden md:inline">(550 Test Suite Scenarios)</span>
             </div>
             <div class="h-3 w-px bg-white/10 hidden sm:block"></div>
             <div class="flex items-center space-x-1.5">
@@ -214,315 +203,319 @@
             </div>
             <div class="ml-auto hidden lg:flex items-center space-x-2 text-[11px] text-vh-textMuted">
                 <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i>
-                <span>Client-Side PII Masking • Zero Retention</span>
+                <span>Zero Data Stored • Redacted in Browser</span>
             </div>
         </div>
 
-        <!-- 2-Column Responsive Workspace Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+        <!-- 2-Column Responsive Workspace Grid (Identical Padding, Height & Header Alignment) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
             
-            <!-- Left Column: Input Panel -->
-            <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-4">
-                
-                <!-- Input Mode Switcher Header -->
-                <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                    <span class="text-xs sm:text-sm font-bold text-white flex items-center space-x-2">
-                        <i data-lucide="file-up" class="w-4 h-4 text-blue-400"></i>
-                        <span>Document Intake</span>
-                    </span>
+            <!-- Left Column: Document Intake Card (Exact matching padding & header to Right Card) -->
+            <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between h-full space-y-5">
+                <div>
+                    <!-- Header with exact matching height & border to right card -->
+                    <div class="h-10 flex items-center justify-between border-b border-white/10 pb-3.5 mb-5">
+                        <span class="text-xs sm:text-sm font-bold text-white flex items-center space-x-2">
+                            <i data-lucide="file-up" class="w-4 h-4 text-blue-400"></i>
+                            <span>Document Intake</span>
+                        </span>
 
-                    <div class="flex items-center bg-black/60 rounded-xl p-0.5 border border-white/10 text-xs">
-                        <button onclick="setInputMode('upload')" id="mode-btn-upload" class="px-2.5 py-1 rounded-lg text-white bg-blue-600 font-semibold transition-all">Single Doc</button>
-                        <button onclick="setInputMode('text')" id="mode-btn-text" class="px-2.5 py-1 rounded-lg text-vh-textMuted hover:text-white font-medium transition-all">Paste Text</button>
-                        <button onclick="setInputMode('batch')" id="mode-btn-batch" class="px-2.5 py-1 rounded-lg text-indigo-400 hover:text-white font-semibold flex items-center space-x-1 transition-all">
-                            <i data-lucide="layers" class="w-3 h-3"></i>
-                            <span>Bulk Batch (Pro)</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Mode 1: Single File Upload -->
-                <div id="input-mode-upload" class="space-y-4">
-                    <div id="dropzone" class="border-2 border-dashed border-white/15 hover:border-blue-500/60 rounded-2xl p-6 sm:p-8 text-center bg-black/30 cursor-pointer transition-all group">
-                        <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" class="hidden" onchange="handleFileSelected(this.files)">
-                        <div class="flex flex-col items-center justify-center space-y-2">
-                            <div class="w-12 h-12 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform">
-                                <i data-lucide="upload-cloud" class="w-6 h-6"></i>
-                            </div>
-                            <p class="text-xs sm:text-sm font-semibold text-white">Choose offer letter or drag & drop</p>
-                            <p class="text-[11px] text-vh-textMuted">Supports PDF, PNG, JPG, or Screenshots</p>
-                        </div>
-                    </div>
-
-                    <!-- Single File Document Preview Thumbnail -->
-                    <div id="singlePreviewContainer" class="hidden p-3 rounded-xl bg-black/40 border border-white/10 space-y-2">
-                        <div class="flex items-center justify-between text-xs">
-                            <span class="text-vh-textMuted font-mono" id="singleFileName"></span>
-                            <button onclick="openLightboxFromSingle()" class="text-blue-400 hover:text-blue-300 font-semibold flex items-center space-x-1 text-[11px]">
-                                <i data-lucide="zoom-in" class="w-3 h-3"></i>
-                                <span>Preview Full Document</span>
+                        <div class="flex items-center bg-black/60 rounded-xl p-0.5 border border-white/10 text-xs">
+                            <button onclick="setInputMode('upload')" id="mode-btn-upload" class="px-2.5 py-1 rounded-lg text-white bg-blue-600 font-semibold transition-all">Single Doc</button>
+                            <button onclick="setInputMode('text')" id="mode-btn-text" class="px-2.5 py-1 rounded-lg text-vh-textMuted hover:text-white font-medium transition-all">Paste Text</button>
+                            <button onclick="setInputMode('batch')" id="mode-btn-batch" class="px-2.5 py-1 rounded-lg text-indigo-400 hover:text-white font-semibold flex items-center space-x-1 transition-all">
+                                <i data-lucide="layers" class="w-3 h-3"></i>
+                                <span>Bulk Batch (Pro)</span>
                             </button>
                         </div>
-                        <div class="relative w-full h-32 rounded-lg overflow-hidden bg-black/60 border border-white/10 flex items-center justify-center cursor-pointer" onclick="openLightboxFromSingle()">
-                            <img id="singlePreviewImg" class="max-h-full max-w-full object-contain hidden" alt="Offer Preview">
-                            <div id="singlePdfPlaceholder" class="flex flex-col items-center justify-center text-vh-textMuted space-y-1">
-                                <i data-lucide="file-text" class="w-8 h-8 text-blue-400"></i>
-                                <span class="text-[11px] font-mono text-vh-textSub">PDF Document Ready for OCR</span>
-                            </div>
-                        </div>
                     </div>
 
-                    <button onclick="analyzeUploadedFile()" id="btn-analyze-file" class="btn-gradient-primary w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white flex items-center justify-center space-x-2">
-                        <i data-lucide="shield" class="w-4 h-4"></i>
-                        <span>Run Forensic Verification</span>
-                    </button>
-                </div>
-
-                <!-- Mode 2: Paste Text -->
-                <div id="input-mode-text" class="space-y-3 hidden">
-                    <div>
-                        <label class="block text-[11px] font-semibold text-vh-textSub mb-1">Recruiter Email or Domain (Optional)</label>
-                        <input type="text" id="text-sender-email" placeholder="e.g. hr@company.com or @gmail.com" class="w-full px-3.5 py-2.5 bg-black/50 border border-white/10 rounded-xl text-xs sm:text-sm text-white font-mono placeholder:text-vh-textMuted focus:outline-none focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-semibold text-vh-textSub mb-1">Offer Letter Body</label>
-                        <textarea id="text-offer-body" rows="6" placeholder="Paste recruiter message or offer letter text here..." class="w-full p-3.5 bg-black/50 border border-white/10 rounded-xl text-xs sm:text-sm text-white font-mono placeholder:text-vh-textMuted focus:outline-none focus:border-blue-500 leading-relaxed"></textarea>
-                    </div>
-                    <button onclick="analyzePastedText()" id="btn-analyze-text" class="btn-gradient-primary w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white flex items-center justify-center space-x-2">
-                        <i data-lucide="shield" class="w-4 h-4"></i>
-                        <span>Verify Text Payload</span>
-                    </button>
-                </div>
-
-                <!-- Mode 3: Bulk Batch Mode (Pro Tier) -->
-                <div id="input-mode-batch" class="space-y-4 hidden">
-                    
-                    <!-- Free Tier Gatekeeper -->
-                    <div id="batch-gatekeeper" class="hidden p-5 rounded-2xl border border-yellow-500/30 bg-yellow-500/10 text-center space-y-3">
-                        <div class="w-10 h-10 rounded-xl bg-yellow-500/20 text-yellow-400 mx-auto flex items-center justify-center">
-                            <i data-lucide="lock" class="w-5 h-5"></i>
-                        </div>
-                        <h4 class="text-sm font-bold text-white">Bulk Batch Scanning is a Pro Feature</h4>
-                        <p class="text-xs text-vh-textSub max-w-sm mx-auto">
-                            Placement cells use Bulk Batch to verify up to 50 appointment letters simultaneously with instant CSV audit reports.
-                        </p>
-                        <button onclick="setTier('pro')" class="btn-gradient-primary px-4 py-2 rounded-xl text-xs font-bold inline-flex items-center space-x-1.5">
-                            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-                            <span>Switch to Pro Tier (Lakshman)</span>
-                        </button>
-                    </div>
-
-                    <!-- Active Batch Picker -->
-                    <div id="batch-active-container" class="space-y-3">
-                        <div id="batchDropzone" class="border-2 border-dashed border-indigo-500/30 hover:border-indigo-500/60 rounded-2xl p-6 text-center bg-black/30 cursor-pointer transition-all">
-                            <input type="file" id="batchFileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" multiple class="hidden" onchange="handleBatchFilesSelected(this.files)">
+                    <!-- Mode 1: Single File Upload -->
+                    <div id="input-mode-upload" class="space-y-4">
+                        <div id="dropzone" class="border-2 border-dashed border-white/15 hover:border-blue-500/60 rounded-2xl p-6 sm:p-8 text-center bg-black/30 cursor-pointer transition-all group">
+                            <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" class="hidden" onchange="handleFileSelected(this.files)">
                             <div class="flex flex-col items-center justify-center space-y-2">
-                                <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
-                                    <i data-lucide="folder-up" class="w-5 h-5"></i>
+                                <div class="w-12 h-12 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform">
+                                    <i data-lucide="upload-cloud" class="w-6 h-6"></i>
                                 </div>
-                                <p class="text-xs sm:text-sm font-bold text-white">Select Multiple Files for Batch Scan</p>
-                                <p class="text-[11px] text-vh-textMuted">Select all offer letters at once (e.g., from Desktop or Downloads)</p>
+                                <p class="text-xs sm:text-sm font-semibold text-white">Choose offer letter or drag & drop</p>
+                                <p class="text-[11px] text-vh-textMuted">Supports PDF, PNG, JPG, or Screenshots</p>
                             </div>
                         </div>
 
-                        <!-- Selected Batch Preview Cards Grid -->
-                        <div id="batchSelectedList" class="hidden space-y-2 max-h-48 overflow-y-auto pr-1">
-                            <!-- Populated with thumbnails -->
+                        <!-- Single File Document Preview Row -->
+                        <div id="singlePreviewContainer" class="hidden p-3 rounded-xl bg-black/40 border border-white/10 space-y-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="text-vh-textMuted font-mono truncate max-w-[200px]" id="singleFileName"></span>
+                                <button onclick="openDetailedPopup(singleFileBlobUrl, selectedFile.name, selectedFile.type)" class="text-blue-400 hover:text-blue-300 font-bold flex items-center space-x-1 text-[11px]">
+                                    <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                                    <span>Open Inspection Pop-up</span>
+                                </button>
+                            </div>
                         </div>
 
-                        <button onclick="runBatchAnalysis()" id="btn-run-batch" class="btn-gradient-primary w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white flex items-center justify-center space-x-2">
-                            <i data-lucide="layers" class="w-4 h-4"></i>
-                            <span id="btn-batch-label">Run Batch Verification</span>
+                        <button onclick="analyzeUploadedFile()" id="btn-analyze-file" class="btn-gradient-primary w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white flex items-center justify-center space-x-2">
+                            <i data-lucide="shield" class="w-4 h-4"></i>
+                            <span>Run Forensic Verification</span>
                         </button>
                     </div>
 
+                    <!-- Mode 2: Paste Text -->
+                    <div id="input-mode-text" class="space-y-3 hidden">
+                        <div>
+                            <label class="block text-[11px] font-semibold text-vh-textSub mb-1">Recruiter Email or Domain (Optional)</label>
+                            <input type="text" id="text-sender-email" placeholder="e.g. hr@company.com or @gmail.com" class="w-full px-3.5 py-2.5 bg-black/50 border border-white/10 rounded-xl text-xs sm:text-sm text-white font-mono placeholder:text-vh-textMuted focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-vh-textSub mb-1">Offer Letter Body</label>
+                            <textarea id="text-offer-body" rows="6" placeholder="Paste recruiter message or offer letter text here..." class="w-full p-3.5 bg-black/50 border border-white/10 rounded-xl text-xs sm:text-sm text-white font-mono placeholder:text-vh-textMuted focus:outline-none focus:border-blue-500 leading-relaxed"></textarea>
+                        </div>
+                        <button onclick="analyzePastedText()" id="btn-analyze-text" class="btn-gradient-primary w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white flex items-center justify-center space-x-2">
+                            <i data-lucide="shield" class="w-4 h-4"></i>
+                            <span>Verify Text Payload</span>
+                        </button>
+                    </div>
+
+                    <!-- Mode 3: Bulk Batch Mode (Pro Tier) -->
+                    <div id="input-mode-batch" class="space-y-4 hidden">
+                        
+                        <!-- Free Tier Gatekeeper -->
+                        <div id="batch-gatekeeper" class="hidden p-5 rounded-2xl border border-yellow-500/30 bg-yellow-500/10 text-center space-y-3">
+                            <div class="w-10 h-10 rounded-xl bg-yellow-500/20 text-yellow-400 mx-auto flex items-center justify-center">
+                                <i data-lucide="lock" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-sm font-bold text-white">Bulk Batch Scanning is a Pro Feature</h4>
+                            <p class="text-xs text-vh-textSub max-w-sm mx-auto">
+                                Placement cells use Bulk Batch to verify up to 50 appointment letters simultaneously with instant CSV audit reports.
+                            </p>
+                            <button onclick="setTier('pro')" class="btn-gradient-primary px-4 py-2 rounded-xl text-xs font-bold inline-flex items-center space-x-1.5">
+                                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                                <span>Switch to Pro Active Mode</span>
+                            </button>
+                        </div>
+
+                        <!-- Active Batch Picker -->
+                        <div id="batch-active-container" class="space-y-3">
+                            <div id="batchDropzone" class="border-2 border-dashed border-indigo-500/30 hover:border-indigo-500/60 rounded-2xl p-6 text-center bg-black/30 cursor-pointer transition-all">
+                                <input type="file" id="batchFileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" multiple class="hidden" onchange="handleBatchFilesSelected(this.files)">
+                                <div class="flex flex-col items-center justify-center space-y-2">
+                                    <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+                                        <i data-lucide="folder-up" class="w-5 h-5"></i>
+                                    </div>
+                                    <p class="text-xs sm:text-sm font-bold text-white">Select Multiple Files for Batch Scan</p>
+                                    <p class="text-[11px] text-vh-textMuted">Select multiple offer letters simultaneously</p>
+                                </div>
+                            </div>
+
+                            <div id="batchSelectedList" class="hidden space-y-2 max-h-48 overflow-y-auto pr-1"></div>
+
+                            <button onclick="runBatchAnalysis()" id="btn-run-batch" class="btn-gradient-primary w-full py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white flex items-center justify-center space-x-2">
+                                <i data-lucide="layers" class="w-4 h-4"></i>
+                                <span id="btn-batch-label">Run Batch Verification</span>
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
 
                 <!-- Privacy Guarantee -->
                 <div class="pt-3 border-t border-white/10 flex items-center space-x-2 text-[11px] text-vh-textMuted">
                     <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400 shrink-0"></i>
-                    <span>Privacy Guarantee: Aadhaar, PAN & phone numbers are scrubbed client-side before transmission.</span>
+                    <span>Privacy Guarantee: Aadhaar, PAN & phone numbers are scrubbed locally before transmission.</span>
                 </div>
             </div>
 
-            <!-- Right Column: Verification Results & Explanations -->
-            <div class="space-y-4">
+            <!-- Right Column: Verification Results & Explanations (Exact matching padding & header to Left Card) -->
+            <div class="h-full flex flex-col justify-between">
                 
-                <!-- Default Explainer Card -->
-                <div id="default-explainer-card" class="glass-card rounded-2xl p-4 sm:p-6 space-y-4">
-                    <div class="border-b border-white/10 pb-3 flex items-center justify-between">
-                        <h3 class="text-sm font-bold text-white flex items-center space-x-2">
-                            <i data-lucide="cpu" class="w-4 h-4 text-blue-400"></i>
-                            <span>Real-Time Forensic Engine</span>
-                        </h3>
-                        <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">READY</span>
+                <!-- Default State: Real-Time Forensic Engine Card -->
+                <div id="default-explainer-card" class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between h-full space-y-5">
+                    <div>
+                        <!-- Header with exact matching height & border to left card -->
+                        <div class="h-10 flex items-center justify-between border-b border-white/10 pb-3.5 mb-5">
+                            <h3 class="text-xs sm:text-sm font-bold text-white flex items-center space-x-2">
+                                <i data-lucide="cpu" class="w-4 h-4 text-blue-400"></i>
+                                <span>Real-Time Forensic Engine</span>
+                            </h3>
+                            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">READY</span>
+                        </div>
+
+                        <div class="space-y-4 text-xs">
+                            <div class="flex items-start space-x-3.5 p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                                <div class="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="globe" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-white block text-sm">1. Recruiter Email & Domain Check</span>
+                                    <span class="text-vh-textMuted text-xs leading-relaxed block mt-0.5">Detects fake lookalike domains (such as <code>careers-google.xyz</code>) and recruiters using free Gmail or Outlook accounts.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3.5 p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                                <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-white block text-sm">2. Upfront Deposit & Fee Detection</span>
+                                    <span class="text-vh-textMuted text-xs leading-relaxed block mt-0.5">Identifies illegal demands for laptop deposits, training fees, or courier costs. Real employers never charge candidates money.</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start space-x-3.5 p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                                <div class="w-9 h-9 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
+                                    <i data-lucide="key" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-white block text-sm">3. Corporate PKI Certificate Validation</span>
+                                    <span class="text-vh-textMuted text-xs leading-relaxed block mt-0.5">Scans corporate digital signatures to confirm authenticity and catch unsigned Canva or Word template documents.</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="space-y-3 text-xs">
-                        <div class="flex items-start space-x-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
-                            <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
-                                <i data-lucide="globe" class="w-4 h-4"></i>
-                            </div>
-                            <div>
-                                <span class="font-bold text-white block">1. Domain & Sender Pedigree</span>
-                                <span class="text-vh-textMuted text-[11px] block">Flags lookalike domains (e.g. <code>careers-google.xyz</code>) and free webmail HR accounts.</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
-                            <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
-                                <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-                            </div>
-                            <div>
-                                <span class="font-bold text-white block">2. Advance-Fee & Extortion Traps</span>
-                                <span class="text-vh-textMuted text-[11px] block">Detects demands for laptop security deposits, training charges, or courier fees.</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-3 p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">
-                                <i data-lucide="key" class="w-4 h-4"></i>
-                            </div>
-                            <div>
-                                <span class="font-bold text-white block">3. PKI Digital Signature Validation</span>
-                                <span class="text-vh-textMuted text-[11px] block">Audits corporate x509 cryptographic signatures to catch unsigned Canva/ChatGPT templates.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Test Docs Tip -->
-                    <div class="p-3 rounded-xl bg-blue-500/10 border border-blue-500/25 text-xs space-y-1">
-                        <div class="flex items-center space-x-1.5 text-blue-300 font-semibold">
-                            <i data-lucide="folder" class="w-3.5 h-3.5"></i>
-                            <span>Test Documents on Your Laptop:</span>
-                        </div>
-                        <p class="text-vh-textMuted text-[11px] font-mono truncate">
-                            ~/Desktop/VeriHire_TestDocs/ (5 sample PDFs ready to test)
-                        </p>
+                    <!-- Bottom reassurance -->
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-vh-textMuted">
+                        <span>Analysis completes in under 2 seconds.</span>
+                        <span class="text-blue-400 font-medium">100% In-Memory Processing</span>
                     </div>
                 </div>
 
                 <!-- Loading State -->
-                <div id="analysis-loading" class="glass-card rounded-2xl p-8 text-center space-y-3 hidden">
+                <div id="analysis-loading" class="glass-card rounded-2xl p-8 text-center space-y-3 h-full flex flex-col items-center justify-center hidden">
                     <div class="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-500/30 text-blue-400 mx-auto flex items-center justify-center animate-spin">
                         <i data-lucide="loader-2" class="w-6 h-6"></i>
                     </div>
-                    <h3 class="text-sm font-bold text-white">Analyzing Multimodal Payload...</h3>
-                    <p class="text-xs text-vh-textMuted">Running domain verification, fee extortion heuristics, and PKI audit.</p>
+                    <h3 class="text-sm font-bold text-white">Analyzing Offer Authenticity...</h3>
+                    <p class="text-xs text-vh-textMuted">Checking domain pedigree, fee demands, and digital signature.</p>
                 </div>
 
                 <!-- Single Verification Result Box -->
-                <div id="result-box-container" class="hidden">
-                    <div id="main-status-card" class="glass-card rounded-2xl p-4 sm:p-6 space-y-5 border shadow-2xl">
+                <div id="result-box-container" class="hidden h-full">
+                    <div id="main-status-card" class="glass-card rounded-2xl p-6 sm:p-7 space-y-5 border shadow-2xl h-full flex flex-col justify-between">
                         
-                        <!-- Top Row: Status Banner & Score -->
-                        <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                            <div class="flex items-center space-x-2">
-                                <span id="status-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider"></span>
-                                <span id="company-name-label" class="text-xs text-vh-textSub font-medium truncate max-w-[150px]"></span>
-                            </div>
-                            <div class="flex items-baseline space-x-1">
-                                <span class="text-[10px] font-bold text-vh-textMuted font-mono">RISK:</span>
-                                <span id="score-number" class="text-xl font-extrabold font-mono">0</span>
-                                <span class="text-xs text-vh-textMuted font-mono">/100</span>
-                            </div>
-                        </div>
-
-                        <!-- Headline & Icon -->
-                        <div class="flex items-center space-x-3">
-                            <div id="status-icon-box" class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 shadow-lg"></div>
-                            <div>
-                                <h2 id="status-headline" class="text-base sm:text-lg font-bold text-white tracking-tight"></h2>
-                                <p id="status-explanation" class="text-xs text-vh-textMuted leading-relaxed mt-0.5"></p>
-                            </div>
-                        </div>
-
-                        <!-- PKI Signature Indicator Box -->
-                        <div id="crypto-signature-box" class="p-3 rounded-xl border flex items-center justify-between text-xs">
-                            <div class="flex items-center space-x-2.5">
-                                <i data-lucide="key" class="w-4 h-4" id="crypto-sig-icon"></i>
-                                <div>
-                                    <span class="font-bold text-white block" id="crypto-sig-title">Digital Signature Audit</span>
-                                    <span class="text-[11px] text-vh-textMuted" id="crypto-sig-detail">Checking corporate PKI certificate...</span>
+                        <div>
+                            <!-- Top Row: Status Banner & Score -->
+                            <div class="h-10 flex items-center justify-between border-b border-white/10 pb-3.5 mb-5">
+                                <div class="flex items-center space-x-2">
+                                    <span id="status-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider"></span>
+                                    <span id="company-name-label" class="text-xs text-vh-textSub font-medium truncate max-w-[150px]"></span>
+                                </div>
+                                <div class="flex items-baseline space-x-1">
+                                    <span class="text-[10px] font-bold text-vh-textMuted font-mono">RISK:</span>
+                                    <span id="score-number" class="text-xl font-extrabold font-mono">0</span>
+                                    <span class="text-xs text-vh-textMuted font-mono">/100</span>
                                 </div>
                             </div>
-                            <span id="crypto-sig-badge" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold"></span>
-                        </div>
 
-                        <!-- Transparent "Why this Risk Score?" Itemized Breakdown -->
-                        <div class="p-3.5 rounded-xl bg-black/40 border border-white/10 space-y-2.5">
-                            <div class="flex items-center justify-between">
+                            <!-- Headline & Icon -->
+                            <div class="flex items-center space-x-3 mb-4">
+                                <div id="status-icon-box" class="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 shadow-lg"></div>
+                                <div>
+                                    <h2 id="status-headline" class="text-base sm:text-lg font-bold text-white tracking-tight"></h2>
+                                    <p id="status-explanation" class="text-xs text-vh-textMuted leading-relaxed mt-0.5"></p>
+                                </div>
+                            </div>
+
+                            <!-- PKI Signature Indicator Box -->
+                            <div id="crypto-signature-box" class="p-3 rounded-xl border flex items-center justify-between text-xs mb-4">
+                                <div class="flex items-center space-x-2.5">
+                                    <i data-lucide="key" class="w-4 h-4" id="crypto-sig-icon"></i>
+                                    <div>
+                                        <span class="font-bold text-white block" id="crypto-sig-title">Corporate PKI Digital Signature</span>
+                                        <span class="text-[11px] text-vh-textMuted" id="crypto-sig-detail">Checking corporate certificate...</span>
+                                    </div>
+                                </div>
+                                <span id="crypto-sig-badge" class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold"></span>
+                            </div>
+
+                            <!-- Blockchain & Security Anchor Box -->
+                            <div class="p-3 rounded-xl bg-black/40 border border-white/10 mb-4 flex items-center justify-between text-xs">
+                                <div class="space-y-0.5">
+                                    <span class="font-bold text-white block flex items-center space-x-1.5">
+                                        <i data-lucide="link-2" class="w-3.5 h-3.5 text-blue-400"></i>
+                                        <span>Blockchain Audit Anchor</span>
+                                    </span>
+                                    <span class="text-[11px] text-vh-textMuted font-mono" id="blockchain-hash-label">Block #184,921 • Immutable SHA-256</span>
+                                </div>
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold">
+                                    ANCHORED
+                                </span>
+                            </div>
+
+                            <!-- Transparent "Why this Risk Score?" Itemized Breakdown -->
+                            <div class="p-3.5 rounded-xl bg-black/40 border border-white/10 space-y-2.5 mb-4">
                                 <span class="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center space-x-1.5">
                                     <i data-lucide="calculator" class="w-3.5 h-3.5 text-blue-400"></i>
                                     <span>Why This Risk Score? (Calculation Breakdown)</span>
                                 </span>
+                                <div id="score-breakdown-list" class="space-y-1.5 text-xs"></div>
                             </div>
-                            <div id="score-breakdown-list" class="space-y-1.5 text-xs">
-                                <!-- Dynamically populated itemized calculation -->
+
+                            <!-- Key Findings -->
+                            <div class="space-y-2 mb-4">
+                                <h4 class="text-xs font-bold text-vh-textMuted uppercase tracking-wider font-mono">
+                                    Key Findings
+                                </h4>
+                                <div id="summary-points-list" class="space-y-2 text-xs"></div>
+                            </div>
+
+                            <!-- Next Step Guidance -->
+                            <div class="p-3.5 rounded-xl bg-black/50 border border-white/10 text-xs text-vh-textSub space-y-1">
+                                <span class="font-bold text-white block">Recommended Next Step:</span>
+                                <span id="action-guidance-text"></span>
                             </div>
                         </div>
 
-                        <!-- Key Findings -->
-                        <div class="space-y-2">
-                            <h4 class="text-xs font-bold text-vh-textMuted uppercase tracking-wider font-mono">
-                                Forensic Findings & Signals
-                            </h4>
-                            <div id="summary-points-list" class="space-y-2 text-xs"></div>
-                        </div>
-
-                        <!-- Next Step Guidance -->
-                        <div class="p-3.5 rounded-xl bg-black/50 border border-white/10 text-xs text-vh-textSub space-y-1">
-                            <span class="font-bold text-white block">Recommended Next Step:</span>
-                            <span id="action-guidance-text"></span>
-                        </div>
-
-                        <!-- Single Scan Image Preview Button (if image uploaded) -->
-                        <div id="singleResultPreviewRow" class="hidden pt-2 border-t border-white/10 flex items-center justify-between text-xs">
-                            <span class="text-vh-textMuted">Attached Document View:</span>
-                            <button onclick="openLightboxFromSingle()" class="px-3 py-1 rounded-lg bg-white/[0.08] hover:bg-white/[0.15] text-blue-400 font-semibold flex items-center space-x-1">
-                                <i data-lucide="eye" class="w-3.5 h-3.5"></i>
-                                <span>Preview Document Lightbox</span>
+                        <!-- Document Pop-up Inspection Button -->
+                        <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+                            <span class="text-vh-textMuted">View full document:</span>
+                            <button onclick="openDetailedPopup(singleFileBlobUrl, selectedFile ? selectedFile.name : 'Document', selectedFile ? selectedFile.type : '')" class="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold flex items-center space-x-1.5 transition-colors">
+                                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                                <span>Open Detailed Pop-up</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Bulk Batch Dashboard Result Container (Mobile Responsive Cards & Accordions) -->
-                <div id="batch-results-container" class="hidden">
-                    <div class="glass-card rounded-2xl p-4 sm:p-6 space-y-5">
-                        
-                        <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                            <div class="flex items-center space-x-2">
-                                <i data-lucide="layers" class="w-4 h-4 text-blue-400"></i>
-                                <h3 class="text-sm font-bold text-white">Batch Verification Audit</h3>
+                <!-- Bulk Batch Dashboard Result Container -->
+                <div id="batch-results-container" class="hidden h-full">
+                    <div class="glass-card rounded-2xl p-6 sm:p-7 flex flex-col justify-between h-full space-y-5">
+                        <div>
+                            <div class="h-10 flex items-center justify-between border-b border-white/10 pb-3.5 mb-4">
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="layers" class="w-4 h-4 text-blue-400"></i>
+                                    <h3 class="text-sm font-bold text-white">Batch Verification Audit</h3>
+                                </div>
+                                <button onclick="exportBatchCSV()" class="px-3 py-1 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-400 text-xs font-bold inline-flex items-center space-x-1.5 transition-all">
+                                    <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                                    <span>Export CSV</span>
+                                </button>
                             </div>
-                            <button onclick="exportBatchCSV()" class="px-3 py-1 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-400 text-xs font-bold inline-flex items-center space-x-1.5 transition-all">
-                                <i data-lucide="download" class="w-3.5 h-3.5"></i>
-                                <span>Export CSV</span>
-                            </button>
+
+                            <!-- Batch Counters -->
+                            <div class="grid grid-cols-3 gap-2 text-center mb-4">
+                                <div class="p-2.5 rounded-xl bg-black/40 border border-white/10">
+                                    <span class="text-[10px] text-vh-textMuted font-mono uppercase block">Total</span>
+                                    <span id="batch-total-count" class="text-lg font-extrabold text-white font-mono">0</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
+                                    <span class="text-[10px] text-emerald-400 font-mono uppercase block">Clean</span>
+                                    <span id="batch-clean-count" class="text-lg font-extrabold text-emerald-400 font-mono">0</span>
+                                </div>
+                                <div class="p-2.5 rounded-xl bg-rose-950/20 border border-rose-500/30">
+                                    <span class="text-[10px] text-rose-400 font-mono uppercase block">Threats</span>
+                                    <span id="batch-threat-count" class="text-lg font-extrabold text-rose-400 font-mono">0</span>
+                                </div>
+                            </div>
+
+                            <!-- Responsive Document Accordion List -->
+                            <div id="batch-cards-list" class="space-y-3 max-h-[500px] overflow-y-auto pr-1"></div>
                         </div>
 
-                        <!-- Batch Counters -->
-                        <div class="grid grid-cols-3 gap-2 text-center">
-                            <div class="p-2.5 rounded-xl bg-black/40 border border-white/10">
-                                <span class="text-[10px] text-vh-textMuted font-mono uppercase block">Total</span>
-                                <span id="batch-total-count" class="text-lg font-extrabold text-white font-mono">0</span>
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
-                                <span class="text-[10px] text-emerald-400 font-mono uppercase block">Clean</span>
-                                <span id="batch-clean-count" class="text-lg font-extrabold text-emerald-400 font-mono">0</span>
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-rose-950/20 border border-rose-500/30">
-                                <span class="text-[10px] text-rose-400 font-mono uppercase block">Threats</span>
-                                <span id="batch-threat-count" class="text-lg font-extrabold text-rose-400 font-mono">0</span>
-                            </div>
+                        <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-vh-textMuted">
+                            <span>Audit ready for placement records & compliance.</span>
+                            <span class="text-emerald-400">Verification Complete</span>
                         </div>
-
-                        <!-- Responsive Document Accordion List (Solves Mobile Squishing) -->
-                        <div id="batch-cards-list" class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
-                            <!-- Populated dynamically with expandable cards & thumbnails -->
-                        </div>
-
                     </div>
                 </div>
 
@@ -532,8 +525,8 @@
 
     </main>
 
-    <!-- Global Footer -->
-    <footer class="border-t border-white/10 bg-[#06080D]/90 py-8 mt-12 text-xs text-vh-textMuted">
+    <!-- Global Footer with Lakshman Disclaimer -->
+    <footer class="border-t border-white/10 bg-[#06080D]/95 py-8 mt-12 text-xs text-vh-textMuted">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="flex items-center space-x-2.5">
@@ -542,18 +535,90 @@
                     </div>
                     <span class="text-sm font-bold text-white">VeriHire Platform</span>
                 </div>
-                <div class="text-center sm:text-right">
-                    <p class="text-vh-textSub font-medium">Created by <strong class="text-white font-bold">Lakshman</strong></p>
-                    <p class="text-[11px] text-vh-textMuted">Powered by <span class="text-blue-400 font-mono">Antigravity AI</span> • Multimodal Cybersecurity Defense</p>
+                <div class="text-center sm:text-right space-y-0.5">
+                    <p class="text-vh-textSub font-medium">Platform Architect: <strong class="text-white font-bold">Lakshman</strong></p>
+                    <p class="text-[11px] text-vh-textMuted">Powered by <span class="text-blue-400 font-mono">Antigravity AI</span> • Autonomous Multimodal Defense</p>
                 </div>
             </div>
+
+            <!-- Benchmark Evaluation Disclaimer Requested by User -->
+            <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5 text-[11px] text-vh-textMuted leading-relaxed">
+                <strong>Benchmark Disclaimer:</strong> This platform was evaluated and verified by Lakshman across 550 synthetic and real-world benchmark tests (including Google, Microsoft, TCS, Infosys, and academic research consortia). The 100.0% precision metric reflects system performance on this 550-sample evaluation suite.
+            </div>
+
             <div class="border-t border-white/10 pt-4 text-center text-[11px]">
                 <p>© 2026 VeriHire. All rights reserved. Zero document retention policy.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal 1: PKI & How It Works Detailed Guide -->
+    <!-- HIGH-RESOLUTION DOCUMENT & PDF INSPECTION POP-UP MODAL (Solves PDF opening issue) -->
+    <div id="modal-detailed-doc" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-2xl flex items-center justify-center p-3 sm:p-6 hidden">
+        <div class="glass-card max-w-5xl w-full h-[88vh] rounded-2xl flex flex-col border border-white/20 shadow-2xl overflow-hidden">
+            
+            <!-- Modal Top Bar -->
+            <div class="p-4 border-b border-white/10 bg-black/60 flex items-center justify-between gap-3 shrink-0">
+                <div class="flex items-center space-x-3 truncate">
+                    <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="file-search" class="w-4 h-4"></i>
+                    </div>
+                    <div class="truncate">
+                        <span id="popupDocTitle" class="text-sm font-bold text-white block truncate">Document Inspection</span>
+                        <span class="text-[10px] text-vh-textMuted font-mono">High-Resolution Vector / Image View</span>
+                    </div>
+                </div>
+
+                <!-- Zoom & Action Controls -->
+                <div class="flex items-center space-x-2 shrink-0">
+                    <button onclick="zoomDoc(-0.25)" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold" title="Zoom Out">
+                        -
+                    </button>
+                    <span id="popupZoomLevel" class="text-xs font-mono text-vh-textSub px-1">100%</span>
+                    <button onclick="zoomDoc(0.25)" class="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold" title="Zoom In">
+                        +
+                    </button>
+                    <button onclick="resetDocZoom()" class="px-2 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-vh-textSub hover:text-white text-xs" title="Reset Zoom">
+                        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    </button>
+                    <button onclick="openInNewTab()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold inline-flex items-center space-x-1.5">
+                        <i data-lucide="external-link" class="w-3 h-3"></i>
+                        <span class="hidden sm:inline">Open in Tab</span>
+                    </button>
+                    <button onclick="closeDetailedPopup()" class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Content Display (PDF Iframe vs Zoomable Image) -->
+            <div class="flex-1 bg-black/80 overflow-auto p-4 flex items-center justify-center relative" id="popupViewport">
+                
+                <!-- PDF Viewer Iframe (Renders crisp vector PDF with native PDF viewer) -->
+                <iframe id="popupPdfIframe" class="w-full h-full rounded-xl border border-white/10 bg-white hidden" title="PDF Document Viewer"></iframe>
+                
+                <!-- Image Viewer (High-res zoomable image for screenshots) -->
+                <div id="popupImgContainer" class="max-w-full max-h-full flex items-center justify-center overflow-auto hidden">
+                    <img id="popupImg" class="max-w-none rounded-lg shadow-2xl transition-transform duration-200" alt="Full Document Preview">
+                </div>
+
+                <!-- Fallback notice -->
+                <div id="popupFallback" class="text-center space-y-3 p-8 hidden">
+                    <i data-lucide="file-question" class="w-12 h-12 text-vh-textMuted mx-auto"></i>
+                    <p class="text-sm text-white font-semibold">No direct preview available for this file type.</p>
+                    <button onclick="openInNewTab()" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold">Open File in Browser</button>
+                </div>
+
+            </div>
+
+            <!-- Modal Bottom Status -->
+            <div class="p-3 border-t border-white/10 bg-black/60 flex items-center justify-between text-xs text-vh-textMuted shrink-0">
+                <span>Pinch or click +/- to zoom in on small signatures and stamps.</span>
+                <span class="text-emerald-400 font-mono">100% Client-Side Render</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: PKI & How It Works Guide -->
     <div id="modal-pki" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="glass-card max-w-2xl w-full rounded-2xl p-6 sm:p-8 space-y-5 border border-white/20 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button onclick="closePkiModal()" class="absolute top-5 right-5 text-vh-textMuted hover:text-white">
@@ -566,7 +631,7 @@
                 </div>
                 <div>
                     <h3 class="text-lg font-bold text-white">How VeriHire Works & PKI Explained</h3>
-                    <p class="text-xs text-vh-textMuted">A plain-English guide to Public Key Infrastructure and document authenticity.</p>
+                    <p class="text-xs text-vh-textMuted">Simple, easy-to-understand explanation of digital certificates.</p>
                 </div>
             </div>
 
@@ -574,27 +639,27 @@
                 <div class="p-3.5 rounded-xl bg-blue-500/10 border border-blue-500/20 space-y-1.5">
                     <h4 class="font-bold text-white flex items-center space-x-1.5">
                         <i data-lucide="key" class="w-4 h-4 text-blue-400"></i>
-                        <span>What Does "PKI Validated" Mean?</span>
+                        <span>What Is a "PKI Validated" Document?</span>
                     </h4>
                     <p class="text-xs text-vh-textMuted">
-                        <strong>PKI (Public Key Infrastructure)</strong> is the global standard for cryptographic digital signatures. When genuine companies like Google, Microsoft, TCS, Infosys, or Accenture issue an offer letter, their authorized HR executive signs the PDF with a verified private key certified by a trusted Certificate Authority (e.g. Adobe Approved Trust List, eMudhra, DigiCert).
+                        <strong>PKI (Public Key Infrastructure)</strong> is like a tamper-proof digital wax seal. Real employers (Google, TCS, Accenture, Microsoft) digitally sign PDF offer letters using cryptographic keys issued by accredited government authorities (like eMudhra or DigiCert).
                     </p>
                 </div>
 
                 <div class="space-y-2">
-                    <h4 class="font-bold text-white text-xs uppercase font-mono tracking-wider">How to Tell If a Document Is PKI Validated</h4>
+                    <h4 class="font-bold text-white text-xs uppercase font-mono tracking-wider">How to Tell If an Offer Is Real</h4>
                     <ul class="space-y-2 text-xs text-vh-textMuted">
                         <li class="flex items-start space-x-2">
                             <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-                            <span><strong>In Adobe Acrobat Reader:</strong> A legitimate corporate offer shows a top ribbon stating <em>"Signed and all signatures are valid"</em> with certificate details and signer identity.</span>
+                            <span><strong>In Adobe Acrobat Reader:</strong> A legitimate corporate offer shows a blue ribbon at the top stating <em>"Signed and all signatures are valid"</em>.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-                            <span><strong>In VeriHire:</strong> Our engine scans the PDF's cryptographic dictionary for x509 PKI certificates. If genuine, it awards the <span class="text-emerald-400 font-mono font-bold">PKI VALIDATED</span> badge with zero risk penalty.</span>
+                            <span><strong>In VeriHire:</strong> Our system inspects the PDF's cryptographic signature dictionary. Real offers earn the <span class="text-emerald-400 font-mono font-bold">PKI VALIDATED</span> badge.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <i data-lucide="alert-octagon" class="w-4 h-4 text-rose-400 shrink-0 mt-0.5"></i>
-                            <span><strong>Why Scammers Fail PKI:</strong> Fraudsters generate letters using Canva, Microsoft Word, or ChatGPT. They cannot forge cryptographic private keys, resulting in <span class="text-rose-400 font-mono font-bold">UNSIGNED / COUNTERFEIT</span> status.</span>
+                            <span><strong>Why Scammers Get Flagged:</strong> Scammers draft fake letters using Canva, Microsoft Word, or AI tools. They cannot generate accredited corporate digital signatures, so VeriHire flags them as <span class="text-rose-400 font-mono font-bold">UNSIGNED / COUNTERFEIT</span>.</span>
                         </li>
                     </ul>
                 </div>
@@ -608,20 +673,7 @@
         </div>
     </div>
 
-    <!-- Modal 2: Fullscreen Lightbox Image Preview -->
-    <div id="modal-lightbox" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex flex-col items-center justify-center p-4 hidden">
-        <div class="w-full max-w-4xl flex items-center justify-between pb-3 text-white">
-            <span id="lightboxTitle" class="text-xs sm:text-sm font-mono font-bold truncate"></span>
-            <button onclick="closeLightbox()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-        </div>
-        <div class="max-w-4xl max-h-[80vh] w-full flex items-center justify-center overflow-auto rounded-2xl bg-black/50 border border-white/15 p-2">
-            <img id="lightboxImg" class="max-h-[75vh] max-w-full object-contain" alt="Enlarged Document">
-        </div>
-    </div>
-
-    <!-- Modal 3: Developer API Key Console -->
+    <!-- Modal 3: Developer API Key Console (With Named Apex Institute Link) -->
     <div id="modal-api" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
         <div class="glass-card max-w-xl w-full rounded-2xl p-6 space-y-4 border border-white/20 shadow-2xl relative">
             <button onclick="closeApiModal()" class="absolute top-5 right-5 text-vh-textMuted hover:text-white">
@@ -633,7 +685,7 @@
                 </div>
                 <div>
                     <h3 class="text-base font-bold text-white">Developer API Console</h3>
-                    <p class="text-xs text-vh-textMuted">Integration key for placement portals and bots.</p>
+                    <p class="text-xs text-vh-textMuted">Use this key in external placement portals and HR bots.</p>
                 </div>
             </div>
 
@@ -646,11 +698,21 @@
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-[11px] font-mono text-vh-textMuted uppercase mb-1">Partner Portal Demo</label>
-                    <p class="text-xs text-vh-textSub">Open our secondary partner demo to see this key working in an external university portal:</p>
-                    <a href="/portal" class="mt-2 inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
-                        <span>Open Partner Portal Demo &rarr;</span>
+                <!-- Named External Portal Integration Section Requested by User -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-r from-blue-950/40 to-indigo-950/30 border border-blue-500/30 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-white flex items-center space-x-1.5">
+                            <i data-lucide="building-2" class="w-3.5 h-3.5 text-blue-400"></i>
+                            <span>Apex Institute Career & Placement Portal</span>
+                        </span>
+                        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold">LIVE INTEGRATION</span>
+                    </div>
+                    <p class="text-xs text-vh-textSub leading-relaxed">
+                        External university placement website actively authenticating student offer letters via this live API key.
+                    </p>
+                    <a href="/portal" target="_blank" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs shadow-md transition-all">
+                        <span>Open Apex Institute Career Portal</span>
+                        <i data-lucide="external-link" class="w-3 h-3"></i>
                     </a>
                 </div>
             </div>
@@ -684,14 +746,14 @@
                 </div>
 
                 <div class="p-4 rounded-xl bg-gradient-to-b from-blue-900/30 to-black/60 border border-blue-500/40 space-y-3">
-                    <span class="text-xs font-bold text-blue-400 uppercase font-mono">VeriHire Pro</span>
+                    <span class="text-xs font-bold text-blue-400 uppercase font-mono">VeriHire Pro Active</span>
                     <ul class="text-xs space-y-1.5 text-white">
                         <li>• <strong>Bulk Batch</strong> upload (up to 50 docs)</li>
                         <li>• <strong>Placement Cell CSV Export</strong></li>
                         <li>• <strong>Developer API Key Access</strong></li>
                         <li>• <strong>Cryptographic PKI Validation</strong></li>
                     </ul>
-                    <button onclick="setTier('pro'); closeTiersModal();" class="btn-gradient-primary w-full py-2 rounded-xl text-xs font-bold text-white">Active on Lakshman's Account ✓</button>
+                    <button onclick="setTier('pro'); closeTiersModal();" class="btn-gradient-primary w-full py-2 rounded-xl text-xs font-bold text-white">Active for Fantastic Fives ✓</button>
                 </div>
             </div>
         </div>
@@ -703,10 +765,11 @@
         let selectedFile = null;
         let singleFileBlobUrl = null;
         let batchFiles = [];
-        let batchFileMap = {}; // Maps filename to { file, blobUrl }
+        let batchFileMap = {};
         let lastBatchResults = [];
+        let currentDocZoom = 1.0;
+        let currentDocUrl = null;
 
-        // Check query parameters
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('tier') === 'free') {
             currentTier = 'free';
@@ -730,19 +793,19 @@
             window.history.pushState({}, '', newUrl);
 
             if (tier === 'pro') {
-                proBtn.className = "flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all bg-blue-600 text-white shadow-sm";
-                freeBtn.className = "flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-medium text-vh-textMuted hover:text-white transition-all";
-                badgeLabel.innerText = "PRO";
+                proBtn.className = "flex items-center space-x-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all bg-blue-600 text-white shadow-sm";
+                freeBtn.className = "flex items-center space-x-1 px-2.5 py-1 rounded-lg text-[11px] font-medium text-vh-textMuted hover:text-white transition-all";
+                badgeLabel.innerText = "PRO ACTIVE";
                 badgeLabel.className = "px-2 py-0.2 rounded-full text-[9px] font-mono font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30";
-                userName.innerText = "Lakshman (Pro Active)";
-                perksText.innerText = "Bulk Batch • API Key • Crypto PKI Validation";
-                avatar.innerText = "L";
+                userName.innerText = "Fantastic Fives";
+                perksText.innerText = "Bulk Batch • API Access • PKI Certificate Check";
+                avatar.innerText = "FF";
 
                 if (batchGatekeeper) batchGatekeeper.classList.add('hidden');
                 if (batchActiveContainer) batchActiveContainer.classList.remove('hidden');
             } else {
-                freeBtn.className = "flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all bg-white/[0.1] text-white shadow-sm";
-                proBtn.className = "flex items-center space-x-1 px-2 sm:px-2.5 py-1 rounded-lg text-[11px] font-medium text-vh-textMuted hover:text-white transition-all";
+                freeBtn.className = "flex items-center space-x-1 px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all bg-white/[0.1] text-white shadow-sm";
+                proBtn.className = "flex items-center space-x-1 px-2.5 py-1 rounded-lg text-[11px] font-medium text-vh-textMuted hover:text-white transition-all";
                 badgeLabel.innerText = "FREE";
                 badgeLabel.className = "px-2 py-0.2 rounded-full text-[9px] font-mono font-bold bg-white/10 text-vh-textMuted border border-white/10";
                 userName.innerText = "Student (Free Mode)";
@@ -791,7 +854,6 @@
             }
         }
 
-        // Dropzone handlers
         const dropzone = document.getElementById('dropzone');
         const fileInput = document.getElementById('fileInput');
 
@@ -810,22 +872,9 @@
                 singleFileBlobUrl = URL.createObjectURL(selectedFile);
                 document.getElementById('singlePreviewContainer').classList.remove('hidden');
                 document.getElementById('singleFileName').innerText = `${selectedFile.name} (${(selectedFile.size / 1024).toFixed(1)} KB)`;
-
-                const imgEl = document.getElementById('singlePreviewImg');
-                const pdfPlaceholder = document.getElementById('singlePdfPlaceholder');
-
-                if (selectedFile.type.startsWith('image/')) {
-                    imgEl.src = singleFileBlobUrl;
-                    imgEl.classList.remove('hidden');
-                    pdfPlaceholder.classList.add('hidden');
-                } else {
-                    imgEl.classList.add('hidden');
-                    pdfPlaceholder.classList.remove('hidden');
-                }
             }
         }
 
-        // Batch file dropzone
         const batchDropzone = document.getElementById('batchDropzone');
         const batchFileInput = document.getElementById('batchFileInput');
 
@@ -845,7 +894,7 @@
                 list.innerHTML = '';
                 list.classList.remove('hidden');
 
-                batchFiles.forEach((f, idx) => {
+                batchFiles.forEach((f) => {
                     const blobUrl = URL.createObjectURL(f);
                     batchFileMap[f.name] = { file: f, blobUrl: blobUrl };
 
@@ -853,9 +902,10 @@
                     card.className = "flex items-center justify-between p-2 rounded-xl bg-black/50 border border-white/10 text-xs";
                     
                     const isImg = f.type.startsWith('image/');
+                    const isPdf = f.name.toLowerCase().endsWith('.pdf');
                     const previewThumb = isImg 
-                        ? `<img src="${blobUrl}" class="w-8 h-8 rounded object-cover border border-white/15 shrink-0">`
-                        : `<div class="w-8 h-8 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center shrink-0"><i data-lucide="file-text" class="w-4 h-4"></i></div>`;
+                        ? `<img src="${blobUrl}" onclick="openDetailedPopup('${blobUrl}', '${f.name}', '${f.type}')" class="w-8 h-8 rounded object-cover border border-white/15 shrink-0 cursor-pointer">`
+                        : `<div onclick="openDetailedPopup('${blobUrl}', '${f.name}', 'application/pdf')" class="w-8 h-8 rounded bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center shrink-0 cursor-pointer"><i data-lucide="file-text" class="w-4 h-4"></i></div>`;
 
                     card.innerHTML = `
                         <div class="flex items-center space-x-2.5 truncate">
@@ -865,13 +915,77 @@
                                 <span class="text-[10px] text-vh-textMuted">${(f.size / 1024).toFixed(1)} KB</span>
                             </div>
                         </div>
-                        <span class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/20 shrink-0">Ready</span>
+                        <button onclick="openDetailedPopup('${blobUrl}', '${f.name}', '${f.type}')" class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full border border-indigo-500/20 hover:bg-indigo-500/20 shrink-0">
+                            Inspect
+                        </button>
                     `;
                     list.appendChild(card);
                 });
                 document.getElementById('btn-batch-label').innerText = `Run Batch Verification (${batchFiles.length} files)`;
                 lucide.createIcons();
             }
+        }
+
+        // Detailed Document Inspection Pop-up Logic
+        function openDetailedPopup(url, title, fileType) {
+            if (!url) {
+                alert("Document preview is not available.");
+                return;
+            }
+            currentDocUrl = url;
+            currentDocZoom = 1.0;
+            document.getElementById('popupDocTitle').innerText = title || "Document Inspection";
+            document.getElementById('popupZoomLevel').innerText = "100%";
+
+            const isPdf = (title && title.toLowerCase().endsWith('.pdf')) || (fileType && fileType.includes('pdf'));
+            const isImg = (fileType && fileType.startsWith('image/')) || (title && /\.(png|jpg|jpeg|webp)$/i.test(title));
+
+            const iframe = document.getElementById('popupPdfIframe');
+            const img = document.getElementById('popupImg');
+            const imgContainer = document.getElementById('popupImgContainer');
+            const fallback = document.getElementById('popupFallback');
+
+            iframe.classList.add('hidden');
+            imgContainer.classList.add('hidden');
+            fallback.classList.add('hidden');
+
+            if (isPdf) {
+                iframe.src = url;
+                iframe.classList.remove('hidden');
+            } else if (isImg) {
+                img.src = url;
+                img.style.transform = "scale(1)";
+                imgContainer.classList.remove('hidden');
+            } else {
+                fallback.classList.remove('hidden');
+            }
+
+            document.getElementById('modal-detailed-doc').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function zoomDoc(delta) {
+            currentDocZoom = Math.min(3.0, Math.max(0.5, currentDocZoom + delta));
+            document.getElementById('popupZoomLevel').innerText = `${Math.round(currentDocZoom * 100)}%`;
+            const img = document.getElementById('popupImg');
+            if (img) img.style.transform = `scale(${currentDocZoom})`;
+        }
+
+        function resetDocZoom() {
+            currentDocZoom = 1.0;
+            document.getElementById('popupZoomLevel').innerText = "100%";
+            const img = document.getElementById('popupImg');
+            if (img) img.style.transform = "scale(1)";
+        }
+
+        function openInNewTab() {
+            if (currentDocUrl) window.open(currentDocUrl, '_blank');
+        }
+
+        function closeDetailedPopup() {
+            document.getElementById('modal-detailed-doc').classList.add('hidden');
+            const iframe = document.getElementById('popupPdfIframe');
+            if (iframe) iframe.src = "";
         }
 
         function showLoading() {
@@ -887,7 +1001,7 @@
 
         async function analyzeUploadedFile() {
             if (!selectedFile) {
-                alert("Please select a document or image first.");
+                alert("Please select a document first.");
                 return;
             }
             showLoading();
@@ -978,7 +1092,6 @@
             const breakdownList = document.getElementById('score-breakdown-list');
             const guidanceText = document.getElementById('action-guidance-text');
 
-            // Digital signature elements
             const sigTitle = document.getElementById('crypto-sig-title');
             const sigDetail = document.getElementById('crypto-sig-detail');
             const sigBadge = document.getElementById('crypto-sig-badge');
@@ -988,18 +1101,18 @@
             document.getElementById('company-name-label').innerText = data.claimed_company ? `Entity: ${data.claimed_company}` : (data.filename || "");
 
             if (isClean) {
-                card.className = "glass-card rounded-2xl p-4 sm:p-6 space-y-5 border border-emerald-500/40 glass-glow-emerald";
+                card.className = "glass-card rounded-2xl p-6 sm:p-7 space-y-5 border border-emerald-500/40 glass-glow-emerald h-full flex flex-col justify-between";
                 iconBox.className = "w-11 h-11 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0 shadow-lg";
                 iconBox.innerHTML = '<i data-lucide="check-circle-2" class="w-6 h-6"></i>';
                 
                 badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
                 badge.innerText = "VERIFIED CLEAN";
-                headline.innerText = "Verified Clean • Legitimate Offer Profile";
+                headline.innerText = "Verified Clean • Legitimate Offer";
                 explanation.innerText = "No advance fees, no premature identity harvesting, and authentic institutional credentials confirmed.";
                 scoreNum.className = "text-xl font-extrabold font-mono text-emerald-400";
 
-                sigBox.className = "p-3 rounded-xl border border-emerald-500/30 bg-emerald-950/20 flex items-center justify-between text-xs";
-                sigTitle.innerText = "PKI Digital Signature: VALID & CERTIFIED";
+                sigBox.className = "p-3 rounded-xl border border-emerald-500/30 bg-emerald-950/20 flex items-center justify-between text-xs mb-4";
+                sigTitle.innerText = "Corporate PKI Digital Signature: VALID & CERTIFIED";
                 sigDetail.innerText = "Corporate PKI certificate verified. Zero document payload tampering detected.";
                 sigBadge.className = "px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
                 sigBadge.innerText = "PKI VALID";
@@ -1018,7 +1131,7 @@
             } else {
                 const isCritical = score >= 65;
                 if (isCritical) {
-                    card.className = "glass-card rounded-2xl p-4 sm:p-6 space-y-5 border border-rose-500/40 glass-glow-rose";
+                    card.className = "glass-card rounded-2xl p-6 sm:p-7 space-y-5 border border-rose-500/40 glass-glow-rose h-full flex flex-col justify-between";
                     iconBox.className = "w-11 h-11 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center shrink-0 shadow-lg";
                     iconBox.innerHTML = '<i data-lucide="alert-octagon" class="w-6 h-6"></i>';
                     badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-rose-500/20 text-rose-400 border border-rose-500/30";
@@ -1026,7 +1139,7 @@
                     headline.innerText = "Severe Recruitment Extortion / Impersonation";
                     scoreNum.className = "text-xl font-extrabold font-mono text-rose-400";
                 } else {
-                    card.className = "glass-card rounded-2xl p-4 sm:p-6 space-y-5 border border-amber-500/40";
+                    card.className = "glass-card rounded-2xl p-6 sm:p-7 space-y-5 border border-amber-500/40 h-full flex flex-col justify-between";
                     iconBox.className = "w-11 h-11 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0 shadow-lg";
                     iconBox.innerHTML = '<i data-lucide="alert-triangle" class="w-6 h-6"></i>';
                     badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono tracking-wider bg-amber-500/20 text-amber-400 border border-amber-500/30";
@@ -1035,9 +1148,9 @@
                     scoreNum.className = "text-xl font-extrabold font-mono text-amber-400";
                 }
 
-                sigBox.className = "p-3 rounded-xl border border-rose-500/30 bg-rose-950/20 flex items-center justify-between text-xs";
-                sigTitle.innerText = "PKI Digital Signature: UNSIGNED / COUNTERFEIT";
-                sigDetail.innerText = "Document lacks x509 cryptographic certificate. Created via consumer tool without enterprise identity key.";
+                sigBox.className = "p-3 rounded-xl border border-rose-500/30 bg-rose-950/20 flex items-center justify-between text-xs mb-4";
+                sigTitle.innerText = "Corporate PKI Digital Signature: UNSIGNED / COUNTERFEIT";
+                sigDetail.innerText = "Document lacks x509 cryptographic certificate. Created via consumer tool without institutional key.";
                 sigBadge.className = "px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30";
                 sigBadge.innerText = "UNSIGNED";
 
@@ -1058,10 +1171,8 @@
                 guidanceText.innerText = "Do NOT transfer any money (e.g. laptop deposit) and do NOT share Aadhaar/PAN cards. Verify this position directly on the company's official career portal.";
             }
 
-            // Render Transparent "Why this score?" Breakdown
             breakdownList.innerHTML = '';
-            const breakdown = data.score_breakdown || [];
-            breakdown.forEach(b => {
+            (data.score_breakdown || []).forEach(b => {
                 const row = document.createElement('div');
                 row.className = "p-2 rounded-lg bg-black/40 border border-white/5 flex items-start justify-between gap-2";
                 const isSafe = b.severity === 'SAFE';
@@ -1079,16 +1190,10 @@
                 breakdownList.appendChild(row);
             });
 
-            // Preview Row
-            if (singleFileBlobUrl) {
-                document.getElementById('singleResultPreviewRow').classList.remove('hidden');
-            }
-
             lucide.createIcons();
             card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        // Render Batch Results as Mobile-Responsive Accordion Cards (No Squishing!)
         function renderBatchResult(data) {
             hideLoading();
             document.getElementById('default-explainer-card').classList.add('hidden');
@@ -1111,19 +1216,17 @@
                 const badgeClass = isClean ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : (isCritical ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' : 'bg-amber-500/20 text-amber-400 border-amber-500/30');
                 const scoreColor = isClean ? 'text-emerald-400' : (isCritical ? 'text-rose-400' : 'text-amber-400');
 
-                // Check if we have a client-side thumbnail blob
                 const fileEntry = batchFileMap[r.filename];
                 const hasBlob = fileEntry && fileEntry.blobUrl;
                 const isImg = fileEntry && fileEntry.file && fileEntry.file.type.startsWith('image/');
 
                 const thumbHtml = (hasBlob && isImg)
-                    ? `<img src="${fileEntry.blobUrl}" onclick="openLightbox('${fileEntry.blobUrl}', '${r.filename}')" class="w-12 h-12 rounded-lg object-cover border border-white/20 shrink-0 cursor-pointer hover:opacity-80 transition-opacity" title="Click to view full preview">`
-                    : `<div class="w-12 h-12 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center shrink-0 text-vh-textMuted"><i data-lucide="file-text" class="w-5 h-5 text-blue-400"></i></div>`;
+                    ? `<img src="${fileEntry.blobUrl}" onclick="openDetailedPopup('${fileEntry.blobUrl}', '${r.filename}', '${fileEntry.file.type}')" class="w-12 h-12 rounded-lg object-cover border border-white/20 shrink-0 cursor-pointer hover:opacity-80 transition-opacity" title="Click to inspect">`
+                    : `<div onclick="openDetailedPopup('${hasBlob ? fileEntry.blobUrl : ''}', '${r.filename}', 'application/pdf')" class="w-12 h-12 rounded-lg bg-black/50 border border-white/10 flex items-center justify-center shrink-0 text-vh-textMuted cursor-pointer hover:border-blue-500 transition-colors"><i data-lucide="file-text" class="w-5 h-5 text-blue-400"></i></div>`;
 
                 const card = document.createElement('div');
                 card.className = `p-3.5 sm:p-4 rounded-xl border ${borderClass} space-y-3 transition-all`;
 
-                // Build score breakdown items for dropdown
                 let breakdownHtml = '';
                 (r.score_breakdown || []).forEach(b => {
                     breakdownHtml += `
@@ -1137,7 +1240,6 @@
                     `;
                 });
 
-                // Build signals list for dropdown
                 let signalsHtml = '';
                 if (r.signals && r.signals.length > 0) {
                     r.signals.forEach(s => {
@@ -1153,14 +1255,11 @@
                 }
 
                 card.innerHTML = `
-                    <!-- Top Summary Card Row (Mobile Optimized) -->
                     <div class="flex items-start justify-between gap-3">
                         <div class="flex items-start space-x-3 truncate">
                             ${thumbHtml}
                             <div class="truncate">
-                                <div class="flex items-center space-x-2">
-                                    <span class="font-bold text-white text-xs sm:text-sm truncate block" title="${r.filename}">${r.filename}</span>
-                                </div>
+                                <span class="font-bold text-white text-xs sm:text-sm truncate block" title="${r.filename}">${r.filename}</span>
                                 <span class="text-[11px] text-vh-textMuted block mt-0.5 truncate">${r.primary_finding}</span>
                             </div>
                         </div>
@@ -1175,33 +1274,21 @@
                         </div>
                     </div>
 
-                    <!-- Expand / Collapse Dropdown Button -->
                     <div class="pt-2 border-t border-white/10 flex items-center justify-between">
                         <button onclick="toggleBatchDropdown('batch-drop-${idx}')" class="text-[11px] font-semibold text-blue-400 hover:text-blue-300 flex items-center space-x-1 transition-colors">
                             <i data-lucide="chevron-down" id="drop-icon-${idx}" class="w-3.5 h-3.5 transition-transform"></i>
-                            <span>Forensic Breakdown & Why It Failed/Passed</span>
+                            <span>View Forensic Breakdown</span>
                         </button>
-                        ${hasBlob ? `<button onclick="openLightbox('${fileEntry.blobUrl}', '${r.filename}')" class="text-[11px] text-vh-textMuted hover:text-white flex items-center space-x-1"><i data-lucide="zoom-in" class="w-3 h-3"></i><span>Preview</span></button>` : ''}
+                        <button onclick="openDetailedPopup('${hasBlob ? fileEntry.blobUrl : ''}', '${r.filename}', '${fileEntry ? fileEntry.file.type : ''}')" class="text-[11px] text-vh-textSub hover:text-white flex items-center space-x-1 bg-white/10 hover:bg-white/20 px-2 py-0.5 rounded-lg transition-colors">
+                            <i data-lucide="maximize-2" class="w-3 h-3"></i>
+                            <span>Open Detailed Pop-up</span>
+                        </button>
                     </div>
 
-                    <!-- Expandable Forensic Detail Dropdown -->
                     <div id="batch-drop-${idx}" class="hidden space-y-3 pt-3 border-t border-white/10 text-xs">
-                        
-                        <!-- Document Preview Full Row if Image -->
-                        ${hasBlob && isImg ? `
-                            <div class="p-2 rounded-xl bg-black/60 border border-white/10 flex items-center space-x-3">
-                                <img src="${fileEntry.blobUrl}" class="w-16 h-16 rounded object-cover border border-white/10">
-                                <div>
-                                    <span class="font-bold text-white block">Document Visual Inspection</span>
-                                    <button onclick="openLightbox('${fileEntry.blobUrl}', '${r.filename}')" class="text-blue-400 hover:underline text-[11px] font-semibold mt-1">Open Full-Screen Lightbox &rarr;</button>
-                                </div>
-                            </div>
-                        ` : ''}
-
-                        <!-- PKI Signature status -->
                         <div class="p-2.5 rounded-xl bg-black/50 border border-white/10 flex items-center justify-between text-xs">
                             <div>
-                                <span class="font-bold text-white block">Cryptographic PKI Signature</span>
+                                <span class="font-bold text-white block">Corporate PKI Digital Signature</span>
                                 <span class="text-[11px] text-vh-textMuted">${r.digital_signature.explanation}</span>
                             </div>
                             <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold ${r.digital_signature.valid ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/20' : 'text-rose-400 bg-rose-500/10 border border-rose-500/20'}">
@@ -1209,7 +1296,6 @@
                             </span>
                         </div>
 
-                        <!-- Itemized Score Breakdown -->
                         <div class="space-y-1.5">
                             <span class="text-[10px] font-bold text-vh-textMuted uppercase font-mono block">Why was this score (${r.risk_score}/100) assigned?</span>
                             <div class="space-y-1">
@@ -1217,7 +1303,6 @@
                             </div>
                         </div>
 
-                        <!-- Signals -->
                         <div class="space-y-1.5">
                             <span class="text-[10px] font-bold text-vh-textMuted uppercase font-mono block">Detected Forensics & Evidence</span>
                             <div class="space-y-1">
@@ -1225,12 +1310,10 @@
                             </div>
                         </div>
 
-                        <!-- Advice -->
                         <div class="p-2.5 rounded-xl bg-black/60 border border-white/10 text-[11px] text-vh-textSub">
                             <strong class="text-white block mb-0.5">Placement Action:</strong>
                             ${r.advice || (isClean ? 'Safe for campus placement verification.' : 'Block placement clearance and report recruiter domain.')}
                         </div>
-
                     </div>
                 `;
                 cardsList.appendChild(card);
@@ -1243,23 +1326,6 @@
         function toggleBatchDropdown(id) {
             const el = document.getElementById(id);
             if (el) el.classList.toggle('hidden');
-        }
-
-        // Lightbox Fullscreen Preview Functions
-        function openLightbox(url, title) {
-            document.getElementById('lightboxImg').src = url;
-            document.getElementById('lightboxTitle').innerText = title || "Document Preview";
-            document.getElementById('modal-lightbox').classList.remove('hidden');
-        }
-
-        function openLightboxFromSingle() {
-            if (singleFileBlobUrl) {
-                openLightbox(singleFileBlobUrl, selectedFile.name);
-            }
-        }
-
-        function closeLightbox() {
-            document.getElementById('modal-lightbox').classList.add('hidden');
         }
 
         function exportBatchCSV() {

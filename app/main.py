@@ -90,7 +90,7 @@ def build_score_breakdown(result: Dict[str, Any], score: int) -> List[Dict[str, 
                 "factor": "Synthetic AI / Template Discrepancies",
                 "points": f"+{min(30, synth_pts)} pts",
                 "severity": "MEDIUM",
-                "reason": "Exhibits hallmarks of LLM/ChatGPT template drafting, placeholder bracket artifacts, or missing requisition identifiers."
+                "reason": "Exhibits hallmarks of LLM template drafting, placeholder bracket artifacts, or missing requisition identifiers."
             })
         # Missing PKI signature
         breakdown.append({
@@ -191,7 +191,7 @@ async def get_api_key():
     return {
         "status": "active",
         "tier": "Pro Enterprise",
-        "subscriber": "Lakshman",
+        "subscriber": "Fantastic Fives",
         "api_key": "vh_live_9f83b2a7e41c6d590218a4d70",
         "rate_limit": "Unlimited (10,000 requests / min)",
         "endpoints": [
