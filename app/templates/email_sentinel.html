@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MailGuard AI • Autonomous Recruitment Inbox Sentinel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background-color: #09090B;
+            color: #F8FAFC;
+        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased">
+    <!-- Navbar -->
+    <header class="bg-zinc-950/90 border-b border-zinc-800 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold shadow-lg shadow-cyan-500/20">
+                    <i data-lucide="mail-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm sm:text-base font-bold text-white tracking-tight">MailGuard AI</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold font-mono">AUTOMATED INBOX BOT</span>
+                    </div>
+                    <span class="text-[11px] text-zinc-400 block -mt-0.5">Automated Recruitment Email & Offer Sentinel</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="/" class="flex items-center space-x-2 text-xs text-zinc-300 hover:text-white px-3 py-1.5 rounded-xl bg-zinc-900 border border-zinc-700 hover:border-cyan-500/50 transition-all">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                    <span>VeriHire Console</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 w-full">
+        <div class="p-4 sm:p-5 rounded-2xl glass-panel border-l-4 border-l-cyan-500 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1">
+                <div class="flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span class="text-xs font-bold text-cyan-400 tracking-wide uppercase font-mono">INBOX WATCHER ACTIVE • POWERED BY VERIHIRE API</span>
+                </div>
+                <p class="text-xs text-zinc-300 leading-relaxed max-w-2xl">
+                    MailGuard monitors incoming Gmail/corporate mailboxes for job offers, extracting text & attachments to evaluate them live via Lakshman's <strong>VeriHire Pro API</strong>.
+                </p>
+            </div>
+            <div class="flex items-center space-x-2 shrink-0">
+                <div class="px-3 py-1.5 rounded-xl bg-black/60 border border-zinc-800 text-[11px] font-mono text-zinc-300 flex items-center space-x-2">
+                    <i data-lucide="key" class="w-3.5 h-3.5 text-cyan-400"></i>
+                    <span>vh_live_9f83...d70</span>
+                </div>
+                <span class="px-2.5 py-1 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold">INTEGRATED</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left: Inbox Feed (5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+            <div class="flex items-center justify-between pb-2 border-b border-zinc-800">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="inbox" class="w-4 h-4 text-cyan-400"></i>
+                    <h2 class="text-sm font-bold text-white uppercase tracking-wider">Simulated Inbox Feed</h2>
+                </div>
+                <span class="text-[10px] font-mono bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded-full">3 EMAILS QUEUED</span>
+            </div>
+
+            <!-- Email Cards -->
+            <div class="space-y-3" id="emailList">
+                <!-- Email 1 (Scam) -->
+                <div onclick="selectEmail(1)" id="email-card-1" class="cursor-pointer p-4 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/60 transition-all space-y-2 group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-semibold text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded-md font-mono">HIGH RISK FLAG</span>
+                        <span class="text-[10px] text-zinc-500 font-mono">10:42 AM</span>
+                    </div>
+                    <div class="space-y-0.5">
+                        <h3 class="text-xs font-bold text-white group-hover:text-cyan-300 transition-colors">Immediate Direct Offer • No Interview Required</h3>
+                        <p class="text-[11px] text-zinc-400 truncate">From: hr-recruiting@google-careers-portal.xyz</p>
+                    </div>
+                    <p class="text-[11px] text-zinc-500 line-clamp-2">"We saw your profile on Instagram and selected you directly without any interview. Deposit 2500 INR for laptop..."</p>
+                </div>
+
+                <!-- Email 2 (Phishing) -->
+                <div onclick="selectEmail(2)" id="email-card-2" class="cursor-pointer p-4 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/60 transition-all space-y-2 group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-semibold text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded-md font-mono">IDENTITY THEFT RISK</span>
+                        <span class="text-[10px] text-zinc-500 font-mono">Yesterday</span>
+                    </div>
+                    <div class="space-y-0.5">
+                        <h3 class="text-xs font-bold text-white group-hover:text-cyan-300 transition-colors">Razorpay Solutions • Selected for Operations Intern</h3>
+                        <p class="text-[11px] text-zinc-400 truncate">From: razorpay.onboarding@gmail.com</p>
+                    </div>
+                    <p class="text-[11px] text-zinc-500 line-clamp-2">"Please send front and back coloured scans of your Aadhaar card and a signed blank cancelled cheque within 24 hours..."</p>
+                </div>
+
+                <!-- Email 3 (Genuine) -->
+                <div onclick="selectEmail(3)" id="email-card-3" class="cursor-pointer p-4 rounded-xl border border-zinc-800 bg-zinc-900/60 hover:border-cyan-500/60 transition-all space-y-2 group">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md font-mono">VERIFIED LEGITIMATE</span>
+                        <span class="text-[10px] text-zinc-500 font-mono">Nov 12</span>
+                    </div>
+                    <div class="space-y-0.5">
+                        <h3 class="text-xs font-bold text-white group-hover:text-cyan-300 transition-colors">Microsoft India (R&D) • Offer of Employment (Req #74892)</h3>
+                        <p class="text-[11px] text-zinc-400 truncate">From: university-recruiting@microsoft.com</p>
+                    </div>
+                    <p class="text-[11px] text-zinc-500 line-clamp-2">"Formal offer of employment. Official details, statutory PF/HRA breakups, and DocuSign signing link via careers.microsoft.com..."</p>
+                </div>
+            </div>
+
+            <!-- Custom Paste Email -->
+            <div class="p-4 rounded-xl glass-panel space-y-3">
+                <h3 class="text-xs font-bold text-white flex items-center space-x-2">
+                    <i data-lucide="edit-3" class="w-3.5 h-3.5 text-cyan-400"></i>
+                    <span>Or Paste Any Incoming Email Body</span>
+                </h3>
+                <textarea id="customEmailBody" rows="3" placeholder="Paste recruiter email text here..." class="w-full bg-black/60 border border-zinc-800 rounded-lg p-2.5 text-xs text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-cyan-500"></textarea>
+                <div class="flex space-x-2">
+                    <input id="customSender" type="text" placeholder="Sender email (e.g. hr@company.com)" class="flex-1 bg-black/60 border border-zinc-800 rounded-lg px-2.5 py-1.5 text-xs text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-cyan-500">
+                    <button onclick="analyzeCustomEmail()" class="px-3 py-1.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-lg text-xs font-semibold flex items-center space-x-1.5 transition-all">
+                        <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i>
+                        <span>Scan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: VeriHire Real-Time API Telemetry & Clearance Certificate (7 cols) -->
+        <div class="lg:col-span-7 space-y-4">
+            <div class="glass-panel rounded-2xl p-6 space-y-5">
+                <div class="flex items-center justify-between pb-3 border-b border-zinc-800">
+                    <div class="flex items-center space-x-2">
+                        <i data-lucide="terminal" class="w-4 h-4 text-emerald-400"></i>
+                        <h2 class="text-sm font-bold text-white uppercase tracking-wider">VeriHire Real-time Sentinel Engine</h2>
+                    </div>
+                    <span id="apiStatusPill" class="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-800 text-zinc-400 border border-zinc-700">READY</span>
+                </div>
+
+                <!-- Active Inspect Email Header -->
+                <div class="p-3.5 rounded-xl bg-black/40 border border-zinc-800 space-y-1">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-zinc-400">Inspecting Message:</span>
+                        <span id="activeSubject" class="text-cyan-400 font-semibold truncate max-w-xs">Select an email to trigger VeriHire API</span>
+                    </div>
+                    <div class="text-[11px] text-zinc-500 font-mono truncate" id="activeSender">Sender: None</div>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loadingBox" class="hidden p-8 text-center space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mx-auto flex items-center justify-center animate-spin">
+                        <i data-lucide="loader-2" class="w-5 h-5"></i>
+                    </div>
+                    <p class="text-xs text-zinc-400 font-mono">POST /api/analyze-text [Authorizing with Live Key...]</p>
+                </div>
+
+                <!-- Results Display -->
+                <div id="resultBox" class="space-y-4">
+                    <!-- Clearance Card -->
+                    <div id="verdictCard" class="p-4 rounded-xl border border-zinc-800 bg-zinc-900/40 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono font-bold tracking-wider uppercase text-zinc-400">INBOX DEFENSE VERDICT</span>
+                            <span id="verdictBadge" class="px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono bg-zinc-800 text-zinc-300">AWAITING TRIGGER</span>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div id="verdictIcon" class="w-10 h-10 rounded-xl bg-zinc-800 text-zinc-400 flex items-center justify-center shrink-0">
+                                <i data-lucide="shield" class="w-5 h-5"></i>
+                            </div>
+                            <div class="space-y-1">
+                                <h3 id="verdictHeadline" class="text-sm font-bold text-white">Click any email on the left</h3>
+                                <p id="verdictAdvice" class="text-xs text-zinc-400 leading-relaxed">MailGuard forwards the message text & sender to VeriHire's core API for instant forensic risk analysis.</p>
+                            </div>
+                        </div>
+
+                        <!-- Score breakdown row -->
+                        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-zinc-800 text-xs">
+                            <div>
+                                <span class="text-zinc-500 text-[10px] block font-mono">RISK SCORE:</span>
+                                <span id="riskScoreVal" class="font-bold font-mono text-base text-zinc-400">— / 100</span>
+                            </div>
+                            <div>
+                                <span class="text-zinc-500 text-[10px] block font-mono">SENTINEL ACTION:</span>
+                                <span id="sentinelAction" class="font-bold font-mono text-xs text-zinc-400">Standby</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Signals Breakdown -->
+                    <div id="signalsContainer" class="hidden space-y-2">
+                        <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider block">Detected Fraud Signals</span>
+                        <div id="signalsList" class="space-y-2"></div>
+                    </div>
+
+                    <!-- Raw JSON API Output -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">Live API Response JSON</span>
+                            <span class="text-[9px] font-mono text-emerald-400">200 OK • sub-millisecond</span>
+                        </div>
+                        <pre id="rawJsonResponse" class="p-3 rounded-xl bg-black/90 border border-zinc-800 text-[10px] font-mono text-emerald-400 max-h-48 overflow-y-auto leading-relaxed">// Click an email or scan custom text to view live API return payload</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-zinc-800 bg-zinc-950 py-4 text-center text-xs text-zinc-500">
+        <p>MailGuard AI • Demonstrating automated email inbox protection powered by the VeriHire Developer API.</p>
+    </footer>
+
+    <script>
+        const EMAILS = {
+            1: {
+                subject: "Immediate Direct Offer • No Interview Required",
+                sender: "hr-recruiting@google-careers-portal.xyz",
+                body: "Dear Candidate, We saw your profile on Instagram and we were impressed with your merits. We are pleased to directly select you without any interview for Software Trainee. Please deposit a refundable security amount of 2500 INR for laptop dispatch within 24 hours."
+            },
+            2: {
+                subject: "Razorpay Solutions • Selected for Operations Intern",
+                sender: "razorpay.onboarding@gmail.com",
+                body: "Congratulations! You have been selected for the Operations Internship at Razorpay. Before issuing the appointment letter, please send front and back coloured scans of your Aadhaar card, PAN card, and a signed blank cancelled cheque for salary account verification. Reply immediately within 24 hours."
+            },
+            3: {
+                subject: "Microsoft India (R&D) • Offer of Employment (Req #74892)",
+                sender: "university-recruiting@microsoft.com",
+                body: "Dear Lakshman, We are delighted to formally offer you employment at Microsoft India (R&D) Private Limited as a Software Engineer. Job Requisition ID: MS-74892. Details regarding your compensation structure, statutory Provident Fund (EPF), House Rent Allowance (HRA), and formal DocuSign documents can be accessed at careers.microsoft.com."
+            }
+        };
+
+        function selectEmail(id) {
+            document.querySelectorAll('#emailList > div').forEach(el => el.classList.remove('border-cyan-500', 'bg-cyan-500/10'));
+            const card = document.getElementById(`email-card-${id}`);
+            if (card) card.classList.add('border-cyan-500', 'bg-cyan-500/10');
+
+            const item = EMAILS[id];
+            triggerVeriHireApi(item.body, item.sender, item.subject);
+        }
+
+        function analyzeCustomEmail() {
+            const body = document.getElementById('customEmailBody').value.trim();
+            const sender = document.getElementById('customSender').value.trim();
+            if (!body) {
+                alert("Please paste some email text to analyze.");
+                return;
+            }
+            triggerVeriHireApi(body, sender, "Custom Incoming Email");
+        }
+
+        async function triggerVeriHireApi(text, sender, subject) {
+            document.getElementById('activeSubject').innerText = subject;
+            document.getElementById('activeSender').innerText = `Sender: ${sender || 'Unknown'}`;
+            document.getElementById('loadingBox').classList.remove('hidden');
+            document.getElementById('resultBox').classList.add('opacity-50');
+            document.getElementById('apiStatusPill').innerText = "CALLING VERIHIRE API...";
+            document.getElementById('apiStatusPill').className = "text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30";
+
+            try {
+                const res = await fetch('/api/analyze-text', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        text: text,
+                        sender_email: sender,
+                        claimed_company: ""
+                    })
+                });
+                const data = await res.json();
+                renderResult(data);
+            } catch (err) {
+                alert("API Request Failed: " + err);
+            } finally {
+                document.getElementById('loadingBox').classList.add('hidden');
+                document.getElementById('resultBox').classList.remove('opacity-50');
+            }
+        }
+
+        function renderResult(data) {
+            document.getElementById('apiStatusPill').innerText = "200 OK • VERIFIED";
+            document.getElementById('apiStatusPill').className = "text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+
+            const score = data.risk_score || 0;
+            const card = document.getElementById('verdictCard');
+            const icon = document.getElementById('verdictIcon');
+            const badge = document.getElementById('verdictBadge');
+            const headline = document.getElementById('verdictHeadline');
+            const advice = document.getElementById('verdictAdvice');
+            const scoreVal = document.getElementById('riskScoreVal');
+            const action = document.getElementById('sentinelAction');
+
+            scoreVal.innerText = `${score} / 100`;
+
+            if (score >= 65) {
+                card.className = "p-4 rounded-xl border border-rose-500/40 bg-rose-950/20 space-y-3";
+                icon.className = "w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center shrink-0";
+                icon.innerHTML = '<i data-lucide="alert-octagon" class="w-5 h-5"></i>';
+                badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono bg-rose-500/20 text-rose-400 border border-rose-500/30";
+                badge.innerText = "MALICIOUS PHISHING DETECTED";
+                headline.innerText = "High-Risk Recruitment Scam Alert";
+                advice.innerText = data.advice || "Critical fraud indicators detected. Email quarantine recommended.";
+                scoreVal.className = "font-bold font-mono text-base text-rose-400";
+                action.innerText = "QUARANTINE & WARN USER 🚫";
+                action.className = "font-bold font-mono text-xs text-rose-400";
+            } else if (score >= 30) {
+                card.className = "p-4 rounded-xl border border-amber-500/40 bg-amber-950/20 space-y-3";
+                icon.className = "w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0";
+                icon.innerHTML = '<i data-lucide="alert-triangle" class="w-5 h-5"></i>';
+                badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono bg-amber-500/20 text-amber-400 border border-amber-500/30";
+                badge.innerText = "SUSPICIOUS REVIEW REQUIRED";
+                headline.innerText = "Caution Advised • Suspicious Signals";
+                advice.innerText = data.advice || "Review details with placement cell before sharing credentials.";
+                scoreVal.className = "font-bold font-mono text-base text-amber-400";
+                action.innerText = "FLAG FOR MANUAL REVIEW ⚠️";
+                action.className = "font-bold font-mono text-xs text-amber-400";
+            } else {
+                card.className = "p-4 rounded-xl border border-emerald-500/40 bg-emerald-950/20 space-y-3";
+                icon.className = "w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0";
+                icon.innerHTML = '<i data-lucide="check-circle" class="w-5 h-5"></i>';
+                badge.className = "px-2.5 py-0.5 rounded-full text-[10px] font-bold font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+                badge.innerText = "AUTHENTICATED LEGITIMATE";
+                headline.innerText = "Verified Corporate Recruitment Offer";
+                advice.innerText = data.advice || "No malicious indicators found. Safe to proceed.";
+                scoreVal.className = "font-bold font-mono text-base text-emerald-400";
+                action.innerText = "AUTO-APPROVE TO INBOX ✅";
+                action.className = "font-bold font-mono text-xs text-emerald-400";
+            }
+
+            // Signals
+            const sigBox = document.getElementById('signalsContainer');
+            const sigList = document.getElementById('signalsList');
+            sigList.innerHTML = '';
+            if (data.signals && data.signals.length > 0) {
+                sigBox.classList.remove('hidden');
+                data.signals.forEach(s => {
+                    const el = document.createElement('div');
+                    el.className = "p-2.5 rounded-lg bg-black/50 border border-zinc-800 text-xs space-y-1";
+                    el.innerHTML = `
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-zinc-200">${s.title}</span>
+                            <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400">${s.severity}</span>
+                        </div>
+                        <p class="text-[11px] text-zinc-400">${s.explanation}</p>
+                    `;
+                    sigList.appendChild(el);
+                });
+            } else {
+                sigBox.classList.add('hidden');
+            }
+
+            document.getElementById('rawJsonResponse').innerText = JSON.stringify(data, null, 2);
+            lucide.createIcons();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            selectEmail(1);
+        });
+    </script>
+</body>
+</html>

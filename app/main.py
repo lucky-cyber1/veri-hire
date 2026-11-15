@@ -1,6 +1,7 @@
 import os
 import io
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Header
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from pydantic import BaseModel
@@ -16,6 +17,14 @@ app = FastAPI(
     title="VeriHire - Autonomous Recruitment Fraud & Digital Identity Defense",
     version="1.0.0",
     description="Multimodal AI forensics against fraudulent job offers and identity harvesting."
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 static_dir = os.path.join(os.path.dirname(__file__), "static")
