@@ -103,6 +103,32 @@ def build_score_breakdown(result: Dict[str, Any], score: int) -> List[Dict[str, 
                 "severity": "MEDIUM",
                 "reason": "Exhibits hallmarks of LLM template drafting, placeholder bracket artifacts, or missing requisition identifiers."
             })
+
+        has_forged_sig = any(s.get("category") == "FORGED_EXECUTIVE_SIGNATORY" for s in result.get("signals", []))
+        has_template_contam = any(s.get("category") == "TEMPLATE_CONTAMINATION_FORGERY" for s in result.get("signals", []))
+        has_syntax_anomaly = any(s.get("category") == "GROSS_LEGAL_SYNTAX_ANOMALY" for s in result.get("signals", []))
+
+        if has_forged_sig:
+            raw_items.append({
+                "factor": "Forged Executive Signatory Identity",
+                "weight": 40,
+                "severity": "CRITICAL",
+                "reason": "Signatory identity matches known impersonated HR executives flagged in public corporate fraud advisories."
+            })
+        if has_template_contam:
+            raw_items.append({
+                "factor": "Cross-Corporate Template Contamination",
+                "weight": 35,
+                "severity": "CRITICAL",
+                "reason": "Document contains internal reference codes from another company (e.g. Tata Steel TSL code inside a JSW letterhead)."
+            })
+        if has_syntax_anomaly:
+            raw_items.append({
+                "factor": "Gross Contract Syntactic Anomalies",
+                "weight": 25,
+                "severity": "HIGH",
+                "reason": "Contains multiple non-standard phrases ('24 x 7 bases'), whitespace omissions, and internal contractual contradictions."
+            })
         
         # Missing PKI signature baseline
         raw_items.append({

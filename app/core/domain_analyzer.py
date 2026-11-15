@@ -19,7 +19,14 @@ KNOWN_ENTERPRISES = {
     "ey": ["ey.com"],
     "pwc": ["pwc.com"],
     "kpmg": ["kpmg.com"],
-    "tata": ["tata.com"]
+    "tata": ["tata.com", "tatasteel.com", "tatamotors.com"],
+    "tata steel": ["tatasteel.com"],
+    "jsw": ["jsw.in", "jswsteel.in"],
+    "jsw steel": ["jsw.in", "jswsteel.in"],
+    "reliance": ["ril.com"],
+    "adani": ["adani.com"],
+    "l&t": ["larsentoubro.com"],
+    "vedanta": ["vedantalimited.com"]
 }
 
 FREE_MAIL_PROVIDERS = {

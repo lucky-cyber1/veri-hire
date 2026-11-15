@@ -99,6 +99,39 @@ SUSPICIOUS_PDF_PRODUCERS = [
     "canva", "ilovepdf", "smallpdf", "pdfescape", "word", "libreoffice", "photoshop", "gimp", "wps", "quartz pdfcontext"
 ]
 
+# Impersonated executive/HR signatories highlighted in corporate cybercrime advisories
+FORGED_SIGNATORY_PATTERNS = [
+    (r'\btinu\s*sule\b', "Known Forged HR Signatory (Public Corporate Scam Advisory Match)", 55),
+    (r'\b(group\s*head\s*[-–]\s*hr|hr\s*director)\b.*\btinu\s*sule\b', "Impersonated Executive Signatory Identity", 55)
+]
+
+# Cross-company template contamination & copy-paste artifacts
+TEMPLATE_CONTAMINATION_PATTERNS = [
+    (r'(\btsl\b|\btata\s*steel\b).*jsw|jsw.*(\btsl\b|\btata\s*steel\b)', "Cross-Corporate Template Contamination (TSL / Tata Steel in JSW Letter)", 50),
+    (r'ref\s*(?:id|no)?\s*[-:]?\s*[\w\/-]*\btsl\b[\w\/-]*', "Cross-Brand Requisition ID Mismatch (Found Tata Steel TSL ID)", 50),
+    (r'ref\s*(?:id|no)?\s*[-:]?\s*[\w\/-]*\b(tcs|infy|wip|cts|msft|goog)\b[\w\/-]*', "Cross-Entity Corporate Reference ID Contamination", 45)
+]
+
+# Formatting, spacing, and syntactical anomalies in claimed legal contracts
+SYNTACTIC_ANOMALY_PATTERNS = [
+    (r'\)[a-zA-Z]{3,}', "Gross Whitespace Omission After Closing Parenthesis", 30),
+    (r'\b24\s*x\s*7\s*bases\b', "Corporate Phrasing Malapropism ('24 x 7 bases')", 30),
+    (r'\byouremployment\b', "Concatenated Word Spacing Anomaly ('youremployment')", 30),
+    (r'report\s+Sharp\s+[0-9]', "Irregular Legal Capitalization & Spacing ('report Sharp')", 25),
+    (r'\ball\s*relevant\s*documentations\b', "Non-Standard Indian Corporate Phrasing ('all relevant Documentations')", 25)
+]
+
+# Original physical document surrender / retention traps
+ORIGINAL_DOC_RETENTION_PATTERNS = [
+    (r'(carry|bring|submit|produce|deposit)\s*(your)?\s*all[- ]original\s*(documents|certificates|degrees|marksheets)', "Physical Original Document Surrender Trap", 35),
+    (r'proof\s*of\s*salary.*copy\s*of\s*(passport|driving\s*license|election\s*id)', "Excessive Pre-Employment Identification Demand", 30)
+]
+
+# Internal structural contradictions (claims to be appointment letter, but body says appointment letter given later)
+CONTRADICTORY_APPOINTMENT_PATTERNS = [
+    (r'letter\s*of\s*appointment.*shall\s*be\s*issued\s*the\s*(formal\s*)?appointment\s*letter', "Internal Legal Contradiction (Offers Appointment while Deferring Appointment Letter)", 35)
+]
+
 def perform_ocr_image_bytes(image_bytes: bytes) -> str:
     """
     Extracts text from image bytes using the high-performance native macOS Vision OCR engine,
@@ -250,7 +283,7 @@ def analyze_offer(
             sender_email = email_match.group(0)
             
     if not claimed_company:
-        for comp in ["Google", "Microsoft", "TCS", "Infosys", "Wipro", "Amazon", "Razorpay", "Swiggy", "Zomato", "Flipkart", "Accenture", "Cognizant"]:
+        for comp in ["Google", "Microsoft", "TCS", "Infosys", "Wipro", "Amazon", "Razorpay", "Swiggy", "Zomato", "Flipkart", "Accenture", "Cognizant", "JSW Steel", "JSW", "Tata Steel", "Tata Motors", "Tata", "Reliance", "Adani", "L&T", "Larsen & Toubro", "Vedanta", "Mahindra", "BHEL", "SAIL", "ONGC"]:
             if re.search(r'\b' + comp + r'\b', raw_text, re.IGNORECASE):
                 claimed_company = comp
                 break
@@ -438,6 +471,85 @@ def analyze_offer(
                 })
                 break
 
+    # 1. Forged HR signatory check (public corporate fraud advisory matches)
+    for pattern, label, weight in FORGED_SIGNATORY_PATTERNS:
+        matches = re.findall(pattern, lower_text)
+        if matches:
+            category_scores["synthetic_sample"] = max(category_scores["synthetic_sample"], weight)
+            signals.append({
+                "category": "FORGED_EXECUTIVE_SIGNATORY",
+                "severity": "CRITICAL",
+                "title": label,
+                "evidence": f"Found reference matching known forged signatory identity ('{matches[0] if isinstance(matches[0], str) else matches[0][0]}').",
+                "explanation": "This specific executive name and designation is a known target of widespread recruitment fraud syndicates, explicitly warned against in official corporate fraud advisories."
+            })
+
+    # 2. Template contamination & cross-entity code mismatch check
+    for pattern, label, weight in TEMPLATE_CONTAMINATION_PATTERNS:
+        matches = re.findall(pattern, lower_text)
+        if matches:
+            category_scores["synthetic_sample"] = max(category_scores["synthetic_sample"], weight)
+            signals.append({
+                "category": "TEMPLATE_CONTAMINATION_FORGERY",
+                "severity": "CRITICAL",
+                "title": label,
+                "evidence": "Detected cross-entity reference identifier/acronym conflicting with the claimed company identity.",
+                "explanation": "Scammers copy-pasted layout codes from a competitor template (e.g. Tata Steel TSL requisition code inside a JSW letterhead). Legitimate enterprise appointment letters never contain conflicting corporate identity tokens."
+            })
+
+    # 3. Syntactic & formatting errors in claimed formal legal contract
+    syntax_error_count = 0
+    for pattern, label, weight in SYNTACTIC_ANOMALY_PATTERNS:
+        matches = re.findall(pattern, lower_text if "Sharp" not in pattern else sanitized_text)
+        if matches:
+            syntax_error_count += 1
+            category_scores["synthetic_sample"] = max(category_scores["synthetic_sample"], weight)
+            signals.append({
+                "category": "GROSS_LEGAL_SYNTAX_ANOMALY",
+                "severity": "HIGH",
+                "title": label,
+                "evidence": "Found gross typographical/formatting anomaly in official letter text.",
+                "explanation": "Formal enterprise employment appointments undergo legal compliance review and do not exhibit missing word spaces, incorrect idioms ('24 x 7 bases'), or improper punctuation."
+            })
+
+    # 4. Original physical document surrender / retention check
+    for pattern, label, weight in ORIGINAL_DOC_RETENTION_PATTERNS:
+        matches = re.findall(pattern, lower_text)
+        if matches:
+            category_scores["kyc_harvesting"] = max(category_scores["kyc_harvesting"], weight)
+            signals.append({
+                "category": "ORIGINAL_DOC_SURRENDER_TRAP",
+                "severity": "HIGH",
+                "title": label,
+                "evidence": "Direct demand to bring/surrender all original academic and salary records before formal appointment.",
+                "explanation": "Requiring candidates to carry and surrender all original educational certificates and personal identity cards to remote reporting centers before formal appointment is a classic coercive document-retention tactic."
+            })
+
+    # 5. Contradictory appointment terms check
+    for pattern, label, weight in CONTRADICTORY_APPOINTMENT_PATTERNS:
+        if re.search(pattern, lower_text, re.DOTALL):
+            category_scores["coercion"] = max(category_scores["coercion"], weight)
+            signals.append({
+                "category": "INTERNAL_LEGAL_CONTRADICTION",
+                "severity": "HIGH",
+                "title": label,
+                "evidence": "Document labels itself as a 'Letter of Appointment', but states in the body that the formal Appointment Letter will only be issued later.",
+                "explanation": "Blatant contractual contradiction revealing an assembled scam template."
+            })
+
+    # 6. Indian Listed Enterprise Mandatory CIN & Contact Check
+    has_cin = bool(re.search(r'[L|U][0-9]{5}[A-Z]{2}[0-9]{4}[A-Z]{3}[0-9]{6}', raw_text))
+    is_indian_conglomerate = claimed_company in ["JSW", "JSW Steel", "Tata Steel", "Tata", "Reliance", "Adani", "L&T", "Vedanta", "Mahindra"]
+    if is_indian_conglomerate and not has_cin and not has_verified_domain and not has_official_portal:
+        category_scores["synthetic_sample"] = max(category_scores["synthetic_sample"], 45)
+        signals.append({
+            "category": "MISSING_MANDATORY_CIN_REGISTRATION",
+            "severity": "HIGH",
+            "title": "Missing Statutory Corporate Identity Number (CIN)",
+            "evidence": f"Claims to be an official letterhead of {claimed_company}, but lacks mandatory 21-digit Ministry of Corporate Affairs CIN registration number.",
+            "explanation": "Under Section 12(3)(c) of the Indian Companies Act 2013, every listed corporation is legally required to publish its Corporate Identity Number (CIN) and official contact details on all business letters."
+        })
+
     # Calculate aggregate risk score
     domain_score = domain_result.get("risk_score", 0)
     nlp_score = (
@@ -450,7 +562,11 @@ def analyze_offer(
     )
     
     # Combined weighted formula
-    raw_total = (domain_score * 0.45) + (nlp_score * 0.55)
+    if not sender_email:
+        # Standalone document/image mode: document internal forensic indicators drive evaluation
+        raw_total = nlp_score
+    else:
+        raw_total = (domain_score * 0.45) + (nlp_score * 0.55)
     
     # Direct triggers for mock/synthetic drafts and shadow channels
     if category_scores["synthetic_sample"] > 0:
@@ -460,6 +576,12 @@ def analyze_offer(
         
     if is_academic and not has_threat_flags:
         raw_total = min(raw_total, 10.0)
+
+    # Direct critical triggers for high-profile syndicate indicators
+    if any(s["category"] in ["FORGED_EXECUTIVE_SIGNATORY", "TEMPLATE_CONTAMINATION_FORGERY"] for s in signals):
+        raw_total = max(raw_total, 96.0)
+    elif syntax_error_count >= 2 and is_indian_conglomerate:
+        raw_total = max(raw_total, 90.0)
 
     # Synergistic risk boosts for correlated red flags
     if domain_result.get("is_lookalike") and (category_scores["advance_fee"] > 0 or category_scores["kyc_harvesting"] > 0):
