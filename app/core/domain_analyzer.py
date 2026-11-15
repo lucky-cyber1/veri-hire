@@ -26,7 +26,21 @@ KNOWN_ENTERPRISES = {
     "reliance": ["ril.com"],
     "adani": ["adani.com"],
     "l&t": ["larsentoubro.com"],
-    "vedanta": ["vedantalimited.com"]
+    "vedanta": ["vedantalimited.com"],
+    "dp world": ["dpworld.com"],
+    "dubai port world": ["dpworld.com"],
+    "emirates": ["emirates.com", "emiratesgroup.com"],
+    "etihad": ["etihad.com", "etihadairways.com"],
+    "aramco": ["aramco.com"],
+    "saudi aramco": ["aramco.com"],
+    "adnoc": ["adnoc.ae"],
+    "qatar airways": ["qatarairways.com"],
+    "dhl": ["dhl.com"],
+    "fedex": ["fedex.com"],
+    "maersk": ["maersk.com"],
+    "apple": ["apple.com"],
+    "netflix": ["netflix.com"],
+    "meta": ["meta.com", "facebook.com"]
 }
 
 FREE_MAIL_PROVIDERS = {
@@ -78,15 +92,16 @@ def analyze_email_domain(email_or_domain: str, claimed_company: str = "") -> Dic
     # Check 3: Domain typosquatting / lookalike detection
     clean_domain = domain.split(":")[0]
     domain_body = clean_domain.split(".")[0]
+    domain_norm = re.sub(r'[^a-z0-9]', '', domain_body.lower())
     
     for company, legit_domains in KNOWN_ENTERPRISES.items():
-        # Case A: Company name is substring in domain body, but not the official domain
-        # Example: tcs-careers.com, google-hr-jobs.xyz, hiring-razorpay.net
-        if company in domain:
-            if clean_domain not in legit_domains:
+        comp_norm = re.sub(r'[^a-z0-9]', '', company.lower())
+        # Check if normalized company is substring of domain body (e.g. 'dpworld' in 'dpworldofficial')
+        if comp_norm in domain_norm or company in domain:
+            if clean_domain not in legit_domains and not any(clean_domain.endswith("." + ld) for ld in legit_domains):
                 is_lookalike = True
                 lookalike_target = company.upper()
-                risk_score += 55
+                risk_score += 65
                 findings.append(
                     f"CRITICAL LOOKALIKE: Domain '{domain}' mimics {lookalike_target}, but official authorized domain is {', '.join(legit_domains)}."
                 )
@@ -97,13 +112,22 @@ def analyze_email_domain(email_or_domain: str, claimed_company: str = "") -> Dic
             if clean_domain not in legit_domains and not is_lookalike:
                 is_lookalike = True
                 lookalike_target = company.upper()
-                risk_score += 45
+                risk_score += 55
                 findings.append(
                     f"Domain mismatch: Document claims to be from {claimed_company.title()}, but email domain is '{domain}'."
                 )
                 break
+
+    # Check 4: Deceptive corporate keywords appended to domain (e.g. <brand>official, <brand>-careers, <brand>-jobs)
+    deceptive_suffix_match = re.search(r'(official|careers?|jobs?|hiring|portal|recruitment|verify|hr-dept|group-hr)\b', domain_body)
+    if deceptive_suffix_match and not is_lookalike:
+        is_lookalike = True
+        risk_score += 55
+        findings.append(
+            f"DECEPTIVE DOMAIN SYNTAX: Domain '{domain}' appends fraudulent trust suffix ('{deceptive_suffix_match.group(0)}') to simulate official enterprise legitimacy."
+        )
                 
-    # Check 4: Hyphenated scam syntax (e.g. "hr-careers-india.com")
+    # Check 5: Hyphenated scam syntax (e.g. "hr-careers-india.com")
     if domain.count("-") >= 2 and not is_lookalike:
         risk_score += 20
         findings.append(f"Excessive hyphenation in recruitment domain '{domain}' is typical of disposable scam infrastructure.")

@@ -132,6 +132,17 @@ CONTRADICTORY_APPOINTMENT_PATTERNS = [
     (r'letter\s*of\s*appointment.*shall\s*be\s*issued\s*the\s*(formal\s*)?appointment\s*letter', "Internal Legal Contradiction (Offers Appointment while Deferring Appointment Letter)", 35)
 ]
 
+# Overseas / Gulf Visa & Relocation Scam Traps
+GULF_OVERSEAS_SCAM_PATTERNS = [
+    (r'\b(soft\s*copy\s*of\s*(official\s*)?(letter\s*of\s*appointment|appointment\s*letter|employment\s*contract))\b', "Fraudulent 'Soft Copy Appointment' Header (Classic Offshore Visa Lure)", 50),
+    (r'\b(dirham|aed|riyal|sar|dinar|qatar\s*riyal|omani\s*rial)\b', "Foreign Gulf Currency Compensation Lure", 35),
+    (r'(return\s*ticket|air\s*ticket|flight\s*ticket)\s*after\s*(complete\s*)?[0-9]*\s*(years?|agreement)', "Free Offshore Flight Ticket Trap", 35),
+    (r'free\s*(accommodation|food|medical|transport|housing)', "Unrealistic Free Expatriate Benefits Package (Visa Extortion Bait)", 35),
+    (r'(visa\s*(fee|deposit|charge|expense)|mofa|embassy\s*attestation|work\s*permit\s*fee|immigration\s*clearance)', "Overseas Work Permit / Visa Processing Fee Trap", 45),
+    (r'\b(will\s*best\s*art\s*on|summaries\s*the\s*(main\s*)?(commercial\s*)?terms|will\s*be\s*withdraw)\b', "Offshore Phishing Grammar & Malapropism Markers", 40),
+    (r'\+971\s*5[0-9]\s*[0-9]{3}\s*[0-9]{4}', "UAE Mobile Number Posing as Corporate Headquarters Landline", 35)
+]
+
 def perform_ocr_image_bytes(image_bytes: bytes) -> str:
     """
     Extracts text from image bytes using the high-performance native macOS Vision OCR engine,
@@ -283,7 +294,11 @@ def analyze_offer(
             sender_email = email_match.group(0)
             
     if not claimed_company:
-        for comp in ["Google", "Microsoft", "TCS", "Infosys", "Wipro", "Amazon", "Razorpay", "Swiggy", "Zomato", "Flipkart", "Accenture", "Cognizant", "JSW Steel", "JSW", "Tata Steel", "Tata Motors", "Tata", "Reliance", "Adani", "L&T", "Larsen & Toubro", "Vedanta", "Mahindra", "BHEL", "SAIL", "ONGC"]:
+        for comp in [
+            "Google", "Microsoft", "TCS", "Infosys", "Wipro", "Amazon", "Razorpay", "Swiggy", "Zomato", "Flipkart", "Accenture", "Cognizant",
+            "JSW Steel", "JSW", "Tata Steel", "Tata Motors", "Tata", "Reliance", "Adani", "L&T", "Larsen & Toubro", "Vedanta", "Mahindra", "BHEL", "SAIL", "ONGC",
+            "DP World", "Dubai Port World", "Emirates", "Etihad", "Aramco", "Saudi Aramco", "ADNOC", "Qatar Airways", "DHL", "FedEx", "Maersk", "Apple", "Meta"
+        ]:
             if re.search(r'\b' + comp + r'\b', raw_text, re.IGNORECASE):
                 claimed_company = comp
                 break
@@ -550,6 +565,22 @@ def analyze_offer(
             "explanation": "Under Section 12(3)(c) of the Indian Companies Act 2013, every listed corporation is legally required to publish its Corporate Identity Number (CIN) and official contact details on all business letters."
         })
 
+    # 7. Overseas / Gulf Visa & Relocation Trap Check
+    gulf_scam_hits = 0
+    for pattern, label, weight in GULF_OVERSEAS_SCAM_PATTERNS:
+        matches = re.findall(pattern, lower_text if "971" not in pattern else raw_text)
+        if matches:
+            gulf_scam_hits += 1
+            category_scores["advance_fee"] = max(category_scores["advance_fee"], weight)
+            category_scores["synthetic_sample"] = max(category_scores["synthetic_sample"], weight)
+            signals.append({
+                "category": "OVERSEAS_EMPLOYMENT_VISA_SCAM",
+                "severity": "CRITICAL" if weight >= 45 else "HIGH",
+                "title": label,
+                "evidence": f"Found overseas visa/employment lure pattern matching '{matches[0] if isinstance(matches[0], str) else matches[0][0]}'.",
+                "explanation": "Scammers exploit fake foreign currency salaries (Dirhams/Riyals) and promises of free flight tickets/accommodations to later extort candidates for 'visa processing', 'medical tests', or 'embassy attestation fees'."
+            })
+
     # Calculate aggregate risk score
     domain_score = domain_result.get("risk_score", 0)
     nlp_score = (
@@ -578,7 +609,11 @@ def analyze_offer(
         raw_total = min(raw_total, 10.0)
 
     # Direct critical triggers for high-profile syndicate indicators
-    if any(s["category"] in ["FORGED_EXECUTIVE_SIGNATORY", "TEMPLATE_CONTAMINATION_FORGERY"] for s in signals):
+    if domain_result.get("is_lookalike"):
+        raw_total = max(raw_total, 96.0)
+    elif gulf_scam_hits >= 2:
+        raw_total = max(raw_total, 94.0)
+    elif any(s["category"] in ["FORGED_EXECUTIVE_SIGNATORY", "TEMPLATE_CONTAMINATION_FORGERY"] for s in signals):
         raw_total = max(raw_total, 96.0)
     elif syntax_error_count >= 2 and is_indian_conglomerate:
         raw_total = max(raw_total, 90.0)

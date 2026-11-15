@@ -129,6 +129,15 @@ def build_score_breakdown(result: Dict[str, Any], score: int) -> List[Dict[str, 
                 "severity": "HIGH",
                 "reason": "Contains multiple non-standard phrases ('24 x 7 bases'), whitespace omissions, and internal contractual contradictions."
             })
+
+        has_overseas_scam = any(s.get("category") == "OVERSEAS_EMPLOYMENT_VISA_SCAM" for s in result.get("signals", []))
+        if has_overseas_scam:
+            raw_items.append({
+                "factor": "Overseas Gulf Employment & Visa Trap",
+                "weight": 40,
+                "severity": "CRITICAL",
+                "reason": "Uses classic offshore employment lures (Dirham salary, free flights, accommodation) with typosquatted domain and synthetic contract clauses."
+            })
         
         # Missing PKI signature baseline
         raw_items.append({
