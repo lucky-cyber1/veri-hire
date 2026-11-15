@@ -116,58 +116,60 @@
 
     <!-- Top Engineering Console Header (Cloudflare Radar / Linear Inspired) -->
     <header class="border-b border-line bg-canvas/95 backdrop-blur-md sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 min-h-[3.5rem] py-2 flex flex-wrap items-center justify-between gap-y-2">
             
             <!-- Left Branding -->
-            <div class="flex items-center space-x-3">
-                <a href="/" class="flex items-center space-x-2.5 group">
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <a href="/" class="flex items-center space-x-2 sm:space-x-2.5 group shrink-0">
                     <div class="w-7 h-7 rounded-[6px] bg-zinc-900 border border-line flex items-center justify-center text-zinc-200 group-hover:border-zinc-500 transition-colors">
                         <svg class="w-4 h-4 text-zinc-100" viewBox="0 0 32 32" fill="none">
                             <path d="M7 9L13.5 23L25 7" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M13.5 23L20 14" stroke="#A1A1AA" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <div class="flex items-center space-x-2">
+                    <div class="flex items-center space-x-1.5 sm:space-x-2">
                         <span class="text-sm font-bold tracking-tight text-zinc-100 uppercase font-mono">VeriHire</span>
-                        <span class="text-[10px] font-mono px-1.5 py-0.5 rounded-[4px] border border-zinc-700 bg-zinc-900 text-zinc-400 font-medium">CORE-1.0</span>
+                        <span class="text-[9px] sm:text-[10px] font-mono px-1 sm:px-1.5 py-0.5 rounded-[4px] border border-zinc-700 bg-zinc-900 text-zinc-400 font-medium">CORE-1.0</span>
                     </div>
                 </a>
 
                 <div class="h-4 w-px bg-line hidden sm:block"></div>
-                <span class="text-xs text-zinc-400 font-mono hidden md:inline">Recruitment Threat & Identity Defense</span>
+                <span class="text-[11px] sm:text-xs text-zinc-400 font-mono hidden md:inline truncate max-w-[200px] lg:max-w-none">Recruitment Threat & Identity Defense</span>
             </div>
 
             <!-- Right Controls -->
-            <div class="flex items-center space-x-2 sm:space-x-3 text-xs">
+            <div class="flex items-center flex-wrap gap-1.5 sm:gap-2 text-xs shrink-0">
                 
                 <!-- Flat Engineering Tier Switcher -->
-                <div class="flex items-center bg-zinc-900 border border-line rounded-[6px] p-0.5 font-mono text-[11px]">
-                    <button onclick="setTier('pro')" id="tier-btn-pro" class="px-2.5 py-1 rounded-[4px] font-semibold transition-all bg-zinc-100 text-zinc-950 shadow-sm">
-                        Pro Active
+                <div class="flex items-center bg-zinc-900 border border-line rounded-[6px] p-0.5 font-mono text-[10px] sm:text-[11px]">
+                    <button onclick="setTier('pro')" id="tier-btn-pro" class="px-2 sm:px-2.5 py-1 rounded-[4px] font-semibold transition-all bg-zinc-100 text-zinc-950 shadow-sm">
+                        Pro
                     </button>
-                    <button onclick="setTier('free')" id="tier-btn-free" class="px-2.5 py-1 rounded-[4px] text-zinc-400 hover:text-zinc-200 transition-all">
-                        Free Mode
+                    <button onclick="setTier('free')" id="tier-btn-free" class="px-2 sm:px-2.5 py-1 rounded-[4px] text-zinc-400 hover:text-zinc-200 transition-all">
+                        Free
                     </button>
                 </div>
 
                 <!-- PKI & How It Works Guide Button -->
-                <button onclick="openPkiModal()" class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-[6px] border border-line bg-panel hover:bg-zinc-800 text-zinc-300 hover:text-white transition-all text-xs font-mono">
+                <button onclick="openPkiModal()" class="inline-flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 rounded-[6px] border border-line bg-panel hover:bg-zinc-800 text-zinc-300 hover:text-white transition-all text-[11px] sm:text-xs font-mono">
                     <i data-lucide="shield-check" class="w-3.5 h-3.5 text-zinc-400"></i>
                     <span class="hidden md:inline">PKI Architecture</span>
                     <span class="md:hidden">PKI</span>
                 </button>
 
-                <!-- Email Sentinel Standalone Button -->
-                <a href="http://127.0.0.1:8002" target="_blank" class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-[6px] border border-cyan-500/40 bg-cyan-950/40 hover:bg-cyan-900/60 text-cyan-300 hover:text-white transition-all text-xs font-mono shadow-sm">
+                <!-- Email Sentinel Standalone Button (Clean Mobile Pill) -->
+                <a href="http://127.0.0.1:8002" target="_blank" class="inline-flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 rounded-[6px] border border-cyan-500/40 bg-cyan-950/40 hover:bg-cyan-900/60 text-cyan-300 hover:text-white transition-all text-[11px] sm:text-xs font-mono shadow-sm">
                     <i data-lucide="mail-check" class="w-3.5 h-3.5 text-cyan-400"></i>
-                    <span class="hidden sm:inline">MailGuard AI</span>
-                    <span class="text-[9px] bg-cyan-500/20 px-1 rounded text-cyan-300">Port 8002 ↗</span>
+                    <span class="hidden sm:inline">MailGuard</span>
+                    <span class="sm:hidden">Mail</span>
+                    <span class="text-[9px] bg-cyan-500/20 px-1 rounded text-cyan-300 font-mono">8002 ↗</span>
                 </a>
 
                 <!-- API Console Button -->
-                <button onclick="openApiModal()" class="inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-[6px] border border-line bg-panel hover:bg-zinc-800 text-zinc-300 hover:text-white transition-all text-xs font-mono">
+                <button onclick="openApiModal()" class="inline-flex items-center space-x-1 px-2 sm:px-2.5 py-1.5 rounded-[6px] border border-line bg-panel hover:bg-zinc-800 text-zinc-300 hover:text-white transition-all text-[11px] sm:text-xs font-mono">
                     <i data-lucide="terminal" class="w-3.5 h-3.5 text-zinc-400"></i>
                     <span class="hidden sm:inline">API Console</span>
+                    <span class="sm:hidden">API</span>
                 </button>
             </div>
         </div>
