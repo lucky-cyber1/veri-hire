@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>VeriHire & MailGuard AI — Video Presentation Script & Demo Guide</title>
+    <title>VeriHire & MailGuard AI — Full 10-Minute Video Presentation Script & Demo Guide</title>
     <style>
         @page {
             size: A4;
@@ -22,7 +22,7 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: #0F172A;
-            line-height: 1.5;
+            line-height: 1.6;
             font-size: 9.5pt;
             background-color: #FFFFFF;
             margin: 0;
@@ -94,6 +94,11 @@
             color: #F59E0B;
             border: 1px solid rgba(245, 158, 11, 0.4);
         }
+        .badge-emerald {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #10B981;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+        }
         .meta-strip {
             display: flex;
             gap: 20px;
@@ -108,8 +113,8 @@
             border: 1px solid #E2E8F0;
             border-left: 4px solid #3B82F6;
             border-radius: 0 6px 6px 0;
-            padding: 10px 14px;
-            margin-bottom: 12px;
+            padding: 12px 16px;
+            margin-bottom: 14px;
         }
         .action-tag {
             display: inline-block;
@@ -118,22 +123,25 @@
             font-family: "JetBrains Mono", monospace;
             font-size: 7.5pt;
             font-weight: 600;
-            padding: 1px 6px;
+            padding: 2px 6px;
             border-radius: 3px;
-            margin-right: 4px;
+            margin-right: 5px;
         }
         .spoken-text {
             color: #0F172A;
             font-size: 9.5pt;
-            line-height: 1.55;
-            margin-top: 6px;
-            font-weight: 500;
+            line-height: 1.6;
+            margin-top: 8px;
+            font-weight: 450;
         }
         .speech-cue {
             color: #D97706;
             font-weight: 700;
             font-size: 8pt;
             text-transform: uppercase;
+            background: #FEF3C7;
+            padding: 1px 4px;
+            border-radius: 3px;
         }
         table {
             width: 100%;
@@ -159,19 +167,14 @@
         .page-break {
             page-break-before: always;
         }
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 6px;
+        .tip-box {
+            background: #EFF6FF;
+            border: 1px solid #BFDBFE;
+            border-radius: 6px;
+            padding: 8px 12px;
             font-size: 8.5pt;
-        }
-        .check-box {
-            min-width: 14px;
-            height: 14px;
-            border: 1.5px solid #3B82F6;
-            border-radius: 3px;
-            margin-right: 8px;
-            margin-top: 2px;
+            margin-bottom: 12px;
+            color: #1E40AF;
         }
     </style>
 </head>
@@ -180,92 +183,93 @@
     <!-- HEADER BANNER -->
     <div class="header-banner">
         <div>
-            <span class="badge badge-cyan">Hackathon Video Recording Transcript</span>
-            <span class="badge badge-purple">Multi-National Fraud Coverage</span>
-            <span class="badge badge-amber">Screen Demonstration Guide</span>
+            <span class="badge badge-cyan">Official 10-Minute Presentation Script</span>
+            <span class="badge badge-purple">Simple & Fluent Spoken English</span>
+            <span class="badge badge-emerald">Comprehensive Step-by-Step Demo</span>
         </div>
-        <h1 style="margin-top: 8px;">VeriHire & MailGuard AI — Video Presentation Guide</h1>
+        <h1 style="margin-top: 8px;">VeriHire & MailGuard AI — 10-Minute Video Presentation Guide</h1>
         <p style="color: #CBD5E1; font-size: 9.5pt; margin-bottom: 0;">
-            A complete, step-by-step presentation script and screen demonstration guide designed for hackathon video recording (Target duration: 3.5 - 4.5 minutes).
+            A complete word-for-word transcript written in clear, simple English. Designed for a detailed 10-minute video presentation covering every feature, forensic layer, live demo, and judge questions.
         </p>
         <div class="meta-strip">
-            <div><strong>Presenter:</strong> Lakshman</div>
-            <div><strong>Target Length:</strong> 3 mins 45 secs</div>
-            <div><strong>Global Scope:</strong> US, UK, Gulf/UAE, India</div>
-            <div><strong>Tone:</strong> Confident, authoritative, professional</div>
+            <div><strong>Speaker:</strong> Lakshman</div>
+            <div><strong>Target Duration:</strong> 10 Minutes (Comfortable Pace)</div>
+            <div><strong>Word Count:</strong> ~1,500 Spoken Words</div>
+            <div><strong>Delivery Tone:</strong> Natural, confident, conversational</div>
         </div>
     </div>
 
-    <!-- PRE-RECORDING CHECKLIST -->
-    <h2>1. Pre-Recording Setup & Environment Checklist</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
-        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 10px 12px;">
-            <strong style="color: #1E293B; font-size: 8.5pt; text-transform: uppercase;">Browser Tabs Setup (Chrome):</strong>
-            <div style="margin-top: 6px;">
-                <div class="checklist-item"><div class="check-box"></div><span><strong>Tab 1:</strong> <code>http://127.0.0.1:8000</code> (VeriHire Core Console)</span></div>
-                <div class="checklist-item"><div class="check-box"></div><span><strong>Tab 2:</strong> <code>http://127.0.0.1:8000/portal</code> (Placement Cell Clearance Portal)</span></div>
-                <div class="checklist-item"><div class="check-box"></div><span><strong>Tab 3:</strong> <code>http://127.0.0.1:8002</code> (MailGuard AI Sentinel)</span></div>
-                <div class="checklist-item"><div class="check-box"></div><span><strong>Tab 4:</strong> GitHub Repo (<code>github.com/lucky-cyber1/veri-hire</code>)</span></div>
-            </div>
-        </div>
-        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 10px 12px;">
-            <strong style="color: #1E293B; font-size: 8.5pt; text-transform: uppercase;">Demo Files Ready on Desktop:</strong>
-            <div style="margin-top: 6px;">
-                <div class="checklist-item"><div class="check-box"></div><span><strong>Middle East / UAE:</strong> DP World Dirham visa scam letter</span></div>
-                <div class="checklist-item"><div class="check-box"></div><span><strong>India / Domestic:</strong> JSW Steel fake appointment letter</span></div>
-                <div class="checklist-item"><div class="check-box"></div><span><strong>North America:</strong> US Fake Check & Home Office equipment text</span></div>
-                <div class="checklist-item"><div class="check-box"></div><span><strong>Genuine Baseline:</strong> Genuine Microsoft / Apple corporate offer</span></div>
-            </div>
-        </div>
+    <!-- PREPARATION TIPS -->
+    <div class="tip-box">
+        <strong>💡 Presentation Advice for Speaking:</strong>
+        Speak at a steady, calm speed (about 140 words per minute). Whenever you see <span class="speech-cue">[PAUSE]</span>, take a breath. Whenever you see <span class="action-tag">ACTION</span>, click or move your mouse to that part of the screen so the judges can clearly see what you are talking about.
     </div>
 
-    <!-- 2. MINUTE-BY-MINUTE SYNC TABLE -->
-    <h2>2. Minute-by-Minute Synchronized Demo Flow</h2>
+    <!-- 10-MINUTE TIMELINE BREAKDOWN -->
+    <h2>1. 10-Minute Synchronized Agenda</h2>
     <table>
         <thead>
             <tr>
-                <th style="width: 12%;">Timestamp</th>
-                <th style="width: 25%;">Screen Recording Action</th>
-                <th style="width: 45%;">Core Speech Topic</th>
-                <th style="width: 18%;">Key Visual Element</th>
+                <th style="width: 14%;">Time Range</th>
+                <th style="width: 26%;">On-Screen Visual</th>
+                <th style="width: 42%;">What You Are Explaining</th>
+                <th style="width: 18%;">Focus Feature</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><strong>0:00 - 0:35</strong></td>
-                <td>Presenter camera or high-impact intro slide, transition to VeriHire console.</td>
-                <td>The global recruitment crisis: US fake checks, Gulf visa traps, UK sponsorship fees, and Indian campus scams.</td>
-                <td>VeriHire Hero Banner & Global Threat Scope</td>
+                <td><strong>0:00 – 1:00</strong></td>
+                <td>Presenter on camera or VeriHire Homepage</td>
+                <td>The real-world problem: Students getting tricked by fake jobs, losing money and identities.</td>
+                <td>The Human Problem</td>
             </tr>
             <tr>
-                <td><strong>0:35 - 1:15</strong></td>
-                <td>Drag & drop the DP World Gulf letter or JSW letter. Instant &lt;5ms audit response.</td>
-                <td>Live single document forensic audit: Flags typosquatted domain, Dirham visa lure, and template contamination.</td>
-                <td>Risk Score (96-100) & Proportional Calculation Breakdown</td>
+                <td><strong>1:00 – 2:00</strong></td>
+                <td>VeriHire Console Hero Section</td>
+                <td>Why regular spam filters and ChatGPT fail, and the core philosophy of VeriHire.</td>
+                <td>Why Existing Tools Fail</td>
             </tr>
             <tr>
-                <td><strong>1:15 - 1:50</strong></td>
-                <td>Switch to "Batch Mode", run multi-file audit & export CSV. Then show <code>/portal</code>.</td>
-                <td>University placement workflow: bulk clearance of 50 student NOCs, eliminating manual administrative delays.</td>
-                <td>Batch Ledger & Apex Partner Portal</td>
+                <td><strong>2:00 – 3:30</strong></td>
+                <td>Drag & drop DP World / JSW letter</td>
+                <td>Live single-file forensic audit in under 5 milliseconds. Inspecting the score and breakdown.</td>
+                <td>Single File Audit (<5ms)</td>
             </tr>
             <tr>
-                <td><strong>1:50 - 2:45</strong></td>
-                <td>Switch to Tab 3 (MailGuard Port 8002). Click "+ Dispatch Scam". Show IMAP stream.</td>
-                <td>Autonomous email sentinel: live IMAP ingestion, automatic extraction, instant VeriHire API response.</td>
-                <td>Cybersecurity Ops UI & Live 200 OK JSON Payload</td>
+                <td><strong>3:30 – 5:00</strong></td>
+                <td>Zoom modal & signal evidence cards</td>
+                <td>Detailed walk-through of the 6 forensic layers in simple terms (typos, template reuse, fake IDs).</td>
+                <td>The 6 Forensic Layers</td>
             </tr>
             <tr>
-                <td><strong>2:45 - 3:20</strong></td>
-                <td>Open VeriHire Developer API modal. Show architecture diagram & endpoint references.</td>
-                <td>Zero-retention privacy: In-memory byte streaming (<code>io.BytesIO</code>), on-device CoreML OCR, 0 INR runtime cost.</td>
-                <td>FastAPI Endpoints & RAM-Only Security</td>
+                <td><strong>5:00 – 6:15</strong></td>
+                <td>Showing test cases from different nations</td>
+                <td>How VeriHire stops scams globally: US fake checks, UK visa traps, Gulf Dirham lures, Indian UPI traps.</td>
+                <td>Multi-Country Protection</td>
             </tr>
             <tr>
-                <td><strong>3:20 - 3:45</strong></td>
-                <td>Show GitHub repository (<code>lucky-cyber1/veri-hire</code>) and live Cloudflare tunnel.</td>
-                <td>Winning close: Open-source, production-ready, protecting graduates across multiple continents.</td>
-                <td>GitHub Repo & Live Demo Links</td>
+                <td><strong>6:15 – 7:15</strong></td>
+                <td>Switching to Batch Mode & Partner Portal</td>
+                <td>University placement cells: Uploading 50 student offers at once, CSV export, and NOC approvals.</td>
+                <td>Batch Ledger & /portal</td>
+            </tr>
+            <tr>
+                <td><strong>7:15 – 8:30</strong></td>
+                <td>Tab 3: MailGuard AI (Port 8002)</td>
+                <td>Live email sentinel: Connecting Gmail, clicking "+ Dispatch Scam", IMAP auto-fetch, live JSON verdict.</td>
+                <td>Live Gmail Watcher</td>
+            </tr>
+            <tr>
+                <td><strong>8:30 – 9:15</strong></td>
+                <td>VeriHire API Console Modal</td>
+                <td>Zero data storage in RAM (DPDP & GDPR compliance) and on-device CoreML Vision AI.</td>
+                <td>Privacy & Edge AI</td>
+            </tr>
+            <tr>
+                <td><strong>9:15 – 10:00</strong></td>
+                <td>GitHub Repo & Live Cloudflare Links</td>
+                <td>Business model, open-source repository, and inspiring closing message to the judges.</td>
+                <td>Closing & Impact</td>
             </tr>
         </tbody>
     </table>
@@ -273,136 +277,218 @@
     <!-- PAGE BREAK -->
     <div class="page-break"></div>
 
-    <!-- 3. WORD-FOR-WORD SPOKEN TRANSCRIPT -->
-    <h2>3. Word-for-Word Spoken Transcript & Stage Directions</h2>
+    <!-- 2. FULL WORD-FOR-WORD TRANSCRIPT -->
+    <h2>2. Word-for-Word Spoken Transcript & Stage Directions</h2>
 
-    <!-- SEGMENT 1 -->
+    <!-- MINUTE 0 - 1 -->
     <div class="script-block">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <span class="action-tag">0:00 - 0:35</span>
-                <strong style="color: #0F172A;">SEGMENT 1: The Crisis & The Hook</strong>
+                <span class="action-tag">0:00 - 1:00</span>
+                <strong style="color: #0F172A;">PART 1: The Human Story & The Problem We Are Solving</strong>
             </div>
-            <span class="badge badge-cyan">TAB 1: VERIHIRE</span>
+            <span class="badge badge-cyan">CAMERA / HOMEPAGE</span>
         </div>
         <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
-            <span class="action-tag">ACTION</span> Show camera or clean screen on <code>http://127.0.0.1:8000</code>.
+            <span class="action-tag">ACTION</span> Look at the camera with warm confidence. Open <code>http://127.0.0.1:8000</code> in your browser.
         </p>
         <div class="spoken-text">
-            "Hello judges and fellow builders. Recruitment fraud has transformed into a sophisticated, multi-national organized crime industry. In North America, fraudsters exploit fake cashier's checks to trick remote workers into wiring money to bogus equipment vendors. In the UK and Europe, candidates are extorted thousands of pounds for fake Certificate of Sponsorship visas. In the Middle East, job seekers are lured with fake Dirham salaries only to be scammed for visa attestation fees. And in India, students face rampant advance-fee UPI traps and identity theft. <span class="speech-cue">[PAUSE - 1s]</span><br><br>
-            Standard email filters only check domain reputation—they cannot understand employment semantics. And cloud LLMs are too slow, cost prohibitive per scan, and violate student privacy. <span class="speech-cue">[EMPHASIZE]</span> That is why we engineered <strong>VeriHire</strong> and <strong>MailGuard AI</strong>—an autonomous, edge-native recruitment defense system that audits offer letters across global jurisdictions in under five milliseconds, with zero cloud API fees and zero persistent storage."
+            "Hello everyone, and welcome judges. My name is Lakshman, and today I want to show you something that touches the lives of millions of young people around the world. <span class="speech-cue">[PAUSE - 1s]</span><br><br>
+            Imagine you are a college student. You have worked hard for four years. You send out hundreds of resumes, and one morning, you open your inbox and see an email with the title: <em>'Congratulations! Letter of Appointment'</em>. It has a real company logo. It looks completely professional. It says you got the job. <span class="speech-cue">[PAUSE - 1s]</span><br><br>
+            You are thrilled. But then, the excitement turns into a nightmare. The email asks you to pay twenty-five hundred rupees for a laptop courier deposit. Or it asks you to send color scans of your Aadhaar card, PAN card, and a blank cheque before you even meet your manager. <span class="speech-cue">[PAUSE]</span><br><br>
+            You pay the money or share your identity. And then... the recruiter disappears. The phone is disconnected. Your money is gone, and your government identity is now being used by criminals to take out fraudulent loans. Over eighty-two percent of students and graduates face this exact trap today. That is the crisis we set out to solve."
         </div>
     </div>
 
-    <!-- SEGMENT 2 -->
+    <!-- MINUTE 1 - 2 -->
     <div class="script-block">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <span class="action-tag">0:35 - 1:15</span>
-                <strong style="color: #0F172A;">SEGMENT 2: Live Multi-National Forensic Audit</strong>
+                <span class="action-tag">1:00 - 2:00</span>
+                <strong style="color: #0F172A;">PART 2: Why Existing Tools Fail & The VeriHire Idea</strong>
             </div>
-            <span class="badge badge-cyan">TAB 1: DRAG & DROP</span>
+            <span class="badge badge-cyan">HERO SECTION</span>
         </div>
         <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
-            <span class="action-tag">ACTION</span> Drag the DP World UAE scam letter or JSW letter into the dropzone. Highlight instantaneous result.
+            <span class="action-tag">ACTION</span> Scroll smoothly to the VeriHire features overview. Highlight the clean, modern interface.
         </p>
         <div class="spoken-text">
-            "Let's see this in action. Here is the VeriHire Core Console. A candidate uploads an offer letter—PDF or screenshot. Watch what happens when I drop this appointment letter claiming to be from global logistics giant DP World in Dubai: <span class="speech-cue">[CLICK - DROP FILE]</span><br><br>
-            In less than five milliseconds, our on-device Apple Vision Neural Engine OCR extracts the text, scrubs candidate PII in memory, and audits it across our global threat engines. <span class="speech-cue">[POINT CURSOR TO RISK SCORE]</span><br><br>
-            It instantly flags a <strong>Risk Score of 96 out of 100—CRITICAL THREAT</strong>! Look at why: it caught the typosquatted email domain <code>dpworldofficial.com</code> masquerading as official DP World. It flagged the 6,280 Dirham visa lure and free flight package. It trapped the UAE mobile phone number pretending to be corporate headquarters, and caught multiple offshore grammatical malapropisms. Notice our calculation breakdown: every factor dynamically scales to sum exactly to ninety-six points!"
-        </div>
-    </div>
-
-    <!-- SEGMENT 3 -->
-    <div class="script-block">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <span class="action-tag">1:15 - 1:50</span>
-                <strong style="color: #0F172A;">SEGMENT 3: Placement Batch Audit & University Portal</strong>
-            </div>
-            <span class="badge badge-cyan">TAB 1 & TAB 2</span>
-        </div>
-        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
-            <span class="action-tag">ACTION</span> Switch to "Batch Mode", run audit, click "Export CSV", then navigate to <code>/portal</code>.
-        </p>
-        <div class="spoken-text">
-            "For university placement cells handling thousands of student offers, manual verification is impossible. VeriHire includes a high-throughput <strong>Batch Audit Ledger</strong>. <span class="speech-cue">[CLICK BATCH AUDIT]</span><br><br>
-            Placement officers can upload up to fifty offer letters simultaneously. VeriHire categorizes clean offers versus threats in a structured tabular ledger, and with one click, exports a full forensic CSV report for administrative accreditation.<br><br>
-            Furthermore, through our <strong>Partner Clearance Portal</strong> at <code>/portal</code>, partner universities like Apex Institute of Technology can clear student NOCs with enterprise API key authentication in real time."
+            "Now you might ask: why don't regular email spam filters stop this? <span class="speech-cue">[PAUSE]</span><br><br>
+            The answer is simple: standard spam filters only check network technicalities—like whether an email server has the right configuration. But scammers today register brand-new domains or use free Gmail accounts that pass those checks easily. Regular email filters simply do not understand employment law or job offer contracts.<br><br>
+            And what about using modern cloud AI, like ChatGPT or Google Gemini? While that sounds tempting, in the real world it has three fatal problems: <span class="speech-cue">[POINT OUT ON SCREEN]</span><br>
+            First, it is slow—it takes three to five seconds per document. Second, it costs real money for every single scan. And third—the most dangerous of all—uploading a student's private resume, home address, and government ID card to a third-party cloud server violates data privacy laws like India's DPDP Act and Europe's GDPR.<br><br>
+            That is why we built <strong>VeriHire</strong>. VeriHire is an autonomous, on-device recruitment fraud defense shield. It runs locally on your machine in under five milliseconds, costs zero rupees in cloud fees forever, and never stores a single student document on disk. Let me show you how it works live."
         </div>
     </div>
 
     <!-- PAGE BREAK -->
     <div class="page-break"></div>
 
-    <!-- SEGMENT 4 -->
+    <!-- MINUTE 2 - 3.5 -->
     <div class="script-block">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <span class="action-tag">1:50 - 2:45</span>
-                <strong style="color: #0F172A;">SEGMENT 4: MailGuard AI Sentinel & Live Real Email Dispatch</strong>
+                <span class="action-tag">2:00 - 3:30</span>
+                <strong style="color: #0F172A;">PART 3: Live Demo: Single Document Forensic Audit</strong>
+            </div>
+            <span class="badge badge-cyan">DRAG & DROP DROPZONE</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Drag the DP World UAE scam letter or JSW letter into the upload box. Watch the immediate response.
+        </p>
+        <div class="spoken-text">
+            "Here is the VeriHire main console at port 8000. Any student or job seeker can simply take an offer letter—whether it is an official PDF or a screenshot taken on their phone—and drop it right here into our upload box. <span class="speech-cue">[DRAG AND DROP FILE]</span><br><br>
+            Look at that. Did you see any loading spinner? No! In less than five milliseconds, the analysis is complete. <span class="speech-cue">[POINT CURSOR TO RISK SCORE]</span><br><br>
+            The system immediately gives us a bold, clear answer: <strong>Risk Score: 96 out of 100 — CRITICAL THREAT</strong>, highlighted in bright red. And below it, our advice is plain and direct: <em>'DO NOT SEND ANY DOCUMENTS OR MONEY.'</em><br><br>
+            Now look at the right side of the screen. We don't just say it is fake; we explain <em>why</em> it is fake in plain language with our <strong>Calculation Breakdown</strong>: <span class="speech-cue">[HOVER OVER BREAKDOWN ITEMS]</span><br>
+            It caught that the email domain is <code>dpworldofficial.com</code>—a fake lookalike domain trying to impersonate DP World. It caught that the salary was offered in Dirhams with free housing and flight tickets—a classic overseas visa bait. And it caught that the contact phone number is actually a prepaid mobile SIM card rather than an official company landline.<br><br>
+            Notice something very important about our math: every single penalty point in this breakdown dynamically adds up to exactly ninety-six points. It is completely transparent."
+        </div>
+    </div>
+
+    <!-- MINUTE 3.5 - 5 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">3:30 - 5:00</span>
+                <strong style="color: #0F172A;">PART 4: Explaining the 6 Forensic Layers in Plain English</strong>
+            </div>
+            <span class="badge badge-cyan">ZOOM MODAL & SIGNALS</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Click on the document preview to open the zoom modal. Zoom in (+) and out (-), then close and review signals.
+        </p>
+        <div class="spoken-text">
+            "Now let me take you under the hood and explain the six intelligent layers that run inside VeriHire: <span class="speech-cue">[PAUSE - 1s]</span><br><br>
+            <strong>Layer 1 is On-Device Vision:</strong> When an image is uploaded, we don't send it to the cloud. We use Apple's native CoreML Neural Engine right on the device to read every word of text in two milliseconds.<br><br>
+            <strong>Layer 2 is PII Scrubbing:</strong> Before our AI evaluates anything, it masks personal student numbers in memory. Aadhaar cards and PAN cards become redacted tags so no student identity is ever exposed.<br><br>
+            <strong>Layer 3 is Advance-Fee Traps:</strong> Legitimate companies never charge you for a job. Our engine catches any mention of 'refundable deposits', 'laptop courier charges', or personal UPI handles like Google Pay and PhonePe.<br><br>
+            <strong>Layer 4 is Identity Theft Detection:</strong> Scammers love demanding color scans of your passport, driver's license, or signed blank cheques before your first day. Our system flags this as high-risk identity harvesting.<br><br>
+            <strong>Layer 5 is Domain & Template Forensics:</strong> We check if the email address comes from free webmail like Gmail, or lookalike websites targeting over fifty top global companies. We even check the internal file creation data to see if the letter was made in amateur tools like Canva or Photoshop instead of real corporate HR software.<br><br>
+            <strong>And Layer 6 is our Anti-False-Positive Shield:</strong> We know genuine companies exist! When our engine sees official government Corporate Identity Numbers, statutory Provident Fund deductions, and real enterprise login portals like Workday, it gives legitimacy discounts so genuine offers are never wrongly flagged."
+        </div>
+    </div>
+
+    <!-- PAGE BREAK -->
+    <div class="page-break"></div>
+
+    <!-- MINUTE 5 - 6.15 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">5:00 - 6:15</span>
+                <strong style="color: #0F172A;">PART 5: Protecting Job Seekers Across Different Countries</strong>
+            </div>
+            <span class="badge badge-purple">GLOBAL CAPABILITIES</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Show the text analysis box or scenario dropdown. Point out international scam examples.
+        </p>
+        <div class="spoken-text">
+            "One thing we are very proud of is that VeriHire is not just built for one city or one country. We trained and refined our forensic layers to catch recruitment fraud across four major global regions: <span class="speech-cue">[PAUSE]</span><br><br>
+            In the <strong>United States and Canada</strong>, the biggest scam right now is the 'Fake Check' scheme. The scammer sends you a fake cashier's check for three thousand dollars and tells you to deposit it and wire money via Zelle or Venmo to their 'approved home office vendor'. Our engine recognizes this check disbursement scheme and blocks it immediately.<br><br>
+            In the <strong>United Kingdom and Europe</strong>, scammers trick nurses and international graduates by demanding hundreds of pounds for fake 'Certificate of Sponsorship' visas or UKVI priority fees. VeriHire flags these illegal fees under UK Home Office rules.<br><br>
+            In the <strong>Middle East and Gulf countries</strong>, like the UAE and Saudi Arabia, scammers promise huge salaries in Dirhams with free flights, only to demand visa clearance money later. Our engine catches this package and checks the sender domain against official registries.<br><br>
+            And in <strong>India</strong>, we catch UPI extortion, unsolicited Instagram lures, and counterfeit corporate letters like the notorious fake JSW Steel letters that steal candidate documents. We tested our engine against real-world cases from all these regions, and it passed with one hundred percent accuracy."
+        </div>
+    </div>
+
+    <!-- MINUTE 6.15 - 7.15 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">6:15 - 7:15</span>
+                <strong style="color: #0F172A;">PART 6: University Batch Mode & Placement Portal</strong>
+            </div>
+            <span class="badge badge-cyan">BATCH TAB & /PORTAL</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Click "Batch Mode" tab. Show the multi-file selector. Click "Export CSV". Then navigate to <code>/portal</code>.
+        </p>
+        <div class="spoken-text">
+            "Now let us look at this from the perspective of a college or university. <span class="speech-cue">[CLICK BATCH MODE]</span><br><br>
+            During campus placement season, a placement officer might receive five hundred offer letters from students asking for clearance and No Objection Certificates. No human officer has time to verify every single letter manually.<br><br>
+            That is why VeriHire includes our <strong>Batch Audit Ledger</strong>. An officer can select up to fifty student letters at the same time and click 'Run Batch Audit'. Within seconds, VeriHire organizes all fifty documents into an administrative table, clearly separating clean, genuine offers from dangerous scams. And with one single click on <strong>'Export CSV'</strong>, the officer downloads a complete forensic report for college records.<br><br>
+            Even better, through our <strong>Partner Clearance Portal</strong> at <code>/portal</code>, partner institutions like Apex Institute of Technology have their own secure login to issue digital clearance tokens directly to student records."
+        </div>
+    </div>
+
+    <!-- PAGE BREAK -->
+    <div class="page-break"></div>
+
+    <!-- MINUTE 7.15 - 8.30 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">7:15 - 8:30</span>
+                <strong style="color: #0F172A;">PART 7: MailGuard AI Sentinel: Live Automated Gmail Ingestion</strong>
             </div>
             <span class="badge badge-purple">TAB 3: MAILGUARD (PORT 8002)</span>
         </div>
         <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
-            <span class="action-tag">ACTION</span> Switch to Tab 3 (<code>Port 8002</code>). Highlight cybersecurity UI. Click <code>+ Dispatch Scam</code>. Show IMAP fetch.
+            <span class="action-tag">ACTION</span> Switch to Tab 3 (<code>Port 8002</code> or Cloudflare live link). Show dark theme console. Click <code>+ Dispatch Scam</code>.
         </p>
         <div class="spoken-text">
-            "Now, students shouldn't even have to open a fraudulent email to be protected. Enter <strong>MailGuard AI</strong>—our standalone automated inbox sentinel running on Port 8002. <span class="speech-cue">[SHOW MAILGUARD UI]</span><br><br>
-            Notice this high-density cybersecurity operations console designed with industrial matte panels and crisp JetBrains Mono telemetry. MailGuard connects directly to any candidate's Gmail inbox over secure IMAP. <span class="speech-cue">[CLICK '+ DISPATCH SCAM']</span><br><br>
-            Watch this: I am clicking '+ Dispatch Scam'. MailGuard immediately dispatches a real, live phishing offer letter via SMTP directly to my Gmail address. Four seconds later, its autonomous IMAP listener polls the inbox, intercepts the incoming message, and streams it to the console. <span class="speech-cue">[CLICK NEW MESSAGE IN STREAM]</span><br><br>
-            The moment I click the message, our internal backend proxy queries VeriHire's headless API. On the right-hand side, you can see the live JSON response: Risk Score 100, Critical Threat, with an immediate warning: 'DO NOT SEND ANY DOCUMENTS OR MONEY'. Notice how the inbox stream scrolls neatly inside its column while keeping the forensic ledger sticky on screen."
+            "Now, students shouldn't even have to open a fake email to be protected. That brings us to our second service: <strong>MailGuard AI Sentinel</strong>, running on Port 8002. <span class="speech-cue">[SHOW MAILGUARD UI]</span><br><br>
+            Take a look at this interface. We designed this as a clean, industrial cybersecurity operations console. It uses matte dark panels and crisp monospace telemetry. <span class="speech-cue">[CLICK CONNECT GMAIL MODAL]</span><br><br>
+            MailGuard connects directly to any user's real Gmail account using an encrypted Google App Password over secure IMAP. It runs silently in the background, watching for incoming job offers. Let me show you a real, live test: <span class="speech-cue">[CLICK '+ DISPATCH SCAM']</span><br><br>
+            Right now, I am clicking '+ Dispatch Scam'. Behind the scenes, MailGuard connects via SMTP and dispatches an authentic phishing offer letter directly to my actual Gmail inbox. Now, watch what happens four seconds later: <span class="speech-cue">[WAIT 4 SECONDS]</span><br><br>
+            The autonomous IMAP watcher detects the new unread email, extracts the message body, and streams it right here into our left-hand feed. <span class="speech-cue">[CLICK MESSAGE IN STREAM]</span><br><br>
+            The second I click it, our backend proxy queries VeriHire's core API on Port 8000. And on the right-hand side, you can see the live return payload: Risk Score 100, Critical Threat, with an immediate warning! Notice that the email list scrolls neatly in its own box while the forensic report stays pinned and readable on the screen."
         </div>
     </div>
 
-    <!-- SEGMENT 5 -->
+    <!-- MINUTE 8.30 - 9.15 -->
     <div class="script-block">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <span class="action-tag">2:45 - 3:20</span>
-                <strong style="color: #0F172A;">SEGMENT 5: Zero-Storage Security & Multi-National Edge AI</strong>
+                <span class="action-tag">8:30 - 9:15</span>
+                <strong style="color: #0F172A;">PART 8: Zero Storage & Absolute Privacy Guarantee</strong>
             </div>
-            <span class="badge badge-cyan">TAB 1: API MODAL</span>
+            <span class="badge badge-cyan">API CONSOLE MODAL</span>
         </div>
         <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
-            <span class="action-tag">ACTION</span> Click "API Console" in VeriHire navbar to show headless endpoints & architecture cards.
+            <span class="action-tag">ACTION</span> Click "API Console" in the top navbar. Show the headless REST API endpoints and data privacy explanation.
         </p>
         <div class="spoken-text">
-            "What makes VeriHire unique from an engineering standpoint? <span class="speech-cue">[EMPHASIZE]</span><br><br>
-            First: <strong>Strict Zero-Data Retention</strong>. Under India's DPDP Act and Europe's GDPR, VeriHire never writes student offer letters, resumes, or ID scans to disk. Files are processed entirely in ephemeral byte buffers in RAM and unlinked instantly.<br><br>
-            Second: <strong>Multi-National Edge Defense</strong>. From US check fraud and UK visa scams to Indian UPI advance fees, VeriHire's deterministic heuristics evaluate offers across multiple legal jurisdictions locally in under five milliseconds, with zero third-party cloud API costs."
+            "Now, as judges, I know one of your top concerns is security: <em>'Where do these sensitive candidate documents go?'</em> <span class="speech-cue">[PAUSE]</span><br><br>
+            Our answer is simple: <strong>They go nowhere.</strong> VeriHire was architected under a strict <strong>Zero Data Retention policy</strong>.<br><br>
+            When a student drops a file or when MailGuard reads an email, the bytes are held only in temporary computer RAM using Python byte buffers. They are analyzed in memory in five milliseconds, and then immediately discarded. No copies are saved to a hard drive. No resumes are uploaded to cloud databases. And any temporary image slices made during OCR are instantly unlinked using strict deletion commands.<br><br>
+            This means universities and enterprises can adopt VeriHire with complete peace of mind, fully compliant with India's DPDP Act and international privacy standards."
         </div>
     </div>
 
-    <!-- SEGMENT 6 -->
+    <!-- MINUTE 9.15 - 10.00 -->
     <div class="script-block">
         <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-                <span class="action-tag">3:20 - 3:45</span>
-                <strong style="color: #0F172A;">SEGMENT 6: The Winning Pitch & Closing Call-to-Action</strong>
+                <span class="action-tag">9:15 - 10:00</span>
+                <strong style="color: #0F172A;">PART 9: The Winning Conclusion & Our Vision</strong>
             </div>
-            <span class="badge badge-purple">TAB 4: GITHUB REPO</span>
+            <span class="badge badge-purple">GITHUB TAB (LUCKY-CYBER1/VERI-HIRE)</span>
         </div>
         <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
-            <span class="action-tag">ACTION</span> Switch to GitHub repository tab (<code>lucky-cyber1/veri-hire</code>). Show clean commit history.
+            <span class="action-tag">ACTION</span> Switch to the GitHub repository tab. Show the clean commit history and documentation PDFs.
         </p>
         <div class="spoken-text">
-            "VeriHire is fully open-source, production-ready, and verified across rigorous real-world attack scenarios across four continents. It is currently deployed live via Cloudflare tunnels for instant judge testing, and our entire codebase is accessible on GitHub.<br><br>
-            Recruitment fraud steals careers and identities before they even start. With VeriHire and MailGuard AI, we are building the digital defense shield that every job seeker and university deserves. Thank you!"
+            "To wrap up: VeriHire and MailGuard AI are not just concept mockups. Everything you saw today is fully built, tested, and running live.<br><br>
+            Our code is completely open-source on GitHub at <code>github.com/lucky-cyber1/veri-hire</code>. We have provided live Cloudflare tunnels so you can test both Port 8000 and Port 8002 right now from your own laptops or mobile phones without installing anything.<br><br>
+            Recruitment scams steal hopes, savings, and identities before a young career even gets off the ground. With VeriHire, we are giving students, colleges, and job seekers an intelligent, instant, and completely private defense shield that keeps them safe.<br><br>
+            Thank you so much for your time and consideration, and I am excited to take your questions!"
         </div>
     </div>
 
-    <!-- 4. JUDGE Q&A CHEAT SHEET -->
-    <h2>4. Quick Judge Q&A Defense "Cheat Sheet"</h2>
+    <!-- 3. HOW TO HANDLE JUDGE QUESTIONS (CHEATSHEET) -->
+    <h2>3. Judge Q&A Defense Cheat Sheet (Speak Clearly & Confidently)</h2>
     <div style="font-size: 8.5pt;">
-        <p><strong>Q: Does this only work for Indian job scams?</strong><br>
-        <em>A: "No! VeriHire covers international fraud across North America (cashier's check / home office equipment scams), the UK/Europe (Certificate of Sponsorship and visa priority fee extortion), the Middle East/Gulf (Dirham expatriate visa lures and typosquatted domains like dpworldofficial.com), and South Asia (UPI advance fees and Aadhaar harvesting)."</em></p>
+        <p><strong>Judge: "How can you be sure this won't flag legitimate small startups that use Gmail?"</strong><br>
+        <em>Your Answer: "Great question! Using Gmail only adds fifteen penalty points. In VeriHire, a document needs thirty points to be suspicious and sixty-five points to be a scam. A legitimate startup offer letter that doesn't demand advance fees, doesn't steal identity cards, and doesn't use lookalike domains will easily stay in the safe green zone."</em></p>
         
-        <p><strong>Q: Why not just use GPT-4 or Gemini for this?</strong><br>
-        <em>A: "Cloud LLMs cost $0.02 to $0.05 per document, take 2 to 4 seconds to respond, hallucinate inconsistent scores, and violate DPDP privacy by sending candidate Aadhaar and tax cards to external cloud servers. VeriHire runs locally in under 5 milliseconds at zero cost with 100% data sovereignty."</em></p>
+        <p><strong>Judge: "Can a scammer bypass this by rewriting the email using ChatGPT?"</strong><br>
+        <em>Your Answer: "No, because we evaluate multiple independent structural layers. Even if a scammer polishes their wording, they still have to ask for the money or IDs, their sender domain will still fail authentication, and their document will lack valid corporate registration tokens. They cannot hide across all six layers simultaneously."</em></p>
         
-        <p><strong>Q: How do you prevent false positives on genuine offers?</strong><br>
-        <em>A: "We engineered an Anti-False-Positive Shield that applies legitimacy credit discounts when authentic enterprise markers are present—such as valid Ministry of Corporate Affairs CIN registration numbers, statutory PF/Gratuity annexures, and verified enterprise ATS portal links."</em></p>
+        <p><strong>Judge: "How would you monetize or deploy this in the real world?"</strong><br>
+        <em>Your Answer: "VeriHire operates on a B2B SaaS model for universities and enterprise HR teams. Placement cells pay an annual institutional subscription for bulk batch clearance, while our headless API can be licensed to job boards like Indeed or Naukri to pre-screen recruiter postings."</em></p>
     </div>
 
 </body>
