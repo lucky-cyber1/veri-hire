@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VeriHire & MailGuard AI — Video Presentation Script & Demo Guide</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 16mm 16mm 18mm 16mm;
+            @bottom-right {
+                content: counter(page);
+                font-size: 9pt;
+                color: #64748B;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            }
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #0F172A;
+            line-height: 1.5;
+            font-size: 9.5pt;
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3, h4 {
+            color: #0F172A;
+            margin-top: 0;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        h1 {
+            font-size: 20pt;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        h2 {
+            font-size: 12pt;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 1.5px solid #E2E8F0;
+            color: #0F172A;
+        }
+        h3 {
+            font-size: 10.5pt;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            color: #1E293B;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+        .header-banner {
+            background: linear-gradient(135deg, #090D16 0%, #1E1B4B 100%);
+            color: #FFFFFF;
+            padding: 20px 22px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #312E81;
+        }
+        .header-banner h1 {
+            color: #FFFFFF;
+        }
+        .badge {
+            display: inline-block;
+            font-size: 7.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+        .badge-cyan {
+            background-color: rgba(6, 182, 212, 0.2);
+            color: #06B6D4;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+        }
+        .badge-purple {
+            background-color: rgba(168, 85, 247, 0.2);
+            color: #C084FC;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+        }
+        .badge-amber {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #F59E0B;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+        .meta-strip {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 8pt;
+            color: #CBD5E1;
+        }
+        .script-block {
+            background-color: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-left: 4px solid #3B82F6;
+            border-radius: 0 6px 6px 0;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+        }
+        .action-tag {
+            display: inline-block;
+            background-color: #0F172A;
+            color: #38BDF8;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 7.5pt;
+            font-weight: 600;
+            padding: 1px 6px;
+            border-radius: 3px;
+            margin-right: 4px;
+        }
+        .spoken-text {
+            color: #0F172A;
+            font-size: 9.5pt;
+            line-height: 1.55;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+        .speech-cue {
+            color: #D97706;
+            font-weight: 700;
+            font-size: 8pt;
+            text-transform: uppercase;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 8pt;
+            margin: 8px 0 14px 0;
+        }
+        th, td {
+            padding: 6px 8px;
+            text-align: left;
+            border: 1px solid #E2E8F0;
+        }
+        th {
+            background-color: #F1F5F9;
+            color: #0F172A;
+            font-weight: 700;
+            font-size: 7.5pt;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) td {
+            background-color: #F8FAFC;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            font-size: 8.5pt;
+        }
+        .check-box {
+            min-width: 14px;
+            height: 14px;
+            border: 1.5px solid #3B82F6;
+            border-radius: 3px;
+            margin-right: 8px;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER BANNER -->
+    <div class="header-banner">
+        <div>
+            <span class="badge badge-cyan">Official Hackathon Video Guide</span>
+            <span class="badge badge-purple">Word-for-Word Transcript</span>
+            <span class="badge badge-amber">Screen Action Checklist</span>
+        </div>
+        <h1 style="margin-top: 8px;">VeriHire & MailGuard AI — Video Presentation Guide</h1>
+        <p style="color: #CBD5E1; font-size: 9.5pt; margin-bottom: 0;">
+            A complete, step-by-step presentation script and screen demonstration guide designed for hackathon video recording (Target duration: 3.5 - 4.5 minutes).
+        </p>
+        <div class="meta-strip">
+            <div><strong>Presenter:</strong> Lakshman</div>
+            <div><strong>Target Length:</strong> 3 mins 45 secs</div>
+            <div><strong>Resolution:</strong> 1080p / 60 FPS</div>
+            <div><strong>Audio Profile:</strong> Confident, crisp, authoritative</div>
+        </div>
+    </div>
+
+    <!-- PRE-RECORDING CHECKLIST -->
+    <h2>1. Pre-Recording Setup & Environment Checklist</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 10px 12px;">
+            <strong style="color: #1E293B; font-size: 8.5pt; text-transform: uppercase;">Browser Tabs Setup (Chrome):</strong>
+            <div style="margin-top: 6px;">
+                <div class="checklist-item"><div class="check-box"></div><span><strong>Tab 1:</strong> <code>http://127.0.0.1:8000</code> (VeriHire Core Console)</span></div>
+                <div class="checklist-item"><div class="check-box"></div><span><strong>Tab 2:</strong> <code>http://127.0.0.1:8000/portal</code> (Placement Cell Portal)</span></div>
+                <div class="checklist-item"><div class="check-box"></div><span><strong>Tab 3:</strong> <code>http://127.0.0.1:8002</code> (MailGuard AI Sentinel)</span></div>
+                <div class="checklist-item"><div class="check-box"></div><span><strong>Tab 4:</strong> GitHub Repo (<code>github.com/lucky-cyber1/veri-hire</code>)</span></div>
+            </div>
+        </div>
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; padding: 10px 12px;">
+            <strong style="color: #1E293B; font-size: 8.5pt; text-transform: uppercase;">Demo Assets Ready on Desktop:</strong>
+            <div style="margin-top: 6px;">
+                <div class="checklist-item"><div class="check-box"></div><span>A sample <strong>Google Intern Scam Offer</strong> (PDF or image)</span></div>
+                <div class="checklist-item"><div class="check-box"></div><span>A sample <strong>Genuine Corporate Offer</strong> (with EPF/HRA)</span></div>
+                <div class="checklist-item"><div class="check-box"></div><span>Active Google App Password connected in MailGuard</span></div>
+                <div class="checklist-item"><div class="check-box"></div><span>Do Not Disturb (DND) enabled on macOS to prevent notifications</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MINUTE-BY-MINUTE SYNC TABLE -->
+    <h2>2. Minute-by-Minute Synchronized Demo Flow</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 12%;">Timestamp</th>
+                <th style="width: 25%;">Screen Recording Action</th>
+                <th style="width: 45%;">Core Speech Topic</th>
+                <th style="width: 18%;">Key Visual Element</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>0:00 - 0:35</strong></td>
+                <td>Presenter camera or high-impact intro slide, transition to VeriHire console.</td>
+                <td>The recruitment fraud crisis: ₹100s of crores stolen via advance fees & Aadhaar harvesting.</td>
+                <td>VeriHire Hero Banner & Clean Modern UI</td>
+            </tr>
+            <tr>
+                <td><strong>0:35 - 1:15</strong></td>
+                <td>Drag & drop scam offer letter into upload dropzone. Results appear instantly in &lt;5ms.</td>
+                <td>Single document forensic audit: 96/100 risk score, advance fee flag, UPI trap, PII harvest.</td>
+                <td>Score Gauge (96/100) & Proportional Calculation Breakdown</td>
+            </tr>
+            <tr>
+                <td><strong>1:15 - 1:50</strong></td>
+                <td>Switch to "Batch Mode", run 5-file audit & export CSV. Then click to <code>/portal</code>.</td>
+                <td>Placement cell workflow: bulk clearance of student NOCs, eliminating manual administrative review.</td>
+                <td>Batch Ledger & Apex Partner Portal</td>
+            </tr>
+            <tr>
+                <td><strong>1:50 - 2:45</strong></td>
+                <td>Switch to Tab 3 (MailGuard Port 8002). Click "+ Dispatch Scam". Wait 4s for IMAP poll.</td>
+                <td>Autonomous email sentinel: live IMAP ingestion, automatic extraction, instant VeriHire API response.</td>
+                <td>Cybersecurity Ops UI & Live 200 OK JSON Payload</td>
+            </tr>
+            <tr>
+                <td><strong>2:45 - 3:20</strong></td>
+                <td>Open VeriHire Developer API modal. Show architecture diagram / code in terminal.</td>
+                <td>Zero-retention privacy: In-memory byte streaming (<code>io.BytesIO</code>), on-device CoreML OCR, 0 INR cost.</td>
+                <td>FastAPI Endpoints & RAM-Only Security</td>
+            </tr>
+            <tr>
+                <td><strong>3:20 - 3:45</strong></td>
+                <td>Show GitHub repository (<code>lucky-cyber1/veri-hire</code>) and live Cloudflare tunnel.</td>
+                <td>Closing call to action: Protecting millions of graduates from digital identity syndicates.</td>
+                <td>GitHub Repo & Live Demo Links</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- PAGE BREAK -->
+    <div class="page-break"></div>
+
+    <!-- 3. WORD-FOR-WORD SPOKEN TRANSCRIPT -->
+    <h2>3. Word-for-Word Spoken Transcript & Stage Directions</h2>
+
+    <!-- SEGMENT 1 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">0:00 - 0:35</span>
+                <strong style="color: #0F172A;">SEGMENT 1: The Crisis & The Hook</strong>
+            </div>
+            <span class="badge badge-cyan">TAB 1: VERIHIRE</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Show camera or clean screen on <code>http://127.0.0.1:8000</code>.
+        </p>
+        <div class="spoken-text">
+            "Hello judges and fellow builders. Every year, over eighty percent of university graduates and job seekers are targeted by sophisticated recruitment scams. Fraudulent syndicates use fake appointment letters, unsolicited LinkedIn and Instagram lures, and counterfeit company portals to steal hundreds of crores in advance laptop deposits, while harvesting Aadhaar and PAN cards for criminal identity theft. <span class="speech-cue">[PAUSE - 1s]</span><br><br>
+            Existing email filters only check domain reputations—they completely miss employment fraud semantics. And sending sensitive student resumes to third-party cloud LLMs is slow, expensive, and a critical violation of data privacy laws. <span class="speech-cue">[EMPHASIZE]</span> That is why we built <strong>VeriHire</strong> and <strong>MailGuard AI</strong>—an autonomous, edge-native recruitment fraud defense system that audits offer letters in under five milliseconds, with zero persistent storage, and zero cloud API fees."
+        </div>
+    </div>
+
+    <!-- SEGMENT 2 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">0:35 - 1:15</span>
+                <strong style="color: #0F172A;">SEGMENT 2: Live Single-Document Forensic Audit</strong>
+            </div>
+            <span class="badge badge-cyan">TAB 1: DRAG & DROP</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Drag <code>google_scam_offer.pdf</code> into the dropzone. Click to inspect calculation breakdown and zoom modal.
+        </p>
+        <div class="spoken-text">
+            "Let's see it in action. Here is the VeriHire Core Console. A candidate uploads an offer letter—PDF or screenshot. Notice what happens the instant I drop this fake Google internship letter: <span class="speech-cue">[CLICK - DROP FILE]</span><br><br>
+            In less than five milliseconds, our on-device Apple Vision Neural Engine OCR extracts the text, scrubs all candidate PII in memory, and audits it across six distinct forensic layers. <span class="speech-cue">[POINT CURSOR TO RISK SCORE]</span><br><br>
+            It instantly flags a <strong>Risk Score of 96 out of 100—CRITICAL THREAT</strong>. Look at the breakdown: it caught the ₹2,500 courier fee extortion, flagged the personal Google Pay UPI handle, detected premature Aadhaar card harvesting, and exposed that this PDF was generated using consumer graphic software rather than enterprise HR systems. Notice our mathematical breakdown: every factor dynamically scales to sum exactly to the final score."
+        </div>
+    </div>
+
+    <!-- SEGMENT 3 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">1:15 - 1:50</span>
+                <strong style="color: #0F172A;">SEGMENT 3: Placement Batch Audit & University Portal</strong>
+            </div>
+            <span class="badge badge-cyan">TAB 1 & TAB 2</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Switch to "Batch Mode", select files, click "Run Batch Audit", then click "Export CSV". Navigate to <code>/portal</code>.
+        </p>
+        <div class="spoken-text">
+            "For university placement cells handling thousands of student offers, manual verification is impossible. VeriHire includes a high-throughput <strong>Batch Audit Ledger</strong>. <span class="speech-cue">[CLICK BATCH AUDIT]</span><br><br>
+            Placement officers can upload up to fifty offer letters simultaneously. VeriHire categorizes clean offers versus threats in a structured ledger, and with one click, exports a full forensic CSV report for administrative accreditation.<br><br>
+            Furthermore, through our <strong>Partner Clearance Portal</strong> at <code>/portal</code>, partner universities like Apex Institute of Technology can clear student NOCs with enterprise API key authentication in real time."
+        </div>
+    </div>
+
+    <!-- PAGE BREAK -->
+    <div class="page-break"></div>
+
+    <!-- SEGMENT 4 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">1:50 - 2:45</span>
+                <strong style="color: #0F172A;">SEGMENT 4: MailGuard AI Sentinel & Live Real Email Dispatch</strong>
+            </div>
+            <span class="badge badge-purple">TAB 3: MAILGUARD (PORT 8002)</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Switch to Tab 3 (<code>Port 8002</code>). Highlight cybersecurity UI. Click <code>+ Dispatch Scam</code>. Show IMAP fetch after 4s.
+        </p>
+        <div class="spoken-text">
+            "Now, students shouldn't even have to open a fraudulent email to be protected. Enter <strong>MailGuard AI</strong>—our standalone automated inbox sentinel running on Port 8002. <span class="speech-cue">[SHOW MAILGUARD UI]</span><br><br>
+            Notice this high-density cybersecurity operations console designed with industrial matte panels and crisp JetBrains Mono telemetry. MailGuard connects directly to any candidate's Gmail inbox over secure IMAP. <span class="speech-cue">[CLICK '+ DISPATCH SCAM']</span><br><br>
+            Watch this: I am clicking '+ Dispatch Scam'. MailGuard immediately dispatches a real, live phishing offer letter via SMTP directly to my Gmail address. Four seconds later, its autonomous IMAP listener polls the inbox, intercepts the incoming message, and streams it to the console. <span class="speech-cue">[CLICK NEW MESSAGE IN STREAM]</span><br><br>
+            The moment I click the message, our internal backend proxy queries VeriHire's headless API. On the right-hand side, you can see the live JSON response: Risk Score 100, Critical Threat, with an immediate warning: 'DO NOT SEND ANY DOCUMENTS OR MONEY'. Notice how the inbox stream scrolls neatly inside its column while keeping the forensic ledger sticky on screen."
+        </div>
+    </div>
+
+    <!-- SEGMENT 5 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">2:45 - 3:20</span>
+                <strong style="color: #0F172A;">SEGMENT 5: Zero-Storage Security & Edge Architecture</strong>
+            </div>
+            <span class="badge badge-cyan">TAB 1: API MODAL</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Click "API Console" in VeriHire navbar to show headless endpoints & architecture cards.
+        </p>
+        <div class="spoken-text">
+            "What makes VeriHire unique from an engineering standpoint? <span class="speech-cue">[EMPHASIZE]</span><br><br>
+            First: <strong>Strict Zero-Data Retention</strong>. In an era of heavy privacy regulation under India's DPDP Act and GDPR, VeriHire never writes student offer letters, resumes, or ID scans to disk. Files are processed entirely in ephemeral byte buffers in RAM and unlinked instantly.<br><br>
+            Second: <strong>Deterministic Edge AI</strong>. By avoiding external cloud LLMs, VeriHire eliminates runtime latency and per-token API costs completely. Campus bots, mobile apps, or enterprise ATS systems can query our headless REST endpoints millions of times for free."
+        </div>
+    </div>
+
+    <!-- SEGMENT 6 -->
+    <div class="script-block">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <span class="action-tag">3:20 - 3:45</span>
+                <strong style="color: #0F172A;">SEGMENT 6: The Winning Pitch & Closing Call-to-Action</strong>
+            </div>
+            <span class="badge badge-purple">TAB 4: GITHUB REPO</span>
+        </div>
+        <p style="font-size: 8pt; color: #64748B; margin-top: 4px;">
+            <span class="action-tag">ACTION</span> Switch to GitHub repository tab (<code>lucky-cyber1/veri-hire</code>). Show clean commit history.
+        </p>
+        <div class="spoken-text">
+            "VeriHire is fully open-source, production-ready, and verified across nine real-world attack benchmarks. It is currently deployed live via Cloudflare tunnels for instant judge testing, and our entire codebase is accessible on GitHub.<br><br>
+            Recruitment fraud steals dreams and identities before careers even begin. With VeriHire and MailGuard AI, we are building the digital defense shield that every student and university deserves. Thank you!"
+        </div>
+    </div>
+
+    <!-- 4. JUDGE Q&A CHEAT SHEET -->
+    <h2>4. Quick Judge Q&A Defense "Cheat Sheet"</h2>
+    <div style="font-size: 8.5pt;">
+        <p><strong>Q: Why not just use GPT-4 or Gemini for this?</strong><br>
+        <em>A: "Cloud LLMs cost $0.02 to $0.05 per document, take 2 to 4 seconds to respond, hallucinate inconsistent scores, and violate DPDP privacy by sending candidate Aadhaar cards to external cloud servers. VeriHire runs locally in under 5 milliseconds at zero cost with 100% data sovereignty."</em></p>
+        
+        <p><strong>Q: What happens if a scammer changes their email wording?</strong><br>
+        <em>A: "VeriHire doesn't just match keywords—it cross-references multiple independent structural vectors: domain typosquatting against 17 enterprise registries, PDF toolchain creation metadata, statutory payroll mathematics (EPF/HRA deductions), and peer-to-peer payment rails. Scammers cannot bypass all structural layers simultaneously."</em></p>
+        
+        <p><strong>Q: How do you prevent false positives on genuine offers?</strong><br>
+        <em>A: "We engineered an Anti-False-Positive Shield that applies legitimacy credit discounts when authentic enterprise markers are present—such as valid Ministry of Corporate Affairs CIN registration numbers, statutory PF/Gratuity annexures, and verified enterprise ATS portal links."</em></p>
+    </div>
+
+</body>
+</html>
