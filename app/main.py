@@ -138,6 +138,40 @@ def build_score_breakdown(result: Dict[str, Any], score: int) -> List[Dict[str, 
                 "severity": "CRITICAL",
                 "reason": "Uses classic offshore employment lures (Dirham salary, free flights, accommodation) with typosquatted domain and synthetic contract clauses."
             })
+
+        has_us_check_scam = any(s.get("category") == "FAKE_CHECK_EQUIPMENT_SCAM" for s in result.get("signals", []))
+        has_uk_visa_scam = any(s.get("category") == "UK_EURO_VISA_SPONSORSHIP_SCAM" for s in result.get("signals", []))
+        has_intl_pii = any(s.get("category") == "PREMATURE_GLOBAL_TAX_ID_HARVESTING" for s in result.get("signals", []))
+        has_p2p_wire = any(s.get("category") == "UNREGULATED_P2P_PAYMENT_RAIL" for s in result.get("signals", []))
+
+        if has_us_check_scam:
+            raw_items.append({
+                "factor": "Fake Check & Equipment Overpayment Scheme",
+                "weight": 45,
+                "severity": "CRITICAL",
+                "reason": "Promises cashier's check disbursement to buy home office equipment from an unverified vendor, a signature North American overpayment fraud."
+            })
+        if has_uk_visa_scam:
+            raw_items.append({
+                "factor": "UK / European Visa & Sponsorship Fee Trap",
+                "weight": 45,
+                "severity": "CRITICAL",
+                "reason": "Demands illegal payments for Certificate of Sponsorship (CoS), Home Office priority processing, or UKVI biometric permits."
+            })
+        if has_intl_pii:
+            raw_items.append({
+                "factor": "Premature Global Tax & Identity Harvesting",
+                "weight": 35,
+                "severity": "CRITICAL",
+                "reason": "Demands full Social Security Number (SSN/SIN/NINO) or voided bank checks prior to verified day-1 employment."
+            })
+        if has_p2p_wire:
+            raw_items.append({
+                "factor": "Unregulated Consumer Payment Rail",
+                "weight": 30,
+                "severity": "HIGH",
+                "reason": "Directs financial onboarding transactions through consumer P2P channels (Zelle, Venmo, Cash App, Crypto, or Gift Cards)."
+            })
         
         # Missing PKI signature baseline
         raw_items.append({

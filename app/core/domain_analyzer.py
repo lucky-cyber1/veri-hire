@@ -1,24 +1,88 @@
 import re
 from typing import Dict, Any, List
 
-# Known top enterprises frequently impersonated in campus recruiting
+# Known top global enterprises frequently impersonated in recruitment fraud
 KNOWN_ENTERPRISES = {
+    # US Tech & Global Giants
     "google": ["google.com", "google.co.in", "alphabet.com"],
     "microsoft": ["microsoft.com"],
-    "infosys": ["infosys.com"],
-    "tcs": ["tcs.com", "tataconsultancy.com"],
-    "wipro": ["wipro.com"],
+    "apple": ["apple.com"],
     "amazon": ["amazon.com", "amazon.in", "amazon.jobs"],
-    "accenture": ["accenture.com"],
-    "cognizant": ["cognizant.com"],
-    "razorpay": ["razorpay.com"],
-    "swiggy": ["swiggy.in", "swiggy.com"],
-    "zomato": ["zomato.com"],
-    "flipkart": ["flipkart.com"],
+    "meta": ["meta.com", "facebook.com"],
+    "netflix": ["netflix.com"],
+    "salesforce": ["salesforce.com"],
+    "adobe": ["adobe.com"],
+    "oracle": ["oracle.com"],
+    "cisco": ["cisco.com"],
+    "intel": ["intel.com"],
+    "nvidia": ["nvidia.com"],
+    "spotify": ["spotify.com"],
+    "uber": ["uber.com"],
+    "airbnb": ["airbnb.com"],
+    "tesla": ["tesla.com"],
+    
+    # Global Logistics, Aviation & Shipping
+    "dp world": ["dpworld.com"],
+    "dubai port world": ["dpworld.com"],
+    "maersk": ["maersk.com"],
+    "dhl": ["dhl.com"],
+    "fedex": ["fedex.com"],
+    "ups": ["ups.com"],
+    "emirates": ["emirates.com", "emiratesgroup.com"],
+    "etihad": ["etihad.com", "etihadairways.com"],
+    "qatar airways": ["qatarairways.com"],
+    "singapore airlines": ["singaporeair.com"],
+    "british airways": ["ba.com", "britishairways.com"],
+    "lufthansa": ["lufthansa.com"],
+    "delta": ["delta.com"],
+    "united airlines": ["united.com"],
+    
+    # Energy, Oil & Heavy Industry
+    "aramco": ["aramco.com"],
+    "saudi aramco": ["aramco.com"],
+    "adnoc": ["adnoc.ae"],
+    "shell": ["shell.com"],
+    "bp": ["bp.com"],
+    "exxonmobil": ["exxonmobil.com"],
+    "chevron": ["chevron.com"],
+    "totalenergies": ["totalenergies.com"],
+    "petrofac": ["petrofac.com"],
+    
+    # Global Financial Services & Consulting (Big 4 & Strategy)
     "deloitte": ["deloitte.com"],
     "ey": ["ey.com"],
     "pwc": ["pwc.com"],
     "kpmg": ["kpmg.com"],
+    "mckinsey": ["mckinsey.com"],
+    "bcg": ["bcg.com"],
+    "bain": ["bain.com"],
+    "goldman sachs": ["goldmansachs.com", "gs.com"],
+    "jpmorgan": ["jpmorgan.com", "jpmorganchase.com"],
+    "morgan stanley": ["morganstanley.com"],
+    "citigroup": ["citi.com", "citigroup.com"],
+    "hsbc": ["hsbc.com"],
+    "barclays": ["barclays.com"],
+    "razorpay": ["razorpay.com"],
+    
+    # Global Healthcare & Pharma
+    "pfizer": ["pfizer.com"],
+    "johnson & johnson": ["jnj.com"],
+    "astrazeneca": ["astrazeneca.com"],
+    "moderna": ["modernatx.com"],
+    "novartis": ["novartis.com"],
+    "unitedhealth": ["uhg.com", "unitedhealthgroup.com"],
+    
+    # Indian IT & Major Conglomerates
+    "tcs": ["tcs.com", "tataconsultancy.com"],
+    "infosys": ["infosys.com"],
+    "wipro": ["wipro.com"],
+    "hcl": ["hcltech.com", "hcl.com"],
+    "tech mahindra": ["techmahindra.com"],
+    "accenture": ["accenture.com"],
+    "cognizant": ["cognizant.com"],
+    "swiggy": ["swiggy.in", "swiggy.com"],
+    "zomato": ["zomato.com"],
+    "flipkart": ["flipkart.com"],
     "tata": ["tata.com", "tatasteel.com", "tatamotors.com"],
     "tata steel": ["tatasteel.com"],
     "jsw": ["jsw.in", "jswsteel.in"],
@@ -27,20 +91,7 @@ KNOWN_ENTERPRISES = {
     "adani": ["adani.com"],
     "l&t": ["larsentoubro.com"],
     "vedanta": ["vedantalimited.com"],
-    "dp world": ["dpworld.com"],
-    "dubai port world": ["dpworld.com"],
-    "emirates": ["emirates.com", "emiratesgroup.com"],
-    "etihad": ["etihad.com", "etihadairways.com"],
-    "aramco": ["aramco.com"],
-    "saudi aramco": ["aramco.com"],
-    "adnoc": ["adnoc.ae"],
-    "qatar airways": ["qatarairways.com"],
-    "dhl": ["dhl.com"],
-    "fedex": ["fedex.com"],
-    "maersk": ["maersk.com"],
-    "apple": ["apple.com"],
-    "netflix": ["netflix.com"],
-    "meta": ["meta.com", "facebook.com"]
+    "mahindra": ["mahindra.com"]
 }
 
 FREE_MAIL_PROVIDERS = {

@@ -143,6 +143,34 @@ GULF_OVERSEAS_SCAM_PATTERNS = [
     (r'\+971\s*5[0-9]\s*[0-9]{3}\s*[0-9]{4}', "UAE Mobile Number Posing as Corporate Headquarters Landline", 35)
 ]
 
+# North American Fake Check / Home Office Equipment Scam Patterns (US & Canada)
+US_CHECK_EQUIPMENT_PATTERNS = [
+    (r'\b(cashier\'?s?\s*check|company\s*check|e-check|check\s*deposit|mobile\s*deposit)\s*(to|for)?\s*(purchase|buy|order|set\s*up)\s*(your)?\s*(home\s*office|equipment|macbook|software|materials|vendor)', "Fake Cashier's Check / Home Office Equipment Scheme", 55),
+    (r'\b(vendor|supplier|software\s*vendor|office\s*vendor)\s*(via|through|using)?\s*(zelle|venmo|cash\s*app|wire\s*transfer|bitcoin|crypto|apple\s*gift\s*card|greendot)', "Peer-to-Peer / Unregulated Wire Transfer to Fake Equipment Vendor", 50),
+    (r'\b(reimburse|deduct|refund)\s*(the)?\s*excess\s*(amount|funds|money|balance)\s*(back)?\b', "Classic Check Overpayment / Wire Back Refund Scam", 55),
+    (r'\b(funds\s*will\s*be\s*provided|check\s*will\s*be\s*issued)\s*(to|for)\s*(purchase|buy)\s*(your)?\s*(equipment|supplies|laptop)', "Equipment Purchase Check Disbursement Lure", 45)
+]
+
+# UK & European Visa / Certificate of Sponsorship (CoS) Scams
+UK_EURO_VISA_PATTERNS = [
+    (r'\b(certificate\s*of\s*sponsorship|cos\s*allocation|tier\s*2\s*visa|skilled\s*worker\s*visa)\s*(fee|charge|deposit|cost|payment)', "UK Certificate of Sponsorship (CoS) Extortion Fee Trap", 55),
+    (r'\b(ukvi|home\s*office|biometric\s*residence\s*permit|brp)\s*(processing\s*fee|priority\s*fee|deposit|clearance)', "UKVI / Home Office Visa Processing Deposit Scam", 50),
+    (r'\b(national\s*insurance\s*number|nino)\s*(deposit|verification\s*charge|activation\s*fee)', "UK National Insurance Number (NINO) Fee Scam", 45),
+    (r'\b(schengen\s*visa|eu\s*blue\s*card|work\s*permit)\s*(deposit|guarantee\s*fee|security\s*charge)', "European Work Permit / Blue Card Extortion Trap", 50)
+]
+
+# International Premature Social & Tax Identity Harvesting
+INTERNATIONAL_PII_PATTERNS = [
+    (r'\b(social\s*security\s*number|ssn|social\s*insurance\s*number|sin)\s*(copy|scan|card|number|details)?\s*(before|prior\s*to|with\s*acceptance|to\s*confirm\s*offer)', "Premature US/Canada SSN/SIN Identity Harvesting", 50),
+    (r'\b(direct\s*deposit\s*form|voided\s*check|routing\s*number)\s*(attached|send\s*back|prior\s*to\s*start\s*date)', "Premature Banking / Voided Check Harvesting Before First Day", 45),
+    (r'\b(national\s*insurance\s*number|nino)\s*(copy|scan|card|details)\s*(before|prior\s*to|with\s*this\s*letter)', "Premature UK NINO Harvesting", 45)
+]
+
+# Global Unofficial P2P / Wire Transfer Rails
+GLOBAL_PAYMENT_TRAPS = [
+    (r'\b(zelle|venmo|cash\s*app|western\s*union|moneygram|paypal\s*friends|bitcoin|btc|usdt|crypto|gift\s*card)\b', "Unregulated P2P / Cryptocurrency Transfer Rail", 45)
+]
+
 def perform_ocr_image_bytes(image_bytes: bytes) -> str:
     """
     Extracts text from image bytes using the high-performance native macOS Vision OCR engine,
@@ -295,9 +323,13 @@ def analyze_offer(
             
     if not claimed_company:
         for comp in [
-            "Google", "Microsoft", "TCS", "Infosys", "Wipro", "Amazon", "Razorpay", "Swiggy", "Zomato", "Flipkart", "Accenture", "Cognizant",
+            "Google", "Microsoft", "Apple", "Amazon", "Meta", "Netflix", "Salesforce", "Adobe", "Oracle", "Cisco", "Intel", "NVIDIA", "Spotify", "Uber", "Airbnb", "Tesla",
+            "TCS", "Infosys", "Wipro", "HCL", "Tech Mahindra", "Accenture", "Cognizant", "Razorpay", "Swiggy", "Zomato", "Flipkart",
             "JSW Steel", "JSW", "Tata Steel", "Tata Motors", "Tata", "Reliance", "Adani", "L&T", "Larsen & Toubro", "Vedanta", "Mahindra", "BHEL", "SAIL", "ONGC",
-            "DP World", "Dubai Port World", "Emirates", "Etihad", "Aramco", "Saudi Aramco", "ADNOC", "Qatar Airways", "DHL", "FedEx", "Maersk", "Apple", "Meta"
+            "DP World", "Dubai Port World", "Emirates", "Etihad", "Aramco", "Saudi Aramco", "ADNOC", "Qatar Airways", "Singapore Airlines", "British Airways", "Lufthansa", "Delta", "United Airlines",
+            "DHL", "FedEx", "UPS", "Maersk", "Shell", "BP", "ExxonMobil", "Chevron", "TotalEnergies", "Petrofac",
+            "Deloitte", "EY", "PwC", "KPMG", "McKinsey", "BCG", "Bain", "Goldman Sachs", "JPMorgan", "Morgan Stanley", "Citigroup", "HSBC", "Barclays",
+            "Pfizer", "Johnson & Johnson", "AstraZeneca", "Moderna", "Novartis", "UnitedHealth"
         ]:
             if re.search(r'\b' + comp + r'\b', raw_text, re.IGNORECASE):
                 claimed_company = comp
@@ -581,6 +613,64 @@ def analyze_offer(
                 "explanation": "Scammers exploit fake foreign currency salaries (Dirhams/Riyals) and promises of free flight tickets/accommodations to later extort candidates for 'visa processing', 'medical tests', or 'embassy attestation fees'."
             })
 
+    # 8. North American Fake Check / Home Office Equipment Scheme Check
+    us_check_scam_hits = 0
+    for pattern, label, weight in US_CHECK_EQUIPMENT_PATTERNS:
+        matches = re.findall(pattern, lower_text)
+        if matches:
+            us_check_scam_hits += 1
+            category_scores["advance_fee"] = max(category_scores["advance_fee"], weight)
+            signals.append({
+                "category": "FAKE_CHECK_EQUIPMENT_SCAM",
+                "severity": "CRITICAL",
+                "title": label,
+                "evidence": f"Found check disbursement / home office equipment vendor scheme pattern.",
+                "explanation": "High-risk North American overpayment scheme: Fraudsters send a fake cashier's check to deposit, then demand candidates wire money via Zelle/Venmo to a bogus 'office vendor' before the check bounces."
+            })
+
+    # 9. UK & European Visa / Certificate of Sponsorship (CoS) Extortion Check
+    uk_visa_scam_hits = 0
+    for pattern, label, weight in UK_EURO_VISA_PATTERNS:
+        matches = re.findall(pattern, lower_text)
+        if matches:
+            uk_visa_scam_hits += 1
+            category_scores["advance_fee"] = max(category_scores["advance_fee"], weight)
+            signals.append({
+                "category": "UK_EURO_VISA_SPONSORSHIP_SCAM",
+                "severity": "CRITICAL",
+                "title": label,
+                "evidence": f"Found illegal UK/European visa or Certificate of Sponsorship fee demand.",
+                "explanation": "Under UK Home Office and EU immigration regulations, employers are legally prohibited from passing Certificate of Sponsorship (CoS) or immigration skills charges onto employees."
+            })
+
+    # 10. Premature International Social & Tax Identity Harvesting Check
+    intl_pii_hits = 0
+    for pattern, label, weight in INTERNATIONAL_PII_PATTERNS:
+        matches = re.findall(pattern, lower_text)
+        if matches:
+            intl_pii_hits += 1
+            category_scores["kyc_harvesting"] = max(category_scores["kyc_harvesting"], weight)
+            signals.append({
+                "category": "PREMATURE_GLOBAL_TAX_ID_HARVESTING",
+                "severity": "CRITICAL",
+                "title": label,
+                "evidence": f"Demands sensitive national identifier (SSN / SIN / NINO) or voided check prior to first day onboarding.",
+                "explanation": "Demanding Social Security Numbers or bank routing details prior to verified corporate ATS portal onboarding is a primary tactic for synthetic identity loans."
+            })
+
+    # 11. Unregulated Global P2P / Cryptocurrency Transfer Check
+    for pattern, label, weight in GLOBAL_PAYMENT_TRAPS:
+        matches = re.findall(pattern, lower_text)
+        if matches:
+            category_scores["advance_fee"] = max(category_scores["advance_fee"], weight)
+            signals.append({
+                "category": "UNREGULATED_P2P_PAYMENT_RAIL",
+                "severity": "CRITICAL",
+                "title": label,
+                "evidence": f"References unregulated consumer payment rail ('{matches[0]}').",
+                "explanation": "Enterprise corporations process employee payroll and allowances via ACH / SWIFT direct bank deposit, never through Zelle, Cash App, Venmo, Western Union, or crypto."
+            })
+
     # Calculate aggregate risk score
     domain_score = domain_result.get("risk_score", 0)
     nlp_score = (
@@ -611,6 +701,12 @@ def analyze_offer(
     # Direct critical triggers for high-profile syndicate indicators
     if domain_result.get("is_lookalike"):
         raw_total = max(raw_total, 96.0)
+    elif us_check_scam_hits > 0:
+        raw_total = max(raw_total, 96.0)
+    elif uk_visa_scam_hits > 0:
+        raw_total = max(raw_total, 95.0)
+    elif intl_pii_hits > 0 and not has_verified_domain and not has_official_portal:
+        raw_total = max(raw_total, 90.0)
     elif gulf_scam_hits >= 2:
         raw_total = max(raw_total, 94.0)
     elif any(s["category"] in ["FORGED_EXECUTIVE_SIGNATORY", "TEMPLATE_CONTAMINATION_FORGERY"] for s in signals):
