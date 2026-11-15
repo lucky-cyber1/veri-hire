@@ -395,8 +395,8 @@ async def partner_verify(file: UploadFile = File(...), authorization: Optional[s
         api_key = authorization.split("Bearer ")[1].strip()
     
     if api_key != "vh_live_9f83b2a7e41c6d590218a4d70":
-        # Allow testing without hard failure for live demo ease, but flag status
-        is_demo_key = True
+        from fastapi.responses import JSONResponse
+        return JSONResponse(status_code=401, content={"error": "Unauthorized", "message": "Invalid or missing API key. Use Authorization: Bearer vh_live_..."})
     else:
         is_demo_key = False
 
