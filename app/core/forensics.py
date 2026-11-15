@@ -87,6 +87,13 @@ OFF_CHANNEL_PATTERNS = [
     (r'no\s*(formal|technical)?\s*interview\s*(needed|required|conducted)', "Offer Extended Without Rigorous Interview Process", 30)
 ]
 
+# Unsolicited Social Sourcing / Cold Outreach Baiting
+SOCIAL_SOURCING_PATTERNS = [
+    (r'(saw|found|noticed|reviewed|impressed\s*with)\s*(your)?\s*(profile|resume|cv|account|posts?|merits?)\s*(on|in|via)?\s*(linkedin|instagram|facebook|twitter|x\.com|telegram)', "Unsolicited Social Media Sourcing Lure", 30),
+    (r'(based\s*on|viewed)\s*your\s*(linkedin|instagram|social\s*media)\s*(profile|activity|merits)', "Social Platform Cold Offer Baiting", 30),
+    (r'(direct|immediate)\s*offer\s*(based\s*on|through|via)\s*(instagram|social\s*media|telegram)', "Direct Social Hiring Without Application", 35)
+]
+
 # Suspicious consumer-grade or screenshot PDF producers
 SUSPICIOUS_PDF_PRODUCERS = [
     "canva", "ilovepdf", "smallpdf", "pdfescape", "word", "libreoffice", "photoshop", "gimp", "wps", "quartz pdfcontext"
@@ -398,6 +405,19 @@ def analyze_offer(
                 "title": label,
                 "evidence": f"Direct messenger references found ({matches[0] if isinstance(matches[0], str) else matches[0][0]}).",
                 "explanation": "Reputable tech companies communicate through corporate applicant tracking systems (Workday, Greenhouse, Lever) and formal emails, not personal Telegram or WhatsApp accounts."
+            })
+
+    # Unsolicited social media sourcing / cold offer lures
+    for pattern, label, weight in SOCIAL_SOURCING_PATTERNS:
+        matches = re.findall(pattern, lower_text)
+        if matches:
+            category_scores["communication_channel"] = max(category_scores["communication_channel"], weight)
+            signals.append({
+                "category": "SOCIAL_MEDIA_LURE",
+                "severity": "HIGH",
+                "title": label,
+                "evidence": f"Detected unsolicited social media sourcing claim (found '{matches[0] if isinstance(matches[0], str) else matches[0][0]}').",
+                "explanation": "Scammers frequently bait candidates with fake direct offers claiming they saw their profile or merits on Instagram, LinkedIn, or Telegram without any formal interview stages."
             })
 
     # PDF Metadata forensics
