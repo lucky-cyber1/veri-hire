@@ -44,7 +44,8 @@ community_stats = {
 def build_score_breakdown(result: Dict[str, Any], score: int) -> List[Dict[str, Any]]:
     """
     Constructs a clear, human-readable breakdown explaining exactly why
-    this specific risk score was assigned.
+    this specific risk score was assigned, dynamically scaling the factor
+    weights so they sum precisely to the final calculated risk score.
     """
     breakdown = []
     cat_scores = result.get("category_scores", {})
@@ -56,49 +57,70 @@ def build_score_breakdown(result: Dict[str, Any], score: int) -> List[Dict[str, 
     domain_res = result.get("domain_analysis", {})
     
     if score >= 30:
+        raw_items = []
         if fee_pts > 0:
-            breakdown.append({
+            raw_items.append({
                 "factor": "Advance-Fee & Deposit Extortion",
-                "points": f"+{min(45, fee_pts)} pts",
+                "weight": min(45, fee_pts),
                 "severity": "CRITICAL",
                 "reason": "Demands upfront payment (laptop deposit, training charges, or dispatch fee). Legitimate employers never charge candidates."
             })
         if comm_pts > 0 or domain_res.get("is_freemail", False) or domain_res.get("is_lookalike", False):
             pts = 25 if domain_res.get("is_lookalike") else (20 if comm_pts > 0 else 15)
-            breakdown.append({
+            raw_items.append({
                 "factor": "Shadow Recruiter Communication / Domain",
-                "points": f"+{pts} pts",
+                "weight": pts,
                 "severity": "HIGH",
                 "reason": "Uses free webmail (@gmail/@outlook), off-platform messaging (Telegram/WhatsApp), or spoofed domain rather than official corporate ATS."
             })
         if kyc_pts > 0:
-            breakdown.append({
+            raw_items.append({
                 "factor": "Premature Identity Harvesting",
-                "points": f"+{min(35, kyc_pts)} pts",
+                "weight": min(35, kyc_pts),
                 "severity": "HIGH",
                 "reason": "Demands sensitive government documents (Aadhaar, PAN, bank cheque) prior to official onboarding portal verification."
             })
         if coercion_pts > 0:
-            breakdown.append({
+            raw_items.append({
                 "factor": "High-Pressure Psychological Coercion",
-                "points": f"+{min(25, coercion_pts)} pts",
+                "weight": min(25, coercion_pts),
                 "severity": "MEDIUM",
                 "reason": "Imposes artificial 24-48 hour expiry to rush payment and discourage cross-checking with the real company."
             })
         if synth_pts > 0:
-            breakdown.append({
+            raw_items.append({
                 "factor": "Synthetic AI / Template Discrepancies",
-                "points": f"+{min(30, synth_pts)} pts",
+                "weight": min(30, synth_pts),
                 "severity": "MEDIUM",
                 "reason": "Exhibits hallmarks of LLM template drafting, placeholder bracket artifacts, or missing requisition identifiers."
             })
-        # Missing PKI signature
-        breakdown.append({
+        
+        # Missing PKI signature baseline
+        raw_items.append({
             "factor": "Cryptographic PKI Signature Audit",
-            "points": "+15 pts",
+            "weight": 15,
             "severity": "MEDIUM",
             "reason": "Lacks accredited corporate x509 PKI digital certificate. Document was generated via consumer software without enterprise identity keys."
         })
+
+        # Calculate proportional distribution so breakdown points sum to final score
+        total_raw_weight = sum(item["weight"] for item in raw_items)
+        allocated_points = 0
+        
+        for idx, item in enumerate(raw_items):
+            if idx == len(raw_items) - 1:
+                # Last item takes the exact remainder to guarantee exact match
+                item_pts = max(1, score - allocated_points)
+            else:
+                item_pts = max(1, round((item["weight"] / total_raw_weight) * score))
+                allocated_points += item_pts
+            
+            breakdown.append({
+                "factor": item["factor"],
+                "points": f"+{item_pts} pts",
+                "severity": item["severity"],
+                "reason": item["reason"]
+            })
     else:
         # Benign / Safe breakdown
         breakdown.append({
